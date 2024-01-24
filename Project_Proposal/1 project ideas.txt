@@ -1,0 +1,35 @@
+PROJECT IDEAS:
+
+* Daycare (image capture on registration, charts for analysis, calendar for scheduling, different classes/roles users e.g. parent, educator, manager)
+* Online booking system for car rental (wizard for booking, calendar view of cars for manager, statistics about use displayed as charts)
+* Online restaurant ordering system, either generic restaurant with a menu or specialized for pizza (with configuration of ingredients)
+* Kijiji clone, eBay clone, Amazon clones (marketplace, also job marketplace)
+* Reddit, Discord, Slack clone with improvements, maybe with WebRTC
+* Social network clone (FB, LinkedIn, Google+), dating site (maybe chat using NodeJS - advanced)
+* Medical clinic(s) scheduling / appointment system
+* Buy / sell real estate online (duProprio or realtor.ca clone)
+* exams online / surveys online (clone of SurveyMonkey or https://socrative.com/ or https://quizlet.com/)
+* CRM or other business software (e.g. warehouse management, point of sales)
+* Ticketing system (bus, airlines, concerts, ...): destinations, connections, schedules, payments, email tickets, etc.
+(not recommended) * Recipe site, multiple users, sharing recipies, search, suggested, likes, categories, tags, meal planner, calendar, single or multiple picture upload
+
+
+PROJECT TECHNOLOGIES AND FUNCTIONALITIES
+
+Required:
+* Cloud hosting of the final version of the project (perhaps GitHub+Heroku with CI/CD)
+* React with any libraries that you find useful (ask the teacher when in doubt)
+* A peristent database, e.g. MySQL, MS SQL, PostgreSQL or NOSQL database e.g. MongoDB (not allowed to use SQLite)
+* Authentication with Roles
+* Bootstrap or another CSS framework (support for Mobile devices optional)
+* CRUD for Admin at least on two sets of data
+* Flash messages, CSS-popups (message boxes) instead of Alerts  // FIXME // TODO
+* File upload (S3 preferred, or Azure Blob storage)
+
+Possible:
+* Facebook / Google login
+* Multiple languages support
+* Calendar libraries, Cart library
+* Online payments via gateways (Stripe or Paypal are the best)
+* Email account activation, password reset, email notifications, etc. (either Gmail account or SendGrid / MailTrap )
+* Charts for statistics
