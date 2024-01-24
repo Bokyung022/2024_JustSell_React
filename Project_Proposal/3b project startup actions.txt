@@ -1,0 +1,47 @@
+CLOUD HOSTING
+* Database 
+* File storage
+* Client & Server App hosting
+
+Project Startup Requirements and Steps:
+
+1. Team leader. Create project Git repository, shared by all team members and senditaway@hotmail.com.
+Keep the repository PRIVATE.
+You MUST add the proper content of .gitignore file *before* creating a project in it:
+For VisualStudio: https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore
+
+DO NOT USE BRANCHES functionality in Git.
+
+2. Watch "Scrum in 10 minutes" video https://www.youtube.com/watch?v=XU0llRltyFM
+
+3. Git repository, with .gitignore, for Heroku - two repositories, one for client, one for server
+
+In Git project working copy create "dailyscrum.txt" file that will be shared by both team members.
+Do your first Daily Scrum right here right now planning on what each of you will do by tomorrow morning.
+
+Make sure to follow Daily Scrum example and instructions provided.
+Make sure to commit that file to repository every day starting today.
+
+REMEMBER: Next time you come to class the first thing you will do will be Daily Scrum with your team partner.
+Do not wait for the teacher to remind you - when both of you arrive to class - do the Scrum.
+
+REMEMBER: After each Daily Scrum you also must update Trello board to reflect your project's progress.
+
+Part of your grade (use of tools) reflects your use of Git, Trello, and Daily Scrum.
+
+ALSO: Every team member must commit their code at least once a day (to avoid big divergences and many conflicts during merge).
+
+
+4. Create Trello board, shared by team members, keep it Private, add senditaway@hotmail.com as a member (read-only access is sufficient).
+
+5. Create ONE database in AWS or Azure and obtain connection string - one person per team.
+
+6. Homework:
+a) Break down the project into at least 5, preferably 10-20 "User Stories" and place them in Trello board.
+b) In each User Story create Checklist (todo) and add at least 3 (preferably 5-10 steps to it).
+
+And get started on implementing the project.
+
+7. Watch "Resolving Git Conflicts in SourceTree" video:
+
+https://www.coursera.org/lecture/version-control-with-git/sourcetree-resolving-merge-conflicts-GEciH
