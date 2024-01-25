@@ -31,6 +31,16 @@ Example entries for one day, both team members:
 3. Need assistance / figure things out
 - To live a better life :)
 
+2024/01/24 Xing
+1. Done since last scrum
+2. Plan until next Scrum
+- setup trello board
+- help config gitignore
+- setup heroku
+3. Need assistance / figure things out
+- need to see some tutorials about heroku
+
+
 2024/01/25 Karina - feeling not well today (maybe food poisoning?)
 1. Done since last scrum
 - Configurated Git Repo 
@@ -42,6 +52,17 @@ Example entries for one day, both team members:
 - For now, I need to watch a few videos to understand how AWS S3 and RDS work
 - I am not 100% sure the gitigonre contains all info it needs
 
+
+
+2024/01/25 Xing
+1. Done since last scrum
+- create trello board ,team work with Trello Board User Story Checklists
+- watch some tutorials about heroku 
+2. Plan until next Scrum
+- create heroku account
+- take some tasks from the task checklist and start to do programming
+3. Need assistance / figure things out
+do we need setup heroku at the begining ? or implement at the end?
 
 
  
