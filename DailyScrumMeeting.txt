@@ -30,3 +30,23 @@ Example entries for one day, both team members:
 - Config DB in our host 
 3. Need assistance / figure things out
 - To live a better life :)
+
+2024/01/25 Karina - feeling not well today (maybe food poisoning?)
+1. Done since last scrum
+- Configurated Git Repo 
+- Helped with Trello Board User Story Checklists
+- Created AWS Account using my credit card
+2. Plan until next Scrum
+- Config and set up DB in our AWS Account 
+3. Need assistance / figure things out
+- For now, I need to watch a few videos to understand how AWS S3 and RDS work
+- I am not 100% sure the gitigonre contains all info it needs
+
+
+
+ 
+
+
+
+
+
