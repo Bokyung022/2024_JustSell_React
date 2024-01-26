@@ -8,6 +8,8 @@ app.use(cors());
 const db = require("./models");
 
 //Routers
+const propertyRouter = require("./routes/properties");
+app.use("/properties", propertyRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
