@@ -17,7 +17,7 @@ router.get("/search", async (req, res) => {
     let bedrooms = req.query.bedrooms;
     let minBudget = req.query.min;
     let maxBudget = req.query.max;
-    let condition = {};
+    let conditions = {};
     if (location) {
       conditions = {
         ...conditions,
@@ -80,7 +80,6 @@ router.get("/search", async (req, res) => {
         },
       };
     }
-
     const listOfProperties = await properties.findAll({
       where: conditions,
       limit: limit,
