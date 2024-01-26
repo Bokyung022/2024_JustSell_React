@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import CreateProperty from "./pages/CreateProperty";
 import Filter from "./pages/Filter";
 import Listings from "./pages/Listings";
+import Property from "./pages/Property";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/search" element={<Filter />} />
           <Route path="/listings" element={<Listings />} />
           <Route path="/createProperty" element={<CreateProperty />} />
+          <Route path="/property/:id" element={<Property />} />
         </Routes>
       </Router>
     </div>

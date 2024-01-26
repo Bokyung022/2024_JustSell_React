@@ -97,4 +97,10 @@ router.post("/", async (req, res) => {
   res.json(property);
 });
 
+router.get("/byId/:id", async (req, res) => {
+  const propertyID = req.params.id;
+  const property = await properties.findByPk(propertyID);
+  res.json(property);
+});
+
 module.exports = router;

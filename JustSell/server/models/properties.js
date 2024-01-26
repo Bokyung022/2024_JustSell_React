@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     size: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      allowNull: false,
     },
     furnished: {
       type: DataTypes.INTEGER,
