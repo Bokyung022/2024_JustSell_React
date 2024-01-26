@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateProperty from "./pages/CreateProperty";
 import Filter from "./pages/Filter";
+import Listings from "./pages/Listings";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -10,11 +12,13 @@ function App() {
       <Router>
         <Link to="/">Home Page</Link>
         <Link to="/search">Search</Link>
+        <Link to="/listings">Listings</Link>
         <Link to="/createProperty">Create Property</Link>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/createProperty" element={<CreateProperty />} />
           <Route path="/search" element={<Filter />} />
+          <Route path="/listings" element={<Listings />} />
+          <Route path="/createProperty" element={<CreateProperty />} />
         </Routes>
       </Router>
     </div>

@@ -6,6 +6,7 @@
     "host": "aws-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
+
   "test": {
     "username": "root",
     "password": null,
