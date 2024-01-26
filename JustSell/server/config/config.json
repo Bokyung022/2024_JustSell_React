@@ -2,7 +2,7 @@
   "development": {
     "username": "admin",
     "password": "adminadmin",
-    "database": "fsd10-justselldb",
+    "database": "justselldb",
     "host": "fsd10-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "dialectOptions": {
@@ -10,10 +10,7 @@
     }
   },
 
-<<<<<<< HEAD
   
-=======
->>>>>>> 4f569f4450cb1fca3247cc0ee37ff16ec8da439a
   "test": {
     "username": "root",
     "password": null,
