@@ -40,6 +40,13 @@ Example entries for one day, both team members:
 3. Need assistance / figure things out
 - need to see some tutorials about heroku
 
+2024/01/24 Bo Kyung
+1. Done since last scrum
+2. Plan until next Scrum
+- Watch Scrum Video
+- Write Trello Board User Story & Checklists
+3. Need assistance / figure things out
+
 
 2024/01/25 Karina - feeling not well today (maybe food poisoning?)
 1. Done since last scrum
@@ -52,8 +59,6 @@ Example entries for one day, both team members:
 - For now, I need to watch a few videos to understand how AWS S3 and RDS work
 - I am not 100% sure the gitigonre contains all info it needs
 
-
-
 2024/01/25 Xing
 1. Done since last scrum
 - create trello board ,team work with Trello Board User Story Checklists
@@ -63,6 +68,15 @@ Example entries for one day, both team members:
 - take some tasks from the task checklist and start to do programming
 3. Need assistance / figure things out
 do we need setup heroku at the begining ? or implement at the end?
+
+2024/01/25 Bo Kyung
+1. Done since last scrum
+- Work with Trello Board User Story Checklists 
+2. Plan until next Scrum
+- Programming Folder Setup
+- Start programming (Create Property Page)
+3. Need assistance / figure things out
+- Need to watch CRUD tutorial 
 
 
  
