@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Listings() {
   const [listOfProperties, setListOfProperties] = useState([]);
   let navigate = useNavigate();
 
@@ -34,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Listings;

@@ -106,4 +106,12 @@ router.get("/byId/:id", async (req, res) => {
   res.json(property);
 });
 
+router.delete("/:propertyID", async (req, res) => {
+  const propertyID = req.params.propertyID;
+  await properties.destroy({
+    where: { propertyID: propertyID },
+  });
+  res.json("Deleted Successfully");
+});
+
 module.exports = router;

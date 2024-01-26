@@ -2,8 +2,10 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateProperty() {
+  let navigate = useNavigate();
   const initialValues = {
     streetNum: 0,
     streetName: "",
@@ -46,7 +48,7 @@ function CreateProperty() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/properties", data).then((response) => {
-      console.log("IT WORKED");
+      navigate("/listings");
     });
   };
   return (
