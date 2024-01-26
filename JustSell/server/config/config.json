@@ -10,7 +10,10 @@
     }
   },
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 4f569f4450cb1fca3247cc0ee37ff16ec8da439a
   "test": {
     "username": "root",
     "password": null,
