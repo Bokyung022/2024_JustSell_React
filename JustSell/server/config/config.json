@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Root2023",
-    "database": "justselldb",
-    "host": "localhost",
+    "username": "admin",
+    "password": "adminadmin",
+    "database": "aws-justselldb",
+    "host": "aws-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

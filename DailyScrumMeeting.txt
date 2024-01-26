@@ -78,6 +78,39 @@ do we need setup heroku at the begining ? or implement at the end?
 3. Need assistance / figure things out
 - Need to watch CRUD tutorial 
 
+2024/01/26 Karina 
+1. Done since last scrum
+- Config and set up DB in our AWS Account 
+- RDS ready
+- S3 ready
+2. Plan until next Scrum
+- Learning how to connect our application with rds and s3
+- instaling aws tool kit for vs code
+- searching how all members can connect with s3 and rds
+3. Need assistance / figure things out
+- For now, I need to watch a few videos to understand how AWS S3 and RDS work
+
+2024/01/26 Xing
+1. Done since last scrum
+-created heroku account
+-took search and payment tasks
+-created models in source code, started on search functionality
+2. Plan until next Scrum
+- implement the connection to remote database
+-  watch some tutorials about search and filter functionality
+3. Need assistance / figure things out
+
+2024/01/26 Bo Kyung 
+1. Done since last scrum
+- Watched some tutorials about CRUD application
+- Started coding Create Property Page 
+2. Plan until next Scrum
+- Learn how to connect our application with rds and s3
+- Continue coding Create Property Page
+3. Need assistance / figure things out
+- Git conflict issue may occur
+
+
 
  
 
