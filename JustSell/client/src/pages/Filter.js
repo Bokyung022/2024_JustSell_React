@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+function Filter() {
   return (
     <session className="filters" style={{ paddingBottom: 0 }}>
       <form action="" method="post">
@@ -100,4 +100,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default Filter;
