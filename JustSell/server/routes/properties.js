@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { properties } = require("../models");
+const Sequelize = require("sequelize");
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   const listOfProperties = await properties.findAll();

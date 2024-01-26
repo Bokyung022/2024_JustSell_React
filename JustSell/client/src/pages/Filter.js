@@ -37,7 +37,7 @@ function Filter() {
           onSubmit={onSubmit}
           validationSchema={validationSchema}
         >
-          <Form>
+          <Form className="form">
             <div id="close-filter">
               <i className="fas fa-times"></i>
             </div>
@@ -66,11 +66,63 @@ function Filter() {
                   <option value="resale">Resale</option>
                   <option value="leasing">Leasing</option>
                 </Field>
-                <ErrorMessage
-                  name="sellOption"
-                  component="div"
-                  className="error"
-                />
+              </div>
+              <div className="box">
+                <p>Property type</p>
+                <Field
+                  as="select"
+                  name="propertyType"
+                  className="input"
+                  required
+                >
+                  <option value="apartment">Apartment</option>
+                  <option value="house">House</option>
+                  <option value="duplexTriplex">Duplex or Triplex</option>
+                  <option value="condo">Condo</option>
+                  <option value="commercialBuilding">
+                    Commercial Building
+                  </option>
+                </Field>
+              </div>
+              <div className="box">
+                <p>Bedrooms</p>
+                <Field as="select" name="bedrooms" className="input" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6+</option>
+                </Field>
+              </div>
+              <div className="box">
+                <p>Minimum budget</p>
+                <Field as="select" name="min" className="input" required>
+                  <option value="0">0</option>
+                  <option value="50000">50k</option>
+                  <option value="100000">100k</option>
+                  <option value="150000">150k</option>
+                  <option value="200000">200k</option>
+                  <option value="300000">300k</option>
+                  <option value="400000">400k</option>
+                  <option value="450000">450k</option>
+                  <option value="500000">500k</option>
+                  <option value="1000000">1M</option>
+                </Field>
+              </div>
+              <div className="box">
+                <p>Maximum budget</p>
+                <Field as="select" name="max" className="input" required>
+                  <option value="50000">50k</option>
+                  <option value="100000">100k</option>
+                  <option value="150000">150k</option>
+                  <option value="200000">200k</option>
+                  <option value="300000">300k</option>
+                  <option value="400000">400k</option>
+                  <option value="450000">450k</option>
+                  <option value="500000">500k</option>
+                  <option value="1000000">1M+</option>
+                </Field>
               </div>
             </div>
             <button type="submit" className="btn">
@@ -79,7 +131,7 @@ function Filter() {
           </Form>
         </Formik>
       </section>
-
+      <div id="filter-btn" className="fas fa-filter"></div>
       <section className="listings">
         {listOfProperties.length > 0 ? (
           <>
@@ -87,7 +139,7 @@ function Filter() {
             <div className="box-container">
               {listOfProperties.map((property) => (
                 <div key={property.PropertyID} className="box">
-                  <Form action="" method="POST">
+                  <Form>
                     <input
                       type="hidden"
                       name="PropertyID"
@@ -99,65 +151,65 @@ function Filter() {
                         alt="Property"
                       />
                     </div>
-                  </Form>
-                  <div className="box">
-                    <div className="price">
-                      <i className="fas fa-dollar-sign"></i>
-                      <span>
-                        {property.Price.toFixed(2).replace(
-                          /\d(?=(\d{3})+\.)/g,
-                          "$&,"
-                        )}
-                      </span>
-                    </div>
-                    <h3 className="name">{property.PropertyType}</h3>
-                    <p className="location">
-                      <i className="fas fa-map-marker-alt"></i>
-                      <span>{property.City}</span>
-                    </p>
-                    <div className="flex">
-                      <p>
-                        <i className="fas fa-house"></i>
-                        <span>{property.PropertyType}</span>
-                      </p>
-                      <p>
-                        <i className="fas fa-bed"></i>
-                        <span>{property.Bedrooms}</span>
-                      </p>
-                      <p>
-                        <i className="fas fa-trowel"></i>
-                        <span>{property.ConstructionStatus}</span>
-                      </p>
-                      <p>
-                        <i className="fas fa-couch"></i>
+                    <div className="box">
+                      <div className="price">
+                        <i className="fas fa-dollar-sign"></i>
                         <span>
-                          {property.furnished ? "furnished" : "not furnished"}
+                          {property.Price.toFixed(2).replace(
+                            /\d(?=(\d{3})+\.)/g,
+                            "$&,"
+                          )}
                         </span>
+                      </div>
+                      <h3 className="name">{property.PropertyType}</h3>
+                      <p className="location">
+                        <i className="fas fa-map-marker-alt"></i>
+                        <span>{property.City}</span>
                       </p>
-                      <p>
-                        <i className="fas fa-maximize"></i>
-                        <span>{property.size}sqft</span>
-                      </p>
+                      <div className="flex">
+                        <p>
+                          <i className="fas fa-house"></i>
+                          <span>{property.PropertyType}</span>
+                        </p>
+                        <p>
+                          <i className="fas fa-bed"></i>
+                          <span>{property.Bedrooms}</span>
+                        </p>
+                        <p>
+                          <i className="fas fa-trowel"></i>
+                          <span>{property.ConstructionStatus}</span>
+                        </p>
+                        <p>
+                          <i className="fas fa-couch"></i>
+                          <span>
+                            {property.furnished ? "furnished" : "not furnished"}
+                          </span>
+                        </p>
+                        <p>
+                          <i className="fas fa-maximize"></i>
+                          <span>{property.size}sqft</span>
+                        </p>
+                      </div>
+                      <div className="flex-btn">
+                        <button
+                          className="btn"
+                          onClick={() => {
+                            navigate(`/property/${property.PropertyID}`);
+                          }}
+                        >
+                          View Details
+                        </button>
+                        <button
+                          onClick={() => {
+                            navigate(`/property/${property.PropertyID}`);
+                          }}
+                          className="btn"
+                        >
+                          Send Offer
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex-btn">
-                      <button
-                        className="btn"
-                        onClick={() => {
-                          navigate(`/property/${property.PropertyID}`);
-                        }}
-                      >
-                        View Details
-                      </button>
-                      <button
-                        onClick={() => {
-                          navigate(`/property/${property.PropertyID}`);
-                        }}
-                        className="btn"
-                      >
-                        Send Offer
-                      </button>
-                    </div>
-                  </div>
+                  </Form>
                 </div>
               ))}
             </div>
