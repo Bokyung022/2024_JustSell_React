@@ -5,7 +5,6 @@ import CreateProperty from "./pages/CreateProperty";
 import Filter from "./pages/Filter";
 import Listings from "./pages/Listings";
 import Property from "./pages/Property";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
