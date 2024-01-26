@@ -23,7 +23,7 @@ router.get("/search", async (req, res) => {
         ...conditions,
         [Op.or]: [
           { city: { [Op.like]: `%${location}%` } },
-          { postalCode: { [Op.like]: `%${location}%` } },
+          { postal: { [Op.like]: `%${location}%` } },
         ],
       };
     }
@@ -80,11 +80,14 @@ router.get("/search", async (req, res) => {
         },
       };
     }
+    const order = "createdAt";
     const listOfProperties = await properties.findAll({
       where: conditions,
       limit: limit,
       offset: startIndex,
+      order: [[order, "ASC"]],
     });
+    console.log("List of Properties:", listOfProperties);
     res.json(listOfProperties);
   } catch (error) {
     console.error(error);

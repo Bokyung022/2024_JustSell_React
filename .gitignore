@@ -101,7 +101,7 @@ dist/
 
 # Gatsby
 .cache/
-public/
+
 
 *.jar
 *.zip
