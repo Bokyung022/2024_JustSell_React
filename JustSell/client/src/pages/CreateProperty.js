@@ -5,7 +5,6 @@ import axios from "axios";
 
 function CreateProperty() {
   const initialValues = {
-    propertyID: 0,
     streetNum: 0,
     streetName: "",
     city: "",
@@ -26,7 +25,6 @@ function CreateProperty() {
   };
 
   const validationSchema = Yup.object().shape({
-    propertyID: Yup.number().required(),
     streetNum: Yup.number().required(),
     streetName: Yup.string().required(),
     city: Yup.string().required(),
@@ -59,9 +57,6 @@ function CreateProperty() {
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
-          <label>Property ID: </label>
-          <ErrorMessage name="propertyID" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="propertyID" />
           <label>Street Number </label>
           <ErrorMessage name="streetNum" component="span" />
           <Field autoComplete="off" id="inputCreatePost" name="streetNum" />
