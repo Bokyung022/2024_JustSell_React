@@ -24,9 +24,10 @@ function Filter() {
         "http://localhost:3001/properties/search",
         { params: data }
       );
+      console.log("Response data:", response.data);
       setListProperties(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching data:", error);
     }
   };
   return (
@@ -138,16 +139,16 @@ function Filter() {
             <h1 className="heading">Search Results</h1>
             <div className="box-container">
               {listOfProperties.map((property) => (
-                <div key={property.PropertyID} className="box">
+                <div key={property.propertyID} className="box">
                   <Form>
                     <input
                       type="hidden"
-                      name="PropertyID"
-                      value={property.PropertyID}
+                      name="propertyID"
+                      value={property.propertyID}
                     />
                     <div className="thumb">
                       <img
-                        src={`images/PropertiesImages/${property.ImageFileName}`}
+                        src={`images/PropertiesImages/${property.imageFileName}`}
                         alt="Property"
                       />
                     </div>
@@ -155,29 +156,28 @@ function Filter() {
                       <div className="price">
                         <i className="fas fa-dollar-sign"></i>
                         <span>
-                          {property.Price.toFixed(2).replace(
-                            /\d(?=(\d{3})+\.)/g,
-                            "$&,"
-                          )}
+                          {property.price
+                            .toFixed(2)
+                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                         </span>
                       </div>
-                      <h3 className="name">{property.PropertyType}</h3>
+                      <h3 className="name">{property.propertyType}</h3>
                       <p className="location">
                         <i className="fas fa-map-marker-alt"></i>
-                        <span>{property.City}</span>
+                        <span>{property.city}</span>
                       </p>
                       <div className="flex">
                         <p>
                           <i className="fas fa-house"></i>
-                          <span>{property.PropertyType}</span>
+                          <span>{property.propertyType}</span>
                         </p>
                         <p>
                           <i className="fas fa-bed"></i>
-                          <span>{property.Bedrooms}</span>
+                          <span>{property.bedrooms}</span>
                         </p>
                         <p>
                           <i className="fas fa-trowel"></i>
-                          <span>{property.ConstructionStatus}</span>
+                          <span>{property.constructionStatus}</span>
                         </p>
                         <p>
                           <i className="fas fa-couch"></i>
@@ -194,7 +194,7 @@ function Filter() {
                         <button
                           className="btn"
                           onClick={() => {
-                            navigate(`/property/${property.PropertyID}`);
+                            navigate(`/property/${property.propertyID}`);
                           }}
                         >
                           View Details
