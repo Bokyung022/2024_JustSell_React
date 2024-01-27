@@ -1,28 +1,32 @@
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import CreateProperty from "./pages/CreateProperty";
-import Filter from "./pages/Filter";
-import Listings from "./pages/Listings";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Navbar from './component/Navbar';
+import CreateProperty from './pages/CreateProperty';
+import Filter from './pages/Filter';
+import Home from './pages/Home';
+import Listings from './pages/Listings';
+import Registration from './pages/Registration';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Link to="/">Home Page</Link>
-        <Link to="/search">Search</Link>
-        <Link to="/listings">Listings</Link>
-        <Link to="/createProperty">Create Property</Link>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Filter />} />
-          <Route path="/listings" element={<Listings />} />
-          <Route path="/createProperty" element={<CreateProperty />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+          <div className="App">
+              <Router>
+                <Navbar />
+                 <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/search" element={<Filter />} />
+                  <Route path="/listings" element={<Listings />} />
+                  <Route path="/createProperty" element={<CreateProperty />} />
+                  {/* <Route path="/login" element={<Login />} /> */}
+                  <Route path="/registration" element={<Registration />} />
+                </Routes>
+              </Router>
+            </div>
+         
+  );  
 }
 
+
+
 export default App;
+
+
