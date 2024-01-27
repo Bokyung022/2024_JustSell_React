@@ -84,10 +84,9 @@ section {
   padding-top: 10rem;
   padding-bottom: 10rem;
 }
-.formContainer {
-  flex-direction: column;
-  justify-content: center;
-  width: 500px;
+
+.download-app-image .responsive-image {
+  max-width: 100%;
   height: auto;
 }
 
@@ -125,7 +124,7 @@ section {
   align-items: flex-end;
 }
 
-/* ********HEADER********** */
+/* ********HEADER********* */
 .header {
   position: sticky;
   top: 0;
