@@ -110,6 +110,19 @@ do we need setup heroku at the begining ? or implement at the end?
 3. Need assistance / figure things out
 - Git conflict issue may occur
 
+2024/01/27 Karina 
+1. Done since last scrum
+- Created Home page, but not reayd
+- Created envi file
+- Edited CSS
+2. Plan until next Scrum
+- Learning how to connect our application with rds and s3
+- instaling aws tool kit for vs code
+- searching how all members can connect with s3 and rds
+- follow video: https://youtube.com/watch?v=eQAIojcArRY&si=27t66Wu9Dgeu6l7Y
+3. Need assistance / figure things out
+- For now, I need to watch a few videos to understand how AWS S3 and RDS work
+
 
 
  
