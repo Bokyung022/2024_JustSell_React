@@ -59,7 +59,7 @@ function CreateProperty() {
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
-          <label>Street Number </label>
+          <label>Street Number: </label>
           <ErrorMessage name="streetNum" component="span" />
           <Field autoComplete="off" id="inputCreatePost" name="streetNum" />
           <label>Street Name: </label>
