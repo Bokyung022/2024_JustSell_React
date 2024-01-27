@@ -207,12 +207,13 @@ section {
 #menu-btn {
   font-size: 2.5rem;
   color: var(--black);
-  display: none; 
+  display: none;
 }
 
 /* ********HOME********** */
 .home {
-  background: url("/client/public/staticimages/home-bg_opt1.1.jpg") no-repeat;
+  /* background: url("/client/public/staticimages/home-bg_opt1.1.jpg") no-repeat; */
+  background: url("./images/home-bg_opt1.1.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -269,8 +270,6 @@ section {
   font-size: 1.7rem;
   padding-top: 1rem;
 }
-
-
 
 .home .center form .box p span {
   color: var(--main-color);
@@ -700,19 +699,19 @@ section {
 }
 
 /* ********FILTERS********** */
-.filters form {
+.filters .form {
   background-color: var(--white);
   box-shadow: var(--box-shodow);
   padding: 2rem;
 }
 
-.filters form #close-filter {
+.filters .form #close-filter {
   text-align: right;
   padding-bottom: 2rem;
   display: none;
 }
 
-.filters form #close-filter i {
+.filters .form #close-filter i {
   height: 4.5rem;
   width: 4.5rem;
   line-height: 4.4rem;
@@ -723,11 +722,11 @@ section {
   text-align: center;
 }
 
-.filters form #close-filter i:hover {
+.filters .form #close-filter i:hover {
   background-color: var(--black);
 }
 
-.filters form h3 {
+.filters .form h3 {
   font-size: 2.5rem;
   padding-bottom: 2rem;
   color: var(--black);
@@ -735,17 +734,17 @@ section {
   text-align: center;
 }
 
-.filters form .flex {
+.filters .form .flex {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.filters form .flex .box {
+.filters .form .flex .box {
   flex: 1 1 40rem;
 }
 
-.filters form .flex .box .input {
+.filters .form .flex .box .input {
   width: 100%;
   margin: 1rem 0;
   font-size: 1.8rem;
@@ -754,7 +753,7 @@ section {
   padding: 1.4rem;
 }
 
-.filters form .flex .box p {
+.filters .form .flex .box p {
   font-size: 1.6rem;
   color: var(--light-color);
 }

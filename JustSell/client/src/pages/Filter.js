@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Filter() {
   let navigate = useNavigate();
   const [listOfProperties, setListProperties] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
   const [errors, setErrors] = useState({});
   const validationSchema = Yup.object().shape({
     location: Yup.string().max(50, "Must be 50 characters or less"),
@@ -19,6 +20,7 @@ function Filter() {
       );
       console.log("Response data:", response.data);
       setListProperties(response.data);
+      setSearchPerformed(true);
       setSubmitting(false);
     } catch (error) {
       setSubmitting(false);
@@ -138,7 +140,7 @@ function Filter() {
       </section>
       <div id="filter-btn" className="fas fa-filter"></div>
       <section className="listings">
-        {listOfProperties.length > 0 ? (
+        {searchPerformed ? (
           <>
             <h1 className="heading">Search Results</h1>
             <div className="box-container">

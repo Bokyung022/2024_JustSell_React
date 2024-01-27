@@ -54,7 +54,7 @@ router.get("/search", async (req, res) => {
       };
     }
 
-    if (minBudget && maxBudget) {
+    if (minBudget && maxBudget && maxBudget !== "1000000") {
       conditions = {
         ...conditions,
         price: {
@@ -68,7 +68,7 @@ router.get("/search", async (req, res) => {
           [Op.gte]: minBudget,
         },
       };
-    } else if (maxBudget) {
+    } else if (maxBudget && maxBudget !== "1000000") {
       conditions = {
         ...conditions,
         price: {
