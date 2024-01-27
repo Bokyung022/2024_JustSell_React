@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { properties } = require("../models");
+const Sequelize = require("sequelize");
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   const listOfProperties = await properties.findAll();
@@ -98,6 +100,20 @@ router.post("/", async (req, res) => {
   const property = req.body;
   await properties.create(property);
   res.json(property);
+});
+
+router.get("/byId/:id", async (req, res) => {
+  const propertyID = req.params.id;
+  const property = await properties.findByPk(propertyID);
+  res.json(property);
+});
+
+router.delete("/:propertyID", async (req, res) => {
+  const propertyID = req.params.propertyID;
+  await properties.destroy({
+    where: { propertyID: propertyID },
+  });
+  res.json("Deleted Successfully");
 });
 
 module.exports = router;

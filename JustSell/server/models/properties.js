@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     size: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      allowNull: false,
     },
     furnished: {
       type: DataTypes.INTEGER,
@@ -74,25 +74,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+    users_UserID: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   });
   properties.associate = (models) => {
     properties.hasMany(models.images, {
       onDelete: "cascade",
     });
-  };
-  properties.associate = (models) => {
+
     properties.belongsTo(models.users, {
-      foreignKey: "usersUserID",
+      foreignKey: "users_UserID",
       as: "user",
     });
   };

@@ -84,9 +84,10 @@ section {
   padding-top: 10rem;
   padding-bottom: 10rem;
 }
-
-.download-app-image .responsive-image {
-  max-width: 100%;
+.formContainer {
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
   height: auto;
 }
 
