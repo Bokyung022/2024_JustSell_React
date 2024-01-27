@@ -13,13 +13,15 @@ router.get("/search", async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 3;
     const startIndex = parseInt(req.query.startIndex) || 0;
-    let location = req.query.location;
-    let propertyType = req.query.propertyType;
-    let sellOption = req.query.sellOption;
-    let bedrooms = req.query.bedrooms;
-    let minBudget = req.query.min;
-    let maxBudget = req.query.max;
+    const location = req.query.location;
+    const propertyType = req.query.propertyType;
+    const sellOption = req.query.sellOption;
+    const bedrooms = req.query.bedrooms;
+    const minBudget = req.query.min;
+    const maxBudget = req.query.max;
+
     let conditions = {};
+
     if (location) {
       conditions = {
         ...conditions,
@@ -33,7 +35,7 @@ router.get("/search", async (req, res) => {
     if (propertyType) {
       conditions = {
         ...conditions,
-        PropertyType: propertyType,
+        propertyType: propertyType,
       };
     }
 
@@ -45,43 +47,36 @@ router.get("/search", async (req, res) => {
     }
 
     if (bedrooms) {
-      if (bedrooms === "6") {
-        conditions = {
-          ...conditions,
-          bedrooms: {
-            [Sequelize.Op.gte]: 6,
-          },
-        };
-      } else {
-        conditions = {
-          ...conditions,
-          bedrooms: bedrooms,
-        };
-      }
+      const parsedBedrooms = bedrooms === "6" ? { [Op.gte]: 6 } : bedrooms;
+      conditions = {
+        ...conditions,
+        bedrooms: parsedBedrooms,
+      };
     }
 
     if (minBudget && maxBudget) {
       conditions = {
         ...conditions,
         price: {
-          [Sequelize.Op.between]: [minBudget, maxBudget],
+          [Op.between]: [minBudget, maxBudget],
         },
       };
     } else if (minBudget) {
       conditions = {
         ...conditions,
         price: {
-          [Sequelize.Op.gte]: minBudget,
+          [Op.gte]: minBudget,
         },
       };
     } else if (maxBudget) {
       conditions = {
         ...conditions,
         price: {
-          [Sequelize.Op.lte]: maxBudget,
+          [Op.lte]: maxBudget,
         },
       };
     }
+
     const order = "createdAt";
     const listOfProperties = await properties.findAll({
       where: conditions,
@@ -89,6 +84,7 @@ router.get("/search", async (req, res) => {
       offset: startIndex,
       order: [[order, "ASC"]],
     });
+
     console.log("List of Properties:", listOfProperties);
     res.json(listOfProperties);
   } catch (error) {

@@ -7,35 +7,40 @@ import { useNavigate } from "react-router-dom";
 function Filter() {
   let navigate = useNavigate();
   const [listOfProperties, setListProperties] = useState([]);
-  const initialValues = {
-    location: "",
-    sellOption: "sale",
-    propertyType: "apartment",
-    bedrooms: "1",
-    minBudget: "0",
-    maxBudget: "50000",
-  };
+  const [errors, setErrors] = useState({});
   const validationSchema = Yup.object().shape({
     location: Yup.string().max(50, "Must be 50 characters or less"),
   });
-  const onSubmit = async (data) => {
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       const response = await axios.get(
         "http://localhost:3001/properties/search",
-        { params: data }
+        { params: values }
       );
+      console.log("Response data:", response.data);
       setListProperties(response.data);
+      setSubmitting(false);
     } catch (error) {
-      console.error(error);
+      setSubmitting(false);
+
+      console.error("Error:", error.message);
     }
   };
+
   return (
     <>
       <section className="filters" style={{ paddingBottom: 0 }}>
         <Formik
-          initialValues={initialValues}
-          onSubmit={onSubmit}
+          initialValues={{
+            location: "",
+            sellOption: "sale",
+            propertyType: "apartment",
+            bedrooms: "1",
+            minBudget: "0",
+            maxBudget: "50000",
+          }}
           validationSchema={validationSchema}
+          onSubmit={handleSubmit}
         >
           <Form className="form">
             <div id="close-filter">
@@ -138,16 +143,16 @@ function Filter() {
             <h1 className="heading">Search Results</h1>
             <div className="box-container">
               {listOfProperties.map((property) => (
-                <div key={property.PropertyID} className="box">
-                  <Form>
+                <div key={property.propertyID} className="box">
+                  <form>
                     <input
                       type="hidden"
-                      name="PropertyID"
-                      value={property.PropertyID}
+                      name="propertyID"
+                      value={property.propertyID}
                     />
                     <div className="thumb">
                       <img
-                        src={`images/PropertiesImages/${property.ImageFileName}`}
+                        src={`images/PropertiesImages/${property.imageFileName}`}
                         alt="Property"
                       />
                     </div>
@@ -155,29 +160,28 @@ function Filter() {
                       <div className="price">
                         <i className="fas fa-dollar-sign"></i>
                         <span>
-                          {property.Price.toFixed(2).replace(
-                            /\d(?=(\d{3})+\.)/g,
-                            "$&,"
-                          )}
+                          {property.price
+                            .toFixed(2)
+                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                         </span>
                       </div>
-                      <h3 className="name">{property.PropertyType}</h3>
+                      <h3 className="name">{property.propertyType}</h3>
                       <p className="location">
                         <i className="fas fa-map-marker-alt"></i>
-                        <span>{property.City}</span>
+                        <span>{property.city}</span>
                       </p>
                       <div className="flex">
                         <p>
                           <i className="fas fa-house"></i>
-                          <span>{property.PropertyType}</span>
+                          <span>{property.propertyType}</span>
                         </p>
                         <p>
                           <i className="fas fa-bed"></i>
-                          <span>{property.Bedrooms}</span>
+                          <span>{property.bedrooms}</span>
                         </p>
                         <p>
                           <i className="fas fa-trowel"></i>
-                          <span>{property.ConstructionStatus}</span>
+                          <span>{property.constructionStatus}</span>
                         </p>
                         <p>
                           <i className="fas fa-couch"></i>
@@ -194,7 +198,7 @@ function Filter() {
                         <button
                           className="btn"
                           onClick={() => {
-                            navigate(`/property/${property.PropertyID}`);
+                            navigate(`/property/${property.propertyID}`);
                           }}
                         >
                           View Details
@@ -209,7 +213,7 @@ function Filter() {
                         </button>
                       </div>
                     </div>
-                  </Form>
+                  </form>
                 </div>
               ))}
             </div>

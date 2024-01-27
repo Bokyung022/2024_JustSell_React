@@ -5,7 +5,6 @@ import CreateProperty from "./pages/CreateProperty";
 import Filter from "./pages/Filter";
 import Listings from "./pages/Listings";
 import Property from "./pages/Property";
-import EditProperty from "./pages/EditProperty";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
           <Route path="/listings" element={<Listings />} />
           <Route path="/createProperty" element={<CreateProperty />} />
           <Route path="/property/:id" element={<Property />} />
-          <Route path="/editProperty/:id" element={<EditProperty />} />
         </Routes>
       </Router>
     </div>
