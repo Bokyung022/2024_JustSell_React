@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Footer from './component/Footer';
 import Navbar from './component/Navbar';
 import CreateProperty from './pages/CreateProperty';
 import Filter from './pages/Filter';
@@ -11,6 +12,7 @@ function App() {
           <div className="App">
               <Router>
                 <Navbar />
+                
                  <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/search" element={<Filter />} />
@@ -19,6 +21,8 @@ function App() {
                   {/* <Route path="/login" element={<Login />} /> */}
                   <Route path="/registration" element={<Registration />} />
                 </Routes>
+                
+                <Footer />
               </Router>
             </div>
          
