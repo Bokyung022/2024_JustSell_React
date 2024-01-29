@@ -1,3 +1,4 @@
+//https://www.youtube.com/watch?v=-UKPph5XU_c
 const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
@@ -26,11 +27,11 @@ router.post("/login", async (req, res) => {
   bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) res.json({ error: "Wrong Username And Password Combination" });
 
-    const accessToken = sign(
-      { username: user.username, id: user.id },
-      "importantsecret"
+    const accessToken = sign( 
+      { username: user.username, id: user.id }, //data to pass to jwt to create the token
+      "importantsecret" //should be a ramdon string generator KVP
     );
-    res.json({ token: accessToken, username: username, id: user.id });
+    res.json({ token: accessToken, username: username, id: user.id });//returning the access token, if user makes request we use this token to validade the request
   });
 });
 
