@@ -85,10 +85,6 @@ function Property() {
         <div className="flex">
           <div className="box">
             <p>
-              <i>Rooms :</i>
-              <span>{property.bedrooms + property.bathrooms} Bedrooms</span>
-            </p>
-            <p>
               <i>Deposit Amount (10%) :</i>
               <span>
                 <span
