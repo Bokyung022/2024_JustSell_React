@@ -4,14 +4,16 @@ import axios from "axios";
 
 function Property() {
   let { id } = useParams();
-  const [propertyObject, setPropertyObject] = useState({});
+  const [property, setProperty] = useState({});
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost:3001/properties/byId/${id}`)
       .then((response) => {
-        setPropertyObject(response.data);
+        setProperty(response.data);
       });
   }, [id]);
 
@@ -33,11 +35,11 @@ function Property() {
   return (
     <div className="propertyPage">
       <div className="property" id="individual">
-        <div className="streetNum">{propertyObject.streetNum}</div>
-        <div className="streetName">{propertyObject.streetName}</div>
-        <div className="price">{propertyObject.price}</div>
-        <div className="propertyType">{propertyObject.propertyType}</div>
-        <div className="yearOfBuilt">{propertyObject.yearOfBuilt}</div>
+        <div className="streetNum">{property.streetNum}</div>
+        <div className="streetName">{property.streetName}</div>
+        <div className="price">{property.price}</div>
+        <div className="propertyType">{property.propertyType}</div>
+        <div className="yearOfBuilt">{property.yearOfBuilt}</div>
 
         <button onClick={editProperty}>Edit</button>
         <button onClick={deleteProperty}>Delete</button>
