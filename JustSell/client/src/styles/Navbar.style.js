@@ -39,7 +39,7 @@ export const NavbarInnerContainer = styled.div`
 
 // div that contains the links
 export const NavbarLinkContainer = styled.div`
-  display: flex;
+  display: flex;  
 `;
 
 // slyle for the links
@@ -48,7 +48,16 @@ export const NavbarLink = styled(Link)`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  margin: 10px;
+  margin: 30px;
+  padding: 5px;
+
+  &:hover {
+    background-color: #e59524;
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+
+  }
 
   @media (max-width: 700px) {
     display: none;

@@ -32,13 +32,13 @@ const FirstInnerContainerBody = styled.div`
     background: url(${homeImage}) no-repeat center ;
     background-size: cover;
     height: 60vh;
-    background-color: yellow;
+    background-color: #e59524;
 `;
 
 const SecondInnerContainerBody = styled.div`
     background: url(${specialistImage}) no-repeat center;
     height: 60vh;
-    background-color: yellow;
+    background-color: #e59524;
 `;
 
 const ThirdInnerContainerBody = styled.div`

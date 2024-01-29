@@ -1,5 +1,7 @@
 // https://www.youtube.com/watch?v=1yMrdBsep-A
 
+//color: #e59524;
+
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
