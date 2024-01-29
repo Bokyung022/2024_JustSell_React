@@ -146,15 +146,37 @@ function Property() {
         <h3 className="title">Description</h3>
         <p className="description">{property.description}</p>
         <div className="flex-btn">
-          <a
-            href={`make_offer.php?get_id=${property.propertyID}`}
-            className="btn"
-          >
+          <div className="btn" onClick={editProperty}>
+            Edit Property
+          </div>
+        </div>
+        <div className="flex-btn">
+          <div className="btn" onClick={deleteProperty}>
+            Delete Property
+          </div>
+        </div>
+        <div className="flex-btn">
+          <a href="" className="btn">
             Send Offer
           </a>
         </div>
       </div>
     );
+  };
+
+  const editProperty = () => {
+    navigate(`/editProperty/${id}`);
+  };
+
+  const deleteProperty = () => {
+    axios
+      .delete(`http://localhost:3001/properties/${id}`)
+      .then(() => {
+        navigate("/listings");
+      })
+      .catch((error) => {
+        console.error("Error deleting property:", error);
+      });
   };
 
   return (
@@ -165,16 +187,7 @@ function Property() {
       ) : property.propertyID ? (
         renderDetails()
       ) : (
-        <p className="empty">
-          Property not found!{" "}
-          <a
-            href="post_property.php"
-            style={{ marginTop: "1.5rem" }}
-            className="btn"
-          >
-            Add new
-          </a>
-        </p>
+        <p className="empty">Property not found! </p>
       )}
     </section>
   );
