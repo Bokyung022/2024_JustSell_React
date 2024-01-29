@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 
 function Filter() {
   let navigate = useNavigate();
@@ -28,7 +29,9 @@ function Filter() {
       console.error("Error:", error.message);
     }
   };
-
+  const makePayment = async () => {
+    const stripe = await loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+  };
   return (
     <>
       <section className="filters" style={{ paddingBottom: 0 }}>
