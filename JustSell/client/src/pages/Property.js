@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Property() {
   let { id } = useParams();
@@ -10,41 +11,172 @@ function Property() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/properties/byId/${id}`)
-      .then((response) => {
-        setProperty(response.data);
-      });
+    const fetchData = async () => {
+      try {
+        const propertyResponse = await axios.get(
+          `http://localhost:3001/properties/byId/${id}`
+        );
+        /*
+        const imagesResponse = await axios.get(`http://localhost:3001/images/byPropertyId/${id}`);
+        */
+        setProperty(propertyResponse.data);
+        /*
+        setImages(imagesResponse.data);
+        */
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching property details:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [id]);
 
-  const editProperty = () => {
-    navigate(`/editProperty/${id}`);
+  /*
+  const renderImages = () => {
+    return images.map((image) => (
+      <img key={image.id} src={`images/PropertiesImages/${image.ImageFileName}`} alt="Missing the property picture" className="swiper-slide" />
+    ));
+  };
+  */
+
+  const renderAmenities = () => {
+    // Assuming property.Amenities is a string with amenities separated by commas
+    const amenitiesList = property.amenities
+      ? property.amenities.split(",")
+      : [];
+
+    return amenitiesList.map((amenity, index) => (
+      <p key={index}>
+        <i className="fas fa-check"></i>
+        <span>{amenity.trim()}</span>
+      </p>
+    ));
   };
 
-  const deleteProperty = () => {
-    axios
-      .delete(`http://localhost:3001/properties/${id}`)
-      .then(() => {
-        navigate("/listings");
-      })
-      .catch((error) => {
-        console.error("Error deleting property:", error);
-      });
+  const renderDetails = () => {
+    return (
+      <div className="details">
+        <h3 className="name">{property.propertyType}</h3>
+        <p className="location">
+          <i className="fas fa-map-marker-alt"></i>
+          <span>{`${property.streetNum}-${property.streetName} - ${property.city} - ${property.province} - Postal: ${property.postal}`}</span>
+        </p>
+        <div className="info">
+          <p>
+            <i className="fas fa-dollar-sign"></i>
+            <span>{new Intl.NumberFormat("en-US").format(property.price)}</span>
+          </p>
+          <p>
+            <i className="fas fa-building"></i>
+            <span>{property.propertyType}</span>
+          </p>
+          <p>
+            <i className="fas fa-house"></i>
+            <span>{property.sellOption}</span>
+          </p>
+          <p>
+            <i className="fas fa-calendar"></i>
+            <span>{property.constructionStatus}</span>
+          </p>
+        </div>
+        <h3 className="title">Details</h3>
+        <div className="flex">
+          <div className="box">
+            <p>
+              <i>Rooms :</i>
+              <span>{property.bedrooms + property.bathrooms} Bedrooms</span>
+            </p>
+            <p>
+              <i>Deposit Amount (10%) :</i>
+              <span>
+                <span
+                  className="fas fa-dollar-sign"
+                  style={{ marginRight: ".5rem" }}
+                ></span>
+                {new Intl.NumberFormat("en-US").format(property.price / 10)}
+              </span>
+            </p>
+            <p>
+              <i>Status :</i>
+              <span>{property.constructionStatus}</span>
+            </p>
+            <p>
+              <i>Bedroom :</i>
+              <span>{property.bedrooms}</span>
+            </p>
+            <p>
+              <i>Bathroom :</i>
+              <span>{property.bathrooms}</span>
+            </p>
+          </div>
+          <div className="box">
+            <p>
+              <i>Built in :</i>
+              <span>{property.yearOfBuilt}</span>
+            </p>
+            <p>
+              <i>Total Floors :</i>
+              <span>{property.floors}</span>
+            </p>
+            <p>
+              <i>Furnished :</i>
+              <span>
+                {property.furnished === 1 ? "Furnished" : "Not Furnished"}
+              </span>
+            </p>
+            <p>
+              <i>Loan :</i>
+              <span>
+                <span
+                  className="fas fa-dollar-sign"
+                  style={{ marginRight: ".5rem" }}
+                ></span>
+                {new Intl.NumberFormat("en-US").format(property.price * 0.9)}
+              </span>
+            </p>
+          </div>
+        </div>
+        <h3 className="title">Amenities</h3>
+        <div className="flex">
+          <div className="box">{renderAmenities()}</div>
+          {/* Render other details */}
+        </div>
+        <h3 className="title">Description</h3>
+        <p className="description">{property.description}</p>
+        <div className="flex-btn">
+          <a
+            href={`make_offer.php?get_id=${property.propertyID}`}
+            className="btn"
+          >
+            Send Offer
+          </a>
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="propertyPage">
-      <div className="property" id="individual">
-        <div className="streetNum">{property.streetNum}</div>
-        <div className="streetName">{property.streetName}</div>
-        <div className="price">{property.price}</div>
-        <div className="propertyType">{property.propertyType}</div>
-        <div className="yearOfBuilt">{property.yearOfBuilt}</div>
-
-        <button onClick={editProperty}>Edit</button>
-        <button onClick={deleteProperty}>Delete</button>
-      </div>
-    </div>
+    <section className="view-property">
+      <h1 className="heading">Property Details</h1>
+      {loading ? (
+        <p>Loading...</p>
+      ) : property.propertyID ? (
+        renderDetails()
+      ) : (
+        <p className="empty">
+          Property not found!{" "}
+          <a
+            href="post_property.php"
+            style={{ marginTop: "1.5rem" }}
+            className="btn"
+          >
+            Add new
+          </a>
+        </p>
+      )}
+    </section>
   );
 }
 
