@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigation } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  let history = useHistory();
+  let history = useNavigation();
 
   const login = () => {
     const data = { username: username, password: password };

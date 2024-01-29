@@ -1,64 +1,114 @@
+import {
+  Box,
+  Button,
+  Input,
+  Text
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
+// import useMutation from '../helpers/useMutation';
+// import useQuery from '../helpers/useQuery';
 
 const Registration = () => {
-    const [formData, setFormData] = useState({
-      FirstName: '',
-      LastName: '',
-      Email: '',
-      UserName: '',
-      Password: '',
-      Passcomf: '',
-      Phone: '',
-      StreetNum: '',
-      StreetName: '',
-      City: '',
-      Province: '',
-      Postal: '',
-      Company: '',
-      Role: '',
-      isRealtorApproved: '',
-      RealtorCertification: '',
+  const [formData, setFormData] = useState({
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    UserName: '',
+    Password: '',
+    Passcomf: '',
+    Phone: '',
+    StreetNum: '',
+    StreetName: '',
+    City: '',
+    Province: '',
+    Postal: '',
+    Company: '',
+    Role: '',
+    isRealtorApproved: '',
+    RealtorCertification: '',
+  });
+
+  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
-  
-    const [errors, setErrors] = useState([]);
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({
-        ...formData,
-        [name]: value,
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    };
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      try {
-        const response = await fetch('/api/registration', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-  
-        const data = await response.json();
-  
-        if (data.success) {
-          // Registration successful message
-          console.log('User registered successfully');
-        } else {
-          // Registration failed messages
-          setErrors(data.errors || []);
-        }
-      } catch (error) {
-        console.error('Error during registration:', error);
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Registration successful message
+        console.log('User registered successfully');
+      } else {
+        // Registration failed messages
+        setErrors(data.errors || []);
       }
-    };
-  
-    return (
-      <div className="home">
-      <div className="center">        
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
+  };
+
+  const validFileTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+  const URL = '/images';
+
+  const ErrorText = ({ children, ...props }) => (
+    <Text fontSize="lg" color="red.300" {...props}>
+      {children}
+    </Text>
+  );
+
+  const [refetch, setRefetch] = useState(0);
+  // Adjust or remove the following lines based on your use case
+  // const {
+  //   mutate: uploadImage,
+  //   isLoading: uploading,
+  //   error: uploadError,
+  // } = useMutation({ url: URL });
+
+  // const {
+  //   data: imageUrls = [],
+  //   isLoading: imagesLoading,
+  //   error: fetchError,
+  // } = useQuery(URL, refetch);
+
+  const handleUpLoad = async (e) => {
+    const file = e.target.files[0];
+
+    if (!validFileTypes.find((type) => type === file.type)) {
+      setError('File must be in JPG/PNG format');
+      return;
+    }
+
+    // Adjust or remove the following lines based on your use case
+    // const form = new FormData();
+    // form.append('image', file);
+
+    // await uploadImage(form);
+    setTimeout(() => {
+      setRefetch((s) => s + 1);
+    }, 1000);
+  };
+
+  return (
+    <div className="home">
+      <div className="center">
         <form onSubmit={handleSubmit}>
         <h3>Registration</h3>
           <div className="box">
@@ -113,28 +163,48 @@ const Registration = () => {
             <label htmlFor="Company">Company:</label>
             <input className="input" type="text" id="Company" name="Company" onChange={handleChange} />
           </div>
-            {/* Here is the space for the realtor to upload they credential: */}
+          {/* Realtor certification upload */}
           <div className="box">
             <label htmlFor="RealtorCertification">Upload Realtor Certification:</label>
-            <input className="input" type="text" id="RealtorCertification" name="RealtorCertification" onChange={handleChange} />
+            <Box mt={6}>
+              <Input id="imageInput" type="file" hidden onChange={handleUpLoad} />
+              <Button
+                as="label"
+                htmlFor="imageInput"
+                variant="outline"
+                mb={4}
+                cursor="pointer"
+                // Adjust based on your use case
+                // isLoading={uploading}
+              >
+                Upload
+              </Button>
+              {error && <ErrorText>{error}</ErrorText>}
+              {/* Loading indicators and error messages... */}
+            </Box>
           </div>
-          <button type="submit">Register</button>
-        </form>
-        {errors.length > 0 && (
-          <div className="error" style={{ color: 'red' }}>
-            {/* Display error messages */}
-            <h3>Error(s):</h3>
-            <ul>
-              {errors.map((error, index) => (
-                <li key={index}>{error.msg}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-      </div>
-    );
 
-  };
-  
-  export default Registration;
+          {/* Submit button and error display */}
+          <button type="submit" className="btn" value="Register Now">
+            Register
+          </button>
+
+          {errors.length > 0 && (
+            <div className="error" style={{ color: 'red' }}>
+              <h3>Error(s):</h3>
+              <ul>
+                {errors.map((error, index) => (
+                  <li key={index}>{error.msg}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Registration;
+
+

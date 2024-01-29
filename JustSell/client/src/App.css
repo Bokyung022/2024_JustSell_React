@@ -213,7 +213,7 @@ section {
 /* ********HOME********** */
 .home {
   /* background: url("/client/public/staticimages/home-bg_opt1.1.jpg") no-repeat; */
-  background: url("./images/home-bg_opt1.1.jpg") no-repeat;
+  background: url("./images/home-bg_opt1.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -223,13 +223,15 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8rem;
+  padding-bottom: 30rem;
 }
 
 .home .center form {
   background-color: var(--white);
   padding: 2rem;
   box-shadow: var(--box-shodow);
-  width: 50rem;
+  width: 80rem;
 }
 
 .home .center form h3 {
@@ -1099,3 +1101,4 @@ section {
     height: 20rem;
   }
 }
+

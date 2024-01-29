@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=1yMrdBsep-A
+// https://www.youtube.com/watch?v=1yMrdBsep-A - PedroTech: Responsive Navbar In React With Styled Components Tutorial
 
 import React, { useState } from "react";
 import LogoImg from "../images/logo.png";
@@ -27,7 +27,7 @@ function Navbar() {
             <NavbarLink to="/search">Search</NavbarLink>
             <NavbarLink to="/listings">Listings</NavbarLink>
             <NavbarLink to="/createProperty">Create Property</NavbarLink>
-            {/* <NavbarLink className="menulinks" to="/login">Login</NavbarLink> */}
+            <NavbarLink to="/login">Login</NavbarLink>
             <NavbarLink to="/registration">Registration</NavbarLink>                
               
             <OpenLinksButton
@@ -50,6 +50,7 @@ function Navbar() {
           <NavbarLinkExtended to="/search">Search</NavbarLinkExtended>
           <NavbarLinkExtended to="/listings">Listings</NavbarLinkExtended>
           <NavbarLinkExtended to="/createProperty">Create Property</NavbarLinkExtended>
+          <NavbarLinkExtended to="/login">Login</NavbarLinkExtended>
           <NavbarLinkExtended to="/registration">Registration</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
