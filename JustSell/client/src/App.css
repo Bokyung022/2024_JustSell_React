@@ -224,7 +224,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: 8rem;
-  padding-bottom: 30rem;
+  padding-bottom: 10rem;
 }
 
 .home .center form {
@@ -1142,5 +1142,3 @@ section {
 .error-message {
   color: red;
 }
-
-

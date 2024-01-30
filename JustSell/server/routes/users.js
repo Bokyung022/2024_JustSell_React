@@ -66,4 +66,41 @@ router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
+router.delete("/:userID", async (req, res) => {
+  const userID = req.params.userID;
+
+  try {
+    await users.destroy({
+      where: {
+        userID: userID,
+      },
+    });
+
+    res.json({ success: true, message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.put("/auth/:userID", async (req, res) => {
+  const userID = req.params.userID;
+  const updatedUserData = req.body;
+
+  try {
+    const user = await users.findByPk(userID);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    await user.update(updatedUserData);
+
+    res.json(user);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
