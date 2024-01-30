@@ -1,14 +1,14 @@
 //https://www.youtube.com/watch?v=OGGnjBE5qr0&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL&index=8&t=1882s
 const express = require("express");
 const router = express.Router();
-const { Users } = require("../models");
+const { users } = require("../models");
 const bcrypt = require("bcrypt");
 const { validateToken } = require("../middleware/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
 
 router.get("/", async (req, res) => {
   try {
-    const listOfUsers = await Users.findAll();
+    const listOfUsers = await users.findAll();
     res.json(listOfUsers);
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;
     const hash = await bcrypt.hash(password, 10);
-    await Users.create({
+    await users.create({
       username: username,
       password: hash,
     });
@@ -41,7 +41,8 @@ router.post("/login", async (req, res) => {
 
     const match = await bcrypt.compare(password, user.password);
 
-    if (!match) return res.json({ error: "Wrong Username And Password Combination" });
+    if (!match)
+      return res.json({ error: "Wrong Username And Password Combination" });
 
     const accessToken = sign(
       { username: user.username, id: user.id },
@@ -62,7 +63,7 @@ router.get("/basicinfo/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
-    const basicInfo = await Users.findByPk(id, {
+    const basicInfo = await users.findByPk(id, {
       attributes: { exclude: ["password"] },
     });
 
@@ -74,4 +75,3 @@ router.get("/basicinfo/:id", async (req, res) => {
 });
 
 module.exports = router;
-

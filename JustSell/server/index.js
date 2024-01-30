@@ -29,7 +29,7 @@ db.sequelize.sync().then(() => {
   });
 });
 
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
   username: "admin",
