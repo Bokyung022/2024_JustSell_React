@@ -2,8 +2,6 @@ import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-// import useMutation from '../helpers/useMutation';
-// import useQuery from '../helpers/useQuery';
 
 function Registration() {
   const initialValues = {
@@ -43,7 +41,7 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://fsd10-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com/auth", data,{ timeout: 80000 }).then(() => {
+    axios.post("http://localhost:3001/auth", data,{ timeout: 80000 }).then(() => {
       // handle success
     console.log(data);
   })
@@ -66,6 +64,7 @@ function Registration() {
       >        
         <Form className="formContainer">
         <h3>Registration</h3>
+        
           <div className="box">            
             <label htmlFor="FirstName">First Name:</label>
             <ErrorMessage name="FirstName" component="span" />
@@ -224,7 +223,7 @@ function Registration() {
             />
           </div> */}
 
-          <button type="submit" className="btn" value="Register Now">Register</button>
+          <button type="submit" className="btn" value="Register Now" onChange={onSubmit}>Register</button>
         </Form>
       </Formik>
     </div>
