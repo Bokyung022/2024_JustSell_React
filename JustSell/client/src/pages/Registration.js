@@ -10,7 +10,7 @@ function Registration() {
     Email: '',
     UserName: '',
     Password: '',
-    Passcomf: '',
+    Passcomf: '', // Change Passcomf
     Phone: '',
     StreetNum: '',
     StreetName: '',
@@ -22,6 +22,8 @@ function Registration() {
     isRealtorApproved: '',
     RealtorCertification: '',
   };
+  
+
 
   const validationSchema = Yup.object().shape({
     FirstName: Yup.string().required('First Name is required'),
@@ -41,22 +43,19 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data,).then(() => {
-      // handle success
-    console.log(data);
-  })
-  .catch(error => {
-    // handle error
-    console.error('AxiosError:', error);
-  });
-  
+    axios.post("http://localhost:3001/auth", data)
+      .then(() => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('AxiosError:', error);
+      });
   };
-
-
+  
   return (
     <div className="home">
      <div className="center">
-      {""}
+     
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -67,7 +66,7 @@ function Registration() {
         
           <div className="box">            
             <label htmlFor="FirstName">First Name:</label>
-            <ErrorMessage name="FirstName" component="span" />
+            <ErrorMessage name="FirstName" component="span" className="error-message" />
             <Field
               className="input"
               id="FirstName"
@@ -78,7 +77,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="LastName">Last Name:</label>
-            <ErrorMessage name="LastName" component="span" />
+            <ErrorMessage name="LastName" component="span" className="error-message" />
             <Field
               className="input"
               id="LastName"
@@ -89,7 +88,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Email">Email:</label>
-            <ErrorMessage name="Email" component="span" />
+            <ErrorMessage name="Email" component="span" className="error-message" />
             <Field
               className="input"
               type="email"
@@ -101,7 +100,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="UserName">Username:</label>
-            <ErrorMessage name="UserName" component="span" />
+            <ErrorMessage name="UserName" component="span" className="error-message" />
             <Field
               className="input"
               id="UserName"
@@ -112,7 +111,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Password">Password:</label>
-            <ErrorMessage name="Password" component="span" />
+            <ErrorMessage name="Password" component="span" className="error-message" />
             <Field
               className="input"
               type="password"
@@ -124,7 +123,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Passcomf">Confirm Password:</label>
-            <ErrorMessage name="Passcomf" component="span" />
+            <ErrorMessage name="Passcomf" component="span" className="error-message" />
             <Field
               className="input"
               type="password"
@@ -136,7 +135,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Phone">Phone:</label>
-            <ErrorMessage name="Phone" component="span" />
+            <ErrorMessage name="Phone" component="span" className="error-message" />
             <Field
               className="input"
               id="Phone"
@@ -147,7 +146,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="StreetNum">Street Number:</label>
-            <ErrorMessage name="StreetNum" component="span" />
+            <ErrorMessage name="StreetNum" component="span" className="error-message" />
             <Field
               className="input"
               id="StreetNum"
@@ -158,7 +157,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="StreetName">Street Name:</label>
-            <ErrorMessage name="StreetName" component="span" />
+            <ErrorMessage name="StreetName" component="span" className="error-message" />
             <Field
               className="input"
               id="StreetName"
@@ -169,7 +168,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="City">City:</label>
-            <ErrorMessage name="City" component="span" />
+            <ErrorMessage name="City" component="span" className="error-message" />
             <Field
               className="input"
               id="City"
@@ -180,7 +179,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Province">Province:</label>
-            <ErrorMessage name="Province" component="span" />
+            <ErrorMessage name="Province" component="span" className="error-message" />
             <Field
               className="input"
               id="Province"
@@ -191,7 +190,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Postal">Postal Code:</label>
-            <ErrorMessage name="Postal" component="span" />
+            <ErrorMessage name="Postal" component="span" className="error-message" />
             <Field
               className="input"
               id="Postal"
@@ -202,7 +201,7 @@ function Registration() {
 
           <div className="box">
             <label htmlFor="Company">Company:</label>
-            <ErrorMessage name="Company" component="span" />
+            <ErrorMessage name="Company" component="span" className="error-message" />
             <Field
               className="input"
               id="Company"
@@ -223,7 +222,7 @@ function Registration() {
             />
           </div> */}
 
-          <button type="submit" className="btn" value="Register Now" onChange={onSubmit}>Register</button>
+          <button type="submit" className="btn" value="Register Now">Register</button>
         </Form>
       </Formik>
     </div>
@@ -231,115 +230,6 @@ function Registration() {
     
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-//   return (
-//     <div className="home">
-//       <div className="center">
-//         <form onSubmit={handleSubmit}>
-//         <h3>Registration</h3>
-//           <div className="box">
-//             <label htmlFor="FirstName">First Name:</label>
-//             <input className="input" type="text" id="FirstName" name="FirstName" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="LastName">Last Name:</label>
-//             <input className="input" type="text" id="LastName" name="LastName" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="Email">Email:</label>
-//             <input className="input" type="email" id="Email" name="Email" onChange={handleChange} />
-//           </div >
-//           <div className="box">
-//             <label htmlFor="UserName">Username:</label>
-//             <input className="input" ype="text" id="UserName" name="UserName" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="Password">Password:</label>
-//             <input className="input" type="password" id="Password" name="Password" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="Passcomf">Confirm Password:</label>
-//             <input className="input" type="password" id="Passcomf" name="Passcomf" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="Phone">Phone:</label>
-//             <input className="input" type="text" id="Phone" name="Phone" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="StreetNum">Street Number:</label>
-//             <input className="input" type="text" id="StreetNum" name="StreetNum" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="StreetName">Street Name:</label>
-//             <input className="input" type="text" id="StreetName" name="StreetName" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="City">City:</label>
-//             <input className="input" type="text" id="City" name="City" onChange={handleChange} />
-//           </div >
-//           <div className="box">
-//             <label htmlFor="Province">Province:</label>
-//             <input className="input" type="text" id="Province" name="Province" onChange={handleChange} />
-//           </div>
-//           <div className="box">
-//             <label htmlFor="Postal">Postal Code:</label>
-//             <input className="input" type="text" id="Postal" name="Postal" onChange={handleChange} />
-//           </div >
-//           <div className="box">
-//             <label htmlFor="Company">Company:</label>
-//             <input className="input" type="text" id="Company" name="Company" onChange={handleChange} />
-//           </div>
-//           {/* Realtor certification upload */}
-//           <div className="box">
-//             <label htmlFor="RealtorCertification">Upload Realtor Certification:</label>
-//             <Box mt={6}>
-//               <Input id="imageInput" type="file" hidden onChange={handleUpLoad} />
-//               <Button
-//                 as="label"
-//                 htmlFor="imageInput"
-//                 variant="outline"
-//                 mb={4}
-//                 cursor="pointer"
-//                 // Adjust based on your use case
-//                 // isLoading={uploading}
-//               >
-//                 Upload
-//               </Button>
-//               {error && <ErrorText>{error}</ErrorText>}
-//               {/* Loading indicators and error messages... */}
-//             </Box>
-//           </div>
-
-//           {/* Submit button and error display */}
-//           <button type="submit" className="btn" value="Register Now">
-//             Register
-//           </button>
-
-//           {errors.length > 0 && (
-//             <div className="error" style={{ color: 'red' }}>
-//               <h3>Error(s):</h3>
-//               <ul>
-//                 {errors.map((error, index) => (
-//                   <li key={index}>{error.msg}</li>
-//                 ))}
-//               </ul>
-//             </div>
-//           )}
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Registration;
 

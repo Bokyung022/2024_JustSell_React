@@ -1101,3 +1101,9 @@ section {
     height: 20rem;
   }
 }
+
+.error-message {
+  color: red;
+}
+
+
