@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 function Registration() {
   let navigate = useNavigate();
@@ -48,7 +48,7 @@ function Registration() {
       .then(() => {
         // handle success
         console.log(data);
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => {
         // handle error

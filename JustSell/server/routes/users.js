@@ -66,6 +66,20 @@ router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await users.findOne({ where: { username: username } });
+
+  if (!user) res.json({ error: "User Doesn't Exist" });
+
+  bcrypt.compare(password, user.password).then((match) => {
+    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+
+    res.json("YOU LOGGED IN!!!");
+  });
+});
+
 router.delete("/:userID", async (req, res) => {
   const userID = req.params.userID;
 

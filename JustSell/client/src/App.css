@@ -212,7 +212,6 @@ section {
 
 /* ********HOME********** */
 .home {
-  /* background: url("/client/public/staticimages/home-bg_opt1.1.jpg") no-repeat; */
   background: url("./images/home-bg_opt1.jpg") no-repeat;
   background-size: cover;
   background-position: center;
@@ -274,6 +273,56 @@ section {
 }
 
 .home .center form .box p span {
+  color: var(--main-color);
+}
+
+.home .center .formcontainer {
+  background-color: var(--white);
+  padding: 2rem;
+  box-shadow: var(--box-shodow);
+  width: 80rem;
+}
+
+.home .center .formcontainer h3 {
+  padding-bottom: 1rem;
+  text-align: center;
+  color: var(--black);
+  text-transform: capitalize;
+  font-size: 2.5rem;
+}
+
+.home .center .formcontainer .flex {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.home .center .formcontainer .box {
+  flex: 1 1 20rem;
+}
+
+.home .center .formcontainer .box .input {
+  width: 100%;
+  border: var(--border);
+  padding: 1.4rem;
+  color: var(--black);
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.home .center .formcontainer .box p {
+  color: var(--light-color);
+  font-size: 1.7rem;
+  padding-top: 1rem;
+}
+
+.home .center .formcontainer .box label {
+  color: var(--light-color);
+  font-size: 1.7rem;
+  padding-top: 1rem;
+}
+
+.home .center .formcontainer .box p span {
   color: var(--main-color);
 }
 
