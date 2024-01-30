@@ -3,13 +3,16 @@ import styled from "styled-components";
 import downloadapp from "../images/download_app02.jpg";
 import homeImage from "../images/home-bg_opt1.jpg";
 import specialistImage from "../images/logo.png";
+import HomeFilter from "../pages/HomeFilter";
+
+
 
 
 const Body = () => {
     return (
         <MainContainerBody>
             <FirstInnerContainerBody>
-            <h1>Here I need to add the homepage filter</h1>            
+            <HomeFilter></HomeFilter>            
             </FirstInnerContainerBody>
 
             <SecondInnerContainerBody>

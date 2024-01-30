@@ -17,63 +17,61 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { username, password } = req.body;
-  bcrypt.hash(password, 10).then((hash) => {
-    Users.create({
+  try {
+    const { username, password } = req.body;
+    const hash = await bcrypt.hash(password, 10);
+    await Users.create({
       username: username,
       password: hash,
     });
     res.json("SUCCESS");
-  });
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  try {
+    const { username, password } = req.body;
 
-  const user = await Users.findOne({ where: { username: username } });
+    const user = await Users.findOne({ where: { username: username } });
 
-  if (!user) res.json({ error: "User Doesn't Exist" });
+    if (!user) return res.json({ error: "User Doesn't Exist" });
 
-  bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) return res.json({ error: "Wrong Username And Password Combination" });
 
     const accessToken = sign(
-      { username: user.username, id: user.id }, //data to pass to jwt to create the token
-      "importantsecret" //should be a ramdon string generator KVP
+      { username: user.username, id: user.id },
+      "importantsecret"
     );
-    res.json({ token: accessToken, username: username, id: user.id }); //returning the access token, if user makes request we use this token to validade the request
-  });
+    res.json({ token: accessToken, username: username, id: user.id });
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
- 
+
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });
 
 router.get("/basicinfo/:id", async (req, res) => {
-  const id = req.params.id;
+  try {
+    const id = req.params.id;
 
-  const basicInfo = await Users.findByPk(id, {
-    attributes: { exclude: ["password"] },
-  });
+    const basicInfo = await Users.findByPk(id, {
+      attributes: { exclude: ["password"] },
+    });
 
-  res.json(basicInfo);
+    res.json(basicInfo);
+  } catch (error) {
+    console.error("Error fetching basic info:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
-// router.put("/changepassword", validateToken, async (req, res) => {
-//   const { oldPassword, newPassword } = req.body;
-//   const user = await Users.findOne({ where: { username: req.user.username } });
-
-//   bcrypt.compare(oldPassword, user.password).then(async (match) => {
-//     if (!match) res.json({ error: "Wrong Password Entered!" });
-
-//     bcrypt.hash(newPassword, 10).then((hash) => {
-//       Users.update(
-//         { password: hash },
-//         { where: { username: req.user.username } }
-//       );
-//       res.json("SUCCESS");
-//     });
-//   });
-// });
-
 module.exports = router;
+

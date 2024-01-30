@@ -41,7 +41,7 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data,{ timeout: 80000 }).then(() => {
+    axios.post("http://localhost:3001/auth", data,).then(() => {
       // handle success
     console.log(data);
   })
