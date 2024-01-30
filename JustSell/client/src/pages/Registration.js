@@ -7,21 +7,22 @@ import { useNavigate } from "react-router-dom";
 function Registration() {
   let navigate = useNavigate();
   const initialValues = {
-    userName: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    UserName: "",
+    Password: "",
+    Passcomf: "",
     Phone: "",
-    streetNum: 0,
-    streetName: "",
-    city: "",
-    province: "",
-    postal: "",
-    company: "",
-    role: "",
-    isRealtorApproved: 0,
-    realtorCertification: "",
+    StreetNum: "",
+    StreetName: "",
+    City: "",
+    Province: "",
+    Postal: "",
+    Company: "",
+    Role: "",
+    isRealtorApproved: "",
+    RealtorCertification: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -48,7 +49,6 @@ function Registration() {
       .then(() => {
         // handle success
         console.log(data);
-        navigate("/");
       })
       .catch((error) => {
         // handle error
@@ -59,6 +59,7 @@ function Registration() {
   return (
     <div className="home">
       <div className="center">
+        {""}
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -68,59 +69,71 @@ function Registration() {
             <h3>Registration</h3>
 
             <div className="box">
-              <label htmlFor="firstName">First Name:</label>
-              <ErrorMessage name="firstName" component="span" />
+              <label htmlFor="FirstName">First Name:</label>
+              <ErrorMessage name="FirstName" component="span" />
               <Field
                 className="input"
-                id="firstName"
-                name="firstName"
+                id="FirstName"
+                name="FirstName"
                 placeholder="Enter your first name"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="lastName">Last Name:</label>
-              <ErrorMessage name="lastName" component="span" />
+              <label htmlFor="LastName">Last Name:</label>
+              <ErrorMessage name="LastName" component="span" />
               <Field
                 className="input"
-                id="lastName"
-                name="lastName"
+                id="LastName"
+                name="LastName"
                 placeholder="Enter your last name"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="email">Email:</label>
-              <ErrorMessage name="email" component="span" />
+              <label htmlFor="Email">Email:</label>
+              <ErrorMessage name="Email" component="span" />
               <Field
                 className="input"
                 type="email"
-                id="email"
-                name="email"
+                id="Email"
+                name="Email"
                 placeholder="Enter your email"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="userName">Username:</label>
-              <ErrorMessage name="userName" component="span" />
+              <label htmlFor="UserName">Username:</label>
+              <ErrorMessage name="UserName" component="span" />
               <Field
                 className="input"
-                id="userName"
-                name="userName"
+                id="UserName"
+                name="UserName"
                 placeholder="Enter your username"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="password">Password:</label>
-              <ErrorMessage name="password" component="span" />
+              <label htmlFor="Password">Password:</label>
+              <ErrorMessage name="Password" component="span" />
               <Field
                 className="input"
                 type="password"
-                id="password"
-                name="password"
+                id="Password"
+                name="Password"
                 placeholder="Enter your password"
+              />
+            </div>
+
+            <div className="box">
+              <label htmlFor="Passcomf">Confirm Password:</label>
+              <ErrorMessage name="Passcomf" component="span" />
+              <Field
+                className="input"
+                type="password"
+                id="Passcomf"
+                name="Passcomf"
+                placeholder="Confirm your password"
               />
             </div>
 
@@ -136,67 +149,67 @@ function Registration() {
             </div>
 
             <div className="box">
-              <label htmlFor="streetNum">Street Number:</label>
-              <ErrorMessage name="streetNum" component="span" />
+              <label htmlFor="StreetNum">Street Number:</label>
+              <ErrorMessage name="StreetNum" component="span" />
               <Field
                 className="input"
-                id="streetNum"
-                name="streetNum"
+                id="StreetNum"
+                name="StreetNum"
                 placeholder="Enter your street number"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="streetName">Street Name:</label>
-              <ErrorMessage name="streetName" component="span" />
+              <label htmlFor="StreetName">Street Name:</label>
+              <ErrorMessage name="StreetName" component="span" />
               <Field
                 className="input"
-                id="streetName"
-                name="streetName"
+                id="StreetName"
+                name="StreetName"
                 placeholder="Enter your street name"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="city">City:</label>
-              <ErrorMessage name="city" component="span" />
+              <label htmlFor="City">City:</label>
+              <ErrorMessage name="City" component="span" />
               <Field
                 className="input"
-                id="city"
-                name="city"
+                id="City"
+                name="City"
                 placeholder="Enter your city"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="province">Province:</label>
-              <ErrorMessage name="province" component="span" />
+              <label htmlFor="Province">Province:</label>
+              <ErrorMessage name="Province" component="span" />
               <Field
                 className="input"
-                id="province"
-                name="province"
+                id="Province"
+                name="Province"
                 placeholder="Enter your province"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="postal">Postal Code:</label>
-              <ErrorMessage name="postal" component="span" />
+              <label htmlFor="Postal">Postal Code:</label>
+              <ErrorMessage name="Postal" component="span" />
               <Field
                 className="input"
-                id="postal"
-                name="postal"
+                id="Postal"
+                name="Postal"
                 placeholder="Enter your postal code"
               />
             </div>
 
             <div className="box">
-              <label htmlFor="company">Company:</label>
-              <ErrorMessage name="company" component="span" />
+              <label htmlFor="Company">Company:</label>
+              <ErrorMessage name="Company" component="span" />
               <Field
                 className="input"
-                id="company"
-                name="company"
+                id="Company"
+                name="Company"
                 placeholder="Enter your company name"
               />
             </div>
