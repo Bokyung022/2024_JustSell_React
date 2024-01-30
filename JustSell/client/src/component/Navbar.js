@@ -52,6 +52,7 @@ function Navbar() {
           <NavbarLinkExtended to="/createProperty">
             Create Property
           </NavbarLinkExtended>
+          <NavbarLinkExtended to="/admin">Admin</NavbarLinkExtended>
           <NavbarLinkExtended to="/login">Login</NavbarLinkExtended>
           <NavbarLinkExtended to="/registration">
             Registration
