@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./component/Footer";
 import Navbar from "./component/Navbar";
 import CreateProperty from "./pages/CreateProperty";
@@ -10,6 +11,7 @@ import Listings from "./pages/Listings";
 import Login from "./pages/Login";
 import Property from "./pages/Property";
 import Registration from "./pages/Registration";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -21,10 +23,11 @@ function App() {
           <Route path="/search" element={<Filter />} />
           <Route path="/listings" element={<Listings />} />
           <Route path="/createProperty" element={<CreateProperty />} />
-          <Route path="/login" element={<Login />} /> 
+          <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/property/:id" element={<Property />} />
           <Route path="/editProperty/:id" element={<EditProperty />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>

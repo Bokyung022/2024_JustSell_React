@@ -4,9 +4,11 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
+import StripeCheckout from "react-stripe-checkout";
 
 function Filter() {
   let navigate = useNavigate();
+
   const [listOfProperties, setListProperties] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [errors, setErrors] = useState({});
@@ -29,8 +31,23 @@ function Filter() {
       console.error("Error:", error.message);
     }
   };
-  const makePayment = async () => {
-    const stripe = await loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+  const makePayment = (token, property) => {
+    const body = {
+      token,
+      property,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    return fetch("http://localhost:3001/payment", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    })
+      .then((response) => console.log("response", response))
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
@@ -156,10 +173,10 @@ function Filter() {
                       value={property.propertyID}
                     />
                     <div className="thumb">
-                      <img
+                      {/* <img
                         src={`images/PropertiesImages/${property.imageFileName}`}
                         alt="Property"
-                      />
+                      /> */}
                     </div>
                     <div className="box">
                       <div className="price">
@@ -208,14 +225,14 @@ function Filter() {
                         >
                           View Details
                         </button>
-                        <button
-                          onClick={() => {
-                            navigate(`/property/${property.PropertyID}`);
-                          }}
-                          className="btn"
+                        <StripeCheckout
+                          stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                          token={(token) => makePayment(token, property)}
+                          name="Down Payment"
+                          amount={property.price}
                         >
-                          Send Offer
-                        </button>
+                          <button className="btn">Send Offer</button>
+                        </StripeCheckout>
                       </div>
                     </div>
                   </form>

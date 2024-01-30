@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import StripeCheckout from "react-stripe-checkout";
 function Property() {
   let { id } = useParams();
   const [property, setProperty] = useState({});
@@ -40,7 +40,24 @@ function Property() {
     ));
   };
   */
-
+  const makePayment = (token) => {
+    const body = {
+      token,
+      property,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    return fetch("http://localhost:3001/payment", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    })
+      .then((response) => console.log("response", response))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const renderAmenities = () => {
     // Assuming property.Amenities is a string with amenities separated by commas
     const amenitiesList = property.amenities
@@ -84,10 +101,6 @@ function Property() {
         <h3 className="title">Details</h3>
         <div className="flex">
           <div className="box">
-            <p>
-              <i>Rooms :</i>
-              <span>{property.bedrooms + property.bathrooms} Bedrooms</span>
-            </p>
             <p>
               <i>Deposit Amount (10%) :</i>
               <span>
@@ -156,9 +169,14 @@ function Property() {
           </div>
         </div>
         <div className="flex-btn">
-          <a href="" className="btn">
-            Send Offer
-          </a>
+          <StripeCheckout
+            stripeKey={process.env.REACT_APP_STRIPE_KEY}
+            token={makePayment}
+            name="Down Payment"
+            amount={property.price}
+          >
+            <button className="btn">Send Offer</button>
+          </StripeCheckout>
         </div>
       </div>
     );

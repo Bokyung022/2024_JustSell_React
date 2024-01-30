@@ -52,72 +52,222 @@ function CreateProperty() {
     });
   };
   return (
-    <div className="createPropertyPage">
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-      >
-        <Form className="formContainer">
-          <label>Street Number: </label>
-          <ErrorMessage name="streetNum" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="streetNum" />
-          <label>Street Name: </label>
-          <ErrorMessage name="streetName" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="streetName" />
-          <label>City: </label>
-          <ErrorMessage name="city" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="city" />
-          <label>Province: </label>
-          <ErrorMessage name="province" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="province" />
-          <label>Postal Code: </label>
-          <ErrorMessage name="postal" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="postal" />
-          <label>Description: </label>
-          <ErrorMessage name="description" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="description" />
-          <label>Price: </label>
-          <ErrorMessage name="price" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="price" />
-          <label>Bathrooms: </label>
-          <ErrorMessage name="bathrooms" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="bathrooms" />
-          <label>Bedrooms: </label>
-          <ErrorMessage name="bedrooms" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="bedrooms" />
-          <label>Floors: </label>
-          <ErrorMessage name="floors" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="floors" />
-          <label>Size: </label>
-          <ErrorMessage name="size" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="size" />
-          <label>Furnished: </label>
-          <ErrorMessage name="furnished" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="furnished" />
-          <label>Property Type: </label>
-          <ErrorMessage name="propertyType" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="propertyType" />
-          <label>Year of Built: </label>
-          <ErrorMessage name="yearOfBuilt" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="yearOfBuilt" />
-          <label>Amenities: </label>
-          <ErrorMessage name="amenities" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="amenities" />
-          <label>Sell Option: </label>
-          <ErrorMessage name="sellOption" component="span" />
-          <Field autoComplete="off" id="inputCreatePost" name="sellOption" />
-          <label>Construction Status: </label>
-          <ErrorMessage name="constructionStatus" component="span" />
-          <Field
-            autoComplete="off"
-            id="inputCreatePost"
-            name="constructionStatus"
-          />
+    <div className="home">
+      <section className="center">
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={validationSchema}
+        >
+          <Form>
+            <h3>Creating Property</h3>
 
-          <button type="submit"> Create Property</button>
-        </Form>
-      </Formik>
+            <div className="box">
+              <p>Street Number: </p>
+              <Field className="input" id="inputCreatePost" name="streetNum" />
+              <ErrorMessage
+                name="streetNum"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Street Name: </p>
+              <Field className="input" id="inputCreatePost" name="streetName" />
+              <ErrorMessage
+                name="streetName"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>City: </p>
+              <Field className="input" id="inputCreatePost" name="city" />
+              <ErrorMessage name="city" component="span" className="error" />
+            </div>
+
+            <div className="box">
+              <p>Province: </p>
+              <Field className="input" id="inputCreatePost" name="province" />
+              <ErrorMessage
+                name="province"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Postal Code: </p>
+              <Field className="input" id="inputCreatePost" name="postal" />
+              <ErrorMessage name="postal" component="span" className="error" />
+            </div>
+
+            <div className="box">
+              <p>Description: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                name="description"
+              />
+              <ErrorMessage
+                name="description"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Price: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="price"
+              />
+              <ErrorMessage name="price" component="span" className="error" />
+            </div>
+
+            <div className="box">
+              <p>Bathrooms: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="bathrooms"
+              />
+              <ErrorMessage
+                name="bathrooms"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Bedrooms: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="bedrooms"
+              />
+              <ErrorMessage
+                name="bedrooms"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Floors: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="floors"
+              />
+              <ErrorMessage name="floors" component="span" className="error" />
+            </div>
+
+            <div className="box">
+              <p>Size: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="size"
+              />
+              <ErrorMessage name="size" component="span" className="error" />
+            </div>
+
+            <div className="box">
+              <p>Furnished: </p>
+              <Field
+                className="input"
+                as="select"
+                id="inputCreatePost"
+                name="furnished"
+              >
+                <option value={0}>No</option>
+                <option value={1}>Yes</option>
+              </Field>
+            </div>
+
+            <div className="box">
+              <p>Property Type: </p>
+              <Field
+                className="input"
+                as="select"
+                id="inputCreatePost"
+                name="propertyType"
+              >
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Duplex or Triplex">Duplex or Triplex</option>
+                <option value="Condo">Condo</option>
+                <option value="Commercial Building">Commercial Building</option>
+              </Field>
+            </div>
+
+            <div className="box">
+              <p>Year of Built: </p>
+              <Field
+                className="input"
+                id="inputCreatePost"
+                type="number"
+                name="yearOfBuilt"
+              />
+              <ErrorMessage
+                name="yearOfBuilt"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Amenities: </p>
+              <Field className="input" id="inputCreatePost" name="amenities" />
+              <ErrorMessage
+                name="amenities"
+                component="span"
+                className="error"
+              />
+            </div>
+
+            <div className="box">
+              <p>Offer Type: </p>
+              <Field
+                className="input"
+                as="select"
+                id="inputCreatePost"
+                name="sellOption"
+              >
+                <option value="Sale">Sale</option>
+                <option value="Resale">Resale</option>
+                <option value="Leasing">Leasing</option>
+              </Field>
+            </div>
+
+            <div className="box">
+              <p>Construction Status: </p>
+              <Field
+                className="input"
+                as="select"
+                id="inputCreatePost"
+                name="constructionStatus"
+              >
+                <option value="Ready to Move">Ready to Move</option>
+                <option value="Under Construction">Under Construction</option>
+              </Field>
+            </div>
+
+            <button type="submit" className="btn">
+              Create Property
+            </button>
+          </Form>
+        </Formik>
+      </section>
     </div>
   );
 }
