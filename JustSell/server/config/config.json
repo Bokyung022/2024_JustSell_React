@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
+    "username": "admin",
+    "password": "adminadmin",
     "database": "justselldb",
-    "host": "localhost",
+    "host": "fsd10-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "dialectOptions": {
       "connectTimeout": 600000
