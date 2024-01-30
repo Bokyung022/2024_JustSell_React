@@ -122,8 +122,36 @@ do we need setup heroku at the begining ? or implement at the end?
 - follow video: https://youtube.com/watch?v=eQAIojcArRY&si=27t66Wu9Dgeu6l7Y
 3. Need assistance / figure things out
 - For now, I need to watch a few videos to understand how AWS S3 and RDS work
+2024/01/29 Xing
+1. Done since last scrum
+- finished the filter functionality
+- watch tutorials to learn S3 integration and learn payment gateway
+- Edited CSS
+2. Plan until next Scrum
+- watch some tutorials about stripe
+- try to start to implement payment functionality
+3. Need assistance / figure things out
+-  understand how to intergate stripe
+2024/01/29 Bo Kyung
+1. Done since last scrum
+- Finished CRUD operation of Property pages
+- Added CSS styles on Listings page & Single Property page
+2. Plan until next Scrum
+- Add CSS styles on Create Property page & Edit Property page 
+- Start to working on Images part
+3. Need assistance / figure things out
+- need to integrate property pages according to user auth, it will be pretty tough work
 
-
+2024/01/29 Xing
+1. Done since last scrum
+- watched tutorials to payment gateway
+-start to implement payment functionality
+2. Plan until next Scrum
+- continue to finish the payment functionality
+- s3, database
+- css
+3. Need assistance / figure things out
+-  better understanding how to intergate stripe
 
  
 
