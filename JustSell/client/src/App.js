@@ -10,8 +10,6 @@ import Listings from "./pages/Listings";
 import Login from "./pages/Login";
 import Property from "./pages/Property";
 import Registration from "./pages/Registration";
-import Success from "./pages/Success";
-import Cancel from "./pages/Cancel";
 
 function App() {
   return (
@@ -27,8 +25,6 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/property/:id" element={<Property />} />
           <Route path="/editProperty/:id" element={<EditProperty />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/cancel" element={<Cancel />} />
         </Routes>
         <Footer />
       </Router>

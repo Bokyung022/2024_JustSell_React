@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const router = express.Router();
 const cors = require("cors");
 app.use(express.json());
@@ -10,7 +11,7 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 const { v4: uuidv4 } = require("uuid");
 router.post("/", async (req, res) => {
   const { property, token } = req.body;
-  const idempontencyKey = uuidv4();
+  const idempotencyKey = uuidv4();
   return stripe.customers
     .create({
       email: token.email,
@@ -25,7 +26,7 @@ router.post("/", async (req, res) => {
           receipt_email: token.email,
           description: "down payment",
         },
-        idempontencyKey
+        { idempotencyKey }
       );
     })
     .then((result) => res.status(200).json(result))

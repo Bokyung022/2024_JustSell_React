@@ -6,14 +6,11 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  height: 100px;
+  height: 50px;
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   position: fixed;
   left: 0;
   bottom: 0;
-
 `;
-
-
