@@ -26,7 +26,7 @@ function Navbar() {
             <NavbarLink to="/search">Search</NavbarLink>
             <NavbarLink to="/listings">Listings</NavbarLink>
             <NavbarLink to="/createProperty">Create Property</NavbarLink>
-            <NavbarLink to="/login">Admin</NavbarLink>
+            <NavbarLink to="/admin">Admin</NavbarLink>
             <NavbarLink to="/login">Login</NavbarLink>
             <NavbarLink to="/registration">Registration</NavbarLink>
 
