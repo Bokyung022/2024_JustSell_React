@@ -19,7 +19,7 @@ Example entries for one day, both team members:
 3. Need assistance / figure things out
 - find and test a library for PDF printouts
 - find out how to fetch data from URL and parse JSON
-
+----------------------------------------------------------------------------------------------
 2024/01/24 Karina
 1. Done since last scrum
 - The beggining of everything 
@@ -46,8 +46,7 @@ Example entries for one day, both team members:
 - Watch Scrum Video
 - Write Trello Board User Story & Checklists
 3. Need assistance / figure things out
-
-
+----------------------------------------------------------------------------------------------
 2024/01/25 Karina - feeling not well today (maybe food poisoning?)
 1. Done since last scrum
 - Configurated Git Repo 
@@ -77,7 +76,7 @@ do we need setup heroku at the begining ? or implement at the end?
 - Start programming (Create Property Page)
 3. Need assistance / figure things out
 - Need to watch CRUD tutorial 
-
+----------------------------------------------------------------------------------------------
 2024/01/26 Karina 
 1. Done since last scrum
 - Config and set up DB in our AWS Account 
@@ -109,7 +108,7 @@ do we need setup heroku at the begining ? or implement at the end?
 - Continue coding Create Property Page
 3. Need assistance / figure things out
 - Git conflict issue may occur
-
+----------------------------------------------------------------------------------------------
 2024/01/27 Karina 
 1. Done since last scrum
 - Created Home page, but not reayd
@@ -122,6 +121,7 @@ do we need setup heroku at the begining ? or implement at the end?
 - follow video: https://youtube.com/watch?v=eQAIojcArRY&si=27t66Wu9Dgeu6l7Y
 3. Need assistance / figure things out
 - For now, I need to watch a few videos to understand how AWS S3 and RDS work
+----------------------------------------------------------------------------------------------
 2024/01/29 Xing
 1. Done since last scrum
 - finished the filter functionality
@@ -132,6 +132,7 @@ do we need setup heroku at the begining ? or implement at the end?
 - try to start to implement payment functionality
 3. Need assistance / figure things out
 -  understand how to intergate stripe
+
 2024/01/29 Bo Kyung
 1. Done since last scrum
 - Finished CRUD operation of Property pages
@@ -141,8 +142,8 @@ do we need setup heroku at the begining ? or implement at the end?
 - Start to working on Images part
 3. Need assistance / figure things out
 - need to integrate property pages according to user auth, it will be pretty tough work
-
-2024/01/29 Xing
+----------------------------------------------------------------------------------------------
+2024/01/30 Xing
 1. Done since last scrum
 - watched tutorials to payment gateway
 -start to implement payment functionality
@@ -153,6 +154,16 @@ do we need setup heroku at the begining ? or implement at the end?
 3. Need assistance / figure things out
 -  better understanding how to intergate stripe
 
+2024/01/30 Bo Kyung
+1. Done since last scrum
+- Add CSS styles on Create Property page & Edit Property page
+- Started to working Admin page
+2. Plan until next Scrum
+- Working on Admin page and Images part
+3. Need assistance / figure things out
+- User data fetch didn't work well for the Admin page, need to fix the probelm
+- No idea how to deal with images
+----------------------------------------------------------------------------------------------
  
 
 
