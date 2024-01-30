@@ -3,13 +3,15 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import StripeCheckout from "react-stripe-checkout";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 function Property() {
   let { id } = useParams();
   const [property, setProperty] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
-
+  const MySwal = withReactContent(Swal);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,6 +42,20 @@ function Property() {
     ));
   };
   */
+  const handleSuccess = () => {
+    MySwal.fire({
+      icon: "success",
+      title: "payment was successful",
+      time: 3000,
+    });
+  };
+  const handleFailure = () => {
+    MySwal.fire({
+      icon: "error",
+      title: "payment was cancled",
+      time: 3000,
+    });
+  };
   const makePayment = (token) => {
     const body = {
       token,
@@ -53,8 +69,13 @@ function Property() {
       headers: headers,
       body: JSON.stringify(body),
     })
-      .then((response) => console.log("response", response))
+      .then((response) => {
+        if (response.status === 200) {
+          handleSuccess();
+        }
+      })
       .catch((err) => {
+        handleFailure();
         console.log(err);
       });
   };
