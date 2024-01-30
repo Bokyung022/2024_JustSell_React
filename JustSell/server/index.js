@@ -16,9 +16,23 @@ const db = require("./models");
 const propertyRouter = require("./routes/properties");
 app.use("/properties", propertyRouter);
 
+const userRouter = require("./routes/users");
+app.use("/auth", userRouter); // as per https://www.youtube.com/watch?v=OGGnjBE5qr0&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL&index=10&t=1882s
+
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server is running on port 3001");
   });
+});
+
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
+  username: "admin",
+  password: "adminadmin",
+  database: "justselldb",
+  host: "fsd10-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com",
+  dialect: "mysql",
+  port: 3306, // Default MySQL port
 });

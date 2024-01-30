@@ -5,10 +5,11 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
   width: 100%;
-  height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
+  height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};// find solution
   background-color: black;
   display: flex;
   flex-direction: column;
+  position: fixed;
 
   @media (min-width: 700px) {
     height: 80px;
@@ -21,6 +22,7 @@ export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 5%;
+  
 `;
 
 export const RightContainer = styled.div`
@@ -35,6 +37,7 @@ export const NavbarInnerContainer = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
+  position: fixed;
 `;
 
 // div that contains the links

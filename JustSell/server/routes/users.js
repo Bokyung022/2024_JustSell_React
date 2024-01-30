@@ -1,9 +1,9 @@
-//https://www.youtube.com/watch?v=-UKPph5XU_c
+//https://www.youtube.com/watch?v=OGGnjBE5qr0&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL&index=8&t=1882s
 const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
-const { validateToken } = require("../middlewares/AuthMiddleware");
+const { validateToken } = require("../middleware/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
     res.json({ token: accessToken, username: username, id: user.id });//returning the access token, if user makes request we use this token to validade the request
   });
 });
-
+ 
 router.get("/auth", validateToken, (req, res) => {
   res.json(req.user);
 });

@@ -10,7 +10,6 @@ export const FooterContainer = styled.footer`
   background-color: black;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  position: fixed;
   left: 0;
   bottom: 0;
 

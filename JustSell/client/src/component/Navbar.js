@@ -1,5 +1,4 @@
 // https://www.youtube.com/watch?v=1yMrdBsep-A - PedroTech: Responsive Navbar In React With Styled Components Tutorial
-
 import React, { useState } from "react";
 import LogoImg from "../images/logo.png";
 import {
