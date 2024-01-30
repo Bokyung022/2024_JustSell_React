@@ -6,6 +6,16 @@ const bcrypt = require("bcrypt");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
 
+router.get("/", async (req, res) => {
+  try {
+    const listOfUsers = await Users.findAll();
+    res.json(listOfUsers);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
   bcrypt.hash(password, 10).then((hash) => {
@@ -27,11 +37,11 @@ router.post("/login", async (req, res) => {
   bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) res.json({ error: "Wrong Username And Password Combination" });
 
-    const accessToken = sign( 
+    const accessToken = sign(
       { username: user.username, id: user.id }, //data to pass to jwt to create the token
       "importantsecret" //should be a ramdon string generator KVP
     );
-    res.json({ token: accessToken, username: username, id: user.id });//returning the access token, if user makes request we use this token to validade the request
+    res.json({ token: accessToken, username: username, id: user.id }); //returning the access token, if user makes request we use this token to validade the request
   });
 });
 

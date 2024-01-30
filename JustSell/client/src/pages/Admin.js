@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const UsersManagement = () => {
+const Admin = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3001/users");
+        console.log("API Response:", response.data); // Log the response
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -52,20 +54,20 @@ const UsersManagement = () => {
                 <td>{user.isRealtorApproved}</td>
                 <td>{user.realtorCertification}</td>
                 <td>
-                  <a
-                    href={`edit_users/${user.userId}`}
+                  <Link
+                    to={`edit_users/${user.userID}`}
                     className="btn btn-warning"
                     title="Edit"
                   >
                     <i className="bi bi-pencil"></i>
-                  </a>
-                  <a
-                    href={`delete_users/${user.userId}`}
+                  </Link>
+                  <Link
+                    to={`delete_users/${user.userID}`}
                     className="btn btn-danger"
                     title="Delete"
                   >
                     <i className="bi bi-trash"></i>
-                  </a>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -76,4 +78,4 @@ const UsersManagement = () => {
   );
 };
 
-export default UsersManagement;
+export default Admin;
