@@ -10,8 +10,7 @@ function Login() {
   const [password, setPassword] = useState(" ");
   const [loginMessage, setLoginMessage] = useState(null);
   const { setAuthState } = useContext(AuthContext);
-
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const login = () => {
     const data = { userName: userName, password: password };
@@ -26,19 +25,19 @@ function Login() {
           status: true,
         });
         // Reload the entire page
-        window.location.reload();
+        navigate("/");
       }
     });
-  };      
+  };
 
   return (
     <div className="home">
-      <div className="center">     
+      <div className="center">
         <div className="box-container">
           <div className="formcontainer">
-            <h1 className="heading">Login here:</h1>
+            <h1 className="heading">User Login</h1>
             <div className="box">
-              <label>Username</label>          
+              <label>Username</label>
               <input
                 className="input"
                 type="text"
@@ -59,14 +58,10 @@ function Login() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn"
-              onClick={login}
-            >
+            <button type="submit" className="btn" onClick={login}>
               Login
             </button>
-            
+
             {/* {loginMessage && (
               <p
                 style={{
