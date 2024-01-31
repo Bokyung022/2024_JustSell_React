@@ -67,16 +67,20 @@ router.get("/auth", validateToken, (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { userName, password } = req.body;
 
-  const user = await users.findOne({ where: { username: username } });
+  const user = await users.findOne({ where: { userName: userName } });
 
   if (!user) res.json({ error: "User Doesn't Exist" });
 
-  bcrypt.compare(password, user.password).then((match) => {
+  bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) res.json({ error: "Wrong Username And Password Combination" });
 
-    res.json("YOU LOGGED IN!!!");
+    const accessToken = sign(
+      { userName: user.userName, userID: user.userID },
+      "importantsecret"
+    );
+    res.json({ token: accessToken, userName: userName, userID: userName.userID });
   });
 });
 
@@ -115,6 +119,10 @@ router.put("/auth/:userID", async (req, res) => {
     console.error("Error updating user:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+});
+
+router.get("/auth", validateToken, (req, res) => {
+  res.json(req.userName);
 });
 
 module.exports = router;

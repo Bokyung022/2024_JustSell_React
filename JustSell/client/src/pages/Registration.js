@@ -201,7 +201,7 @@ function Registration() {
               />
             </div>
 
-            {/* <div className="box">
+            <div className="box">
             <label htmlFor="RealtorCertification">Upload Realtor Certification:</label>
             <ErrorMessage name="RealtorCertification" component="span" />
             <Field  
@@ -211,7 +211,7 @@ function Registration() {
               name="RealtorCertification"
               // onChange={handleUpload}
             />
-          </div> */}
+          </div>
 
             <button
               type="submit"

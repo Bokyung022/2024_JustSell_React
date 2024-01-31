@@ -1,5 +1,6 @@
 // https://www.youtube.com/watch?v=1yMrdBsep-A - PedroTech: Responsive Navbar In React With Styled Components Tutorial
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import LogoImg from "../images/logo.png";
 import {
   LeftContainer,
@@ -11,11 +12,46 @@ import {
   NavbarLinkContainer,
   NavbarLinkExtended,
   OpenLinksButton,
-  RightContainer,
+  RightContainer
 } from "../styles/Navbar.style";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
+  
+  const [authState, setAuthState] = useState({
+    username: "",
+    userID: 0,
+    status: false,
+  });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/auth/auth", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          setAuthState({ ...authState, status: false });
+        } else {
+          setAuthState({
+            username: response.data.username,
+            userID: response.data.userID,
+            status: true,
+          });
+        }
+      });
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setAuthState({
+      username: "",
+      userID: 0,
+      status: false,
+    });
+  };
 
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
@@ -27,9 +63,12 @@ function Navbar() {
             <NavbarLink to="/listings">Listings</NavbarLink>
             <NavbarLink to="/createProperty">Create Property</NavbarLink>
             <NavbarLink to="/admin">Admin</NavbarLink>
-            <NavbarLink to="/login">Login</NavbarLink>
-            <NavbarLink to="/registration">Registration</NavbarLink>
-
+            {!authState.status && (
+              <>
+                <NavbarLink to="/login"> Login</NavbarLink>
+                <NavbarLink to="/registration"> Registration</NavbarLink>
+              </>
+            )}
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -40,6 +79,12 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
+
+        <loggedInContainer>
+              <h1>{authState.username} </h1>
+              {authState.status && <button onClick={logout}> Logout</button>}
+        </loggedInContainer>
+
           <Logo src={LogoImg}></Logo>
         </RightContainer>
       </NavbarInnerContainer>

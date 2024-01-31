@@ -163,8 +163,32 @@ do we need setup heroku at the begining ? or implement at the end?
 3. Need assistance / figure things out
 - User data fetch didn't work well for the Admin page, need to fix the probelm
 - No idea how to deal with images
+
+2024/01/30 Karina
+1. Done since last scrum
+- Worked on CSS styles
+- Connected application with rds and s3
+- Created Login Page and Registration
+- searching how all members can connect with s3 and rds
+- Creted NavBar, Footer and home page body
+2. Plan until next Scrum
+- Working on Login Page and Registration
+- Working on CSS
+- WOrking on home page body
+3. Need assistance / figure things out
+- User data fetch didn't work well for Login Page and Registration
 ----------------------------------------------------------------------------------------------
- 
+ 2024/01/31 Karina
+1. Done since last scrum
+- Worked on CSS styles
+- Registration Page working
+- Login Page working with AUTH
+2. Plan until next Scrum
+- Working on Logout function
+- Working on CSS for logout
+- Working on home page body
+3. Need assistance / figure things out
+- Log out functionalities, auth client side
 
 
 

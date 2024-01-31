@@ -104,3 +104,13 @@ export const NavbarExtendedContainer = styled.div`
     display: none;
   }
 `;
+
+export const loggedInContainer = styled.div`
+  background-color: #e59524;
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  `;

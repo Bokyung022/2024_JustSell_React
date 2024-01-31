@@ -1,24 +1,34 @@
 //https://www.youtube.com/watch?v=OGGnjBE5qr0&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL&index=8&t=1882s - PedroTech
+//https://www.youtube.com/watch?v=RnALCXo6U-k&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL&index=10 - PedroTech
 import axios from "axios";
-import { default as React, useState } from "react";
+import { default as React, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 
 function Login() {
-  const navigate = useNavigate();
-  const [username, setUsername] = useState(" ");
+  const [userName, setUsername] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [loginMessage, setLoginMessage] = useState(null);
+  const { setAuthState } = useContext(AuthContext);
+
+  const history = useNavigate();
 
   const login = () => {
-    const data = { username: username, password: password };
-    axios
-      .post("http://localhost:3001/auth/login", data)
-      .then((response) => {
-        // handle success
-        console.log(data);
-        setLoginMessage("Login successful!");
-      });
-  };
+    const data = { userName: userName, password: password };
+    axios.post("http://localhost:3001/auth/login", data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        localStorage.setItem("accessToken", response.data.token);
+        setAuthState({
+          userName: response.data.userName,
+          id: response.data.userID,
+          status: true,
+        });
+        history("/");
+      }
+    });
+  };      
 
   return (
     <div className="home">
@@ -56,7 +66,7 @@ function Login() {
               Login
             </button>
             
-            {loginMessage && (
+            {/* {loginMessage && (
               <p
                 style={{
                   color: "green", 
@@ -70,7 +80,7 @@ function Login() {
               >
                 {loginMessage}
               </p>
-            )}
+            )} */}
           </div>
         </div>
       </div>
