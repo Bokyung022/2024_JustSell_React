@@ -23,6 +23,9 @@ app.use("/auth", userRouter); // as per https://www.youtube.com/watch?v=OGGnjBE5
 const paymentRouter = require("./routes/payment");
 app.use("/payment", paymentRouter);
 
+const imageRouter = require("./routes/images");
+app.use("/images", imageRouter);
+
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server is running on port 3001");
