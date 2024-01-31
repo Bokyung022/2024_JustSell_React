@@ -97,8 +97,25 @@ router.delete("/:userID", async (req, res) => {
   }
 });
 
-router.put("/auth/:userID", async (req, res) => {
-  const userID = req.params.userID;
+router.get("/:id", async (req, res) => {
+  const userID = req.params.id;
+
+  try {
+    const user = await users.findByPk(userID);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error("Error fetching user by ID:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const userID = req.params.id;
   const updatedUserData = req.body;
 
   try {
