@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import {
   FooterColumn,
   FooterContainer,
-  LeftFooterContainer,
-  RightFooterContainer
+  FooterContent
 } from "../styles/Footer.style";
 
 function Footer() {
@@ -14,25 +13,25 @@ function Footer() {
   return (
 
   <FooterContainer>
-  <FooterColumn>
-    <LeftFooterContainer>
+  <FooterContent>
+    <FooterColumn>
       <div className="footerbox">
         <a><i className="fas fa-phone"></i><span>(514) 909-0909</span></a>
         <a><i className="fas fa-fax"></i><span>(514) 909-8889</span></a>
         <a><i className="fas fa-envelope"></i><span>JustSell@gmail.com</span></a>
         <a><i className="fas fa-map-marker-alt"></i><span>Montreal, Quebec - H1X 1A1</span></a>
       </div>
-    </LeftFooterContainer>
+    </FooterColumn>
 
-    <RightFooterContainer>
+    <FooterColumn>
       <div className="footerbox">
         <a><i className="fab fa-facebook-f"></i><span>Facebook</span></a>
         <a><i className="fab fa-twitter"></i><span>Twitter</span></a>
         <a><i className="fab fa-linkedin"></i><span>Linkedin</span></a>
         <a><i className="fab fa-instagram"></i><span>Instagram</span></a>
       </div>
-      </RightFooterContainer>
       </FooterColumn>
+      </FooterContent>
 
       {/* <CreditContainer>
         <Credit>&copy; copyright by <span>JustSell.fake.org.jac</span> | All Rights Reserved!</Credit>
