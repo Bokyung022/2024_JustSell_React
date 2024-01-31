@@ -51,14 +51,14 @@ export const NavbarLink = styled(Link)`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  margin: 30px;
-  padding: 5px;
+  margin: 5px;
+  padding: 10px;
 
   &:hover {
     background-color: #e59524;
     color: black;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
 
   }
 

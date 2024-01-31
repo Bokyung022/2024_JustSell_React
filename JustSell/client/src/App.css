@@ -212,7 +212,6 @@ section {
 
 /* ********HOME********** */
 .home {
-  /* background: url("/client/public/staticimages/home-bg_opt1.1.jpg") no-repeat; */
   background: url("./images/home-bg_opt1.jpg") no-repeat;
   background-size: cover;
   background-position: center;
@@ -224,7 +223,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: 8rem;
-  padding-bottom: 30rem;
+  padding-bottom: 10rem;
 }
 
 .home .center form {
@@ -274,6 +273,56 @@ section {
 }
 
 .home .center form .box p span {
+  color: var(--main-color);
+}
+
+.home .center .formcontainer {
+  background-color: var(--white);
+  padding: 2rem;
+  box-shadow: var(--box-shodow);
+  width: 80rem;
+}
+
+.home .center .formcontainer h3 {
+  padding-bottom: 1rem;
+  text-align: center;
+  color: var(--black);
+  text-transform: capitalize;
+  font-size: 2.5rem;
+}
+
+.home .center .formcontainer .flex {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.home .center .formcontainer .box {
+  flex: 1 1 20rem;
+}
+
+.home .center .formcontainer .box .input {
+  width: 100%;
+  border: var(--border);
+  padding: 1.4rem;
+  color: var(--black);
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+.home .center .formcontainer .box p {
+  color: var(--light-color);
+  font-size: 1.7rem;
+  padding-top: 1rem;
+}
+
+.home .center .formcontainer .box label {
+  color: var(--light-color);
+  font-size: 1.7rem;
+  padding-top: 1rem;
+}
+
+.home .center .formcontainer .box p span {
   color: var(--main-color);
 }
 
@@ -949,6 +998,43 @@ section {
   color: var(--main-color);
 }
 
+/* ********ADMIN PAGE********** */
+.usersPanel {
+  padding: 150px;
+}
+
+.usersContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.usersTable {
+  overflow-x: auto;
+}
+
+.usersHeading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
 /* media queries  */
 
 @media (max-width: 991px) {
@@ -1100,4 +1186,8 @@ section {
   .listings .box-container form .box .thumb {
     height: 20rem;
   }
+}
+
+.error-message {
+  color: red;
 }
