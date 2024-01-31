@@ -6,6 +6,7 @@ const Admin = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [editedData, setEditedData] = useState({});
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,170 +75,166 @@ const Admin = () => {
 
   return (
     <div className="usersPanel">
-      {Array.isArray(users) && users.length > 0 ? (
-        <div className="usersContainer">
-          <div className="usersTable">
-            <h1 className="usersHeading">Manage Users Account</h1>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>User ID</th>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Phone Number</th>
-                  <th>Company</th>
-                  <th>Role</th>
-                  <th>Realtor Approved</th>
-                  <th>Realtor Certification</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.userID}>
-                    <td>{user.userID}</td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.userName}
-                          onChange={(e) => handleInputChange(e, "userName")}
-                        />
-                      ) : (
-                        user.userName
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.email}
-                          onChange={(e) => handleInputChange(e, "email")}
-                        />
-                      ) : (
-                        user.email
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.firstName}
-                          onChange={(e) => handleInputChange(e, "firstName")}
-                        />
-                      ) : (
-                        user.firstName
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.lastName}
-                          onChange={(e) => handleInputChange(e, "lastName")}
-                        />
-                      ) : (
-                        user.lastName
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.Phone}
-                          onChange={(e) => handleInputChange(e, "Phone")}
-                        />
-                      ) : (
-                        user.Phone
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.company}
-                          onChange={(e) => handleInputChange(e, "company")}
-                        />
-                      ) : (
-                        user.company
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.role}
-                          onChange={(e) => handleInputChange(e, "role")}
-                        />
-                      ) : (
-                        user.role
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.isRealtorApproved}
-                          onChange={(e) =>
-                            handleInputChange(e, "isRealtorApproved")
-                          }
-                        />
-                      ) : (
-                        user.isRealtorApproved
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <input
-                          type="text"
-                          value={editedData.realtorCertification}
-                          onChange={(e) =>
-                            handleInputChange(e, "realtorCertification")
-                          }
-                        />
-                      ) : (
-                        user.realtorCertification
-                      )}
-                    </td>
-                    <td>
-                      {editingUser === user.userID ? (
-                        <>
-                          <button
-                            className="btn"
-                            onClick={() => handleSaveClick(user.userID)}
-                          >
-                            Save
-                          </button>
-                          <button className="btn" onClick={handleCancelClick}>
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
+      <div className="usersContainer">
+        <div className="usersTable">
+          <h1 className="usersHeading">Manage Users Account</h1>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Realtor Approved</th>
+                <th>Realtor Certification</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.userID}>
+                  <td>{user.userID}</td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.userName}
+                        onChange={(e) => handleInputChange(e, "userName")}
+                      />
+                    ) : (
+                      user.userName
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.email}
+                        onChange={(e) => handleInputChange(e, "email")}
+                      />
+                    ) : (
+                      user.email
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.firstName}
+                        onChange={(e) => handleInputChange(e, "firstName")}
+                      />
+                    ) : (
+                      user.firstName
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.lastName}
+                        onChange={(e) => handleInputChange(e, "lastName")}
+                      />
+                    ) : (
+                      user.lastName
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.Phone}
+                        onChange={(e) => handleInputChange(e, "Phone")}
+                      />
+                    ) : (
+                      user.Phone
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.company}
+                        onChange={(e) => handleInputChange(e, "company")}
+                      />
+                    ) : (
+                      user.company
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.role}
+                        onChange={(e) => handleInputChange(e, "role")}
+                      />
+                    ) : (
+                      user.role
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.isRealtorApproved}
+                        onChange={(e) =>
+                          handleInputChange(e, "isRealtorApproved")
+                        }
+                      />
+                    ) : (
+                      user.isRealtorApproved
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <input
+                        type="text"
+                        value={editedData.realtorCertification}
+                        onChange={(e) =>
+                          handleInputChange(e, "realtorCertification")
+                        }
+                      />
+                    ) : (
+                      user.realtorCertification
+                    )}
+                  </td>
+                  <td>
+                    {editingUser === user.userID ? (
+                      <>
                         <button
                           className="btn"
-                          onClick={() => handleEditClick(user.userID)}
+                          onClick={() => handleSaveClick(user.userID)}
                         >
-                          Edit
+                          Save
                         </button>
-                      )}
+                        <button className="btn" onClick={handleCancelClick}>
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
                       <button
                         className="btn"
-                        onClick={() => deleteUser(user.userID)}
+                        onClick={() => handleEditClick(user.userID)}
                       >
-                        Delete
+                        Edit
                       </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                    )}
+                    <button
+                      className="btn"
+                      onClick={() => deleteUser(user.userID)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+      </div>
     </div>
   );
 };

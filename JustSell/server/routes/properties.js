@@ -3,6 +3,7 @@ const router = express.Router();
 const { properties } = require("../models");
 const Sequelize = require("sequelize");
 const { Op } = require("sequelize");
+const { validateToken } = require("../middleware/AuthMiddleware");
 
 router.get("/", async (req, res) => {
   const listOfProperties = await properties.findAll();
