@@ -25,7 +25,8 @@ function Login() {
           id: response.data.userID,
           status: true,
         });
-        history("/");
+        // Reload the entire page
+        window.location.reload();
       }
     });
   };      

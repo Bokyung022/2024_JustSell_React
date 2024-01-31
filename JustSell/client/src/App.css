@@ -203,6 +203,15 @@ section {
   display: block;
 }
 
+/* ********LOGOUT BTN********** */
+.logoutbutton {
+  background-color: #007bff;
+  color: #fff; 
+  padding: 10px 20px; 
+  cursor: pointer;
+}
+
+
 /* ********MENU BTN********** */
 #menu-btn {
   font-size: 2.5rem;
@@ -1191,3 +1200,29 @@ section {
 .error-message {
   color: red;
 }
+
+
+
+.footerbox {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.footerbox a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.footerbox i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.footerbox span {
+  font-size: 14px;
+}
+

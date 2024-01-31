@@ -82,7 +82,7 @@ function Navbar() {
 
         <loggedInContainer>
               <h1>{authState.username} </h1>
-              {authState.status && <button onClick={logout}> Logout</button>}
+              {authState.status && <button className="btn" onClick={logout}> Logout</button>}
         </loggedInContainer>
 
           <Logo src={LogoImg}></Logo>

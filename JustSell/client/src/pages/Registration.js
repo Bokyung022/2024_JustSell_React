@@ -65,7 +65,6 @@ function Registration() {
           {({ handleChange, values }) => (
             <Form className="formContainer">
               <h3>Registration</h3>
-
               <div className="box">
                 <label htmlFor="userName">Username:</label>
                 <ErrorMessage name="userName" component="span" />
