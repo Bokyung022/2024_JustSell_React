@@ -50,78 +50,72 @@ function Filter() {
   };
   return (
     <>
-    <div class="home">
-    <section class="center">
-      <section className="filters" style={{ paddingBottom: 0 }}>
-        <Formik
-          initialValues={{
-            location: "",           
-            propertyType: "apartment",            
-          }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          
-          <Form className="form">
-            <div id="close-filter">
-              <i className="fas fa-times"></i>
-            </div>
-            <h3>Find your perfect HOME</h3>
-            <div className="flex">
-            
-              <div className="box">
-                <p>Location</p>
-                <Field
-                  type="text"
-                  name="location"
-                  required
-                  maxLength="50"
-                  placeholder="Search by city or Postal code"
-                  className="input"
-                />
-                <ErrorMessage
-                  name="location"
-                  component="div"
-                  className="error"
-                />
-              </div>
-              
-              <div className="box">
-                <p>Property type</p>
-                <Field
-                  as="select"
-                  name="propertyType"
-                  className="input"
-                  required
-                >
-                  <option value="apartment">Apartment</option>
-                  <option value="house">House</option>
-                  <option value="duplexTriplex">Duplex or Triplex</option>
-                  <option value="condo">Condo</option>
-                  <option value="commercialBuilding">
-                    Commercial Building
-                  </option>
-                </Field>
-              </div>             
-              
-            </div>
-            <button type="submit" className="btn">
-              Search Property
-            </button>
-          </Form>
-        </Formik>
-      </section>
-      </section>
-  </div>
+      <div class="home">
+        <section class="center">
+          <section className="filters" style={{ paddingBottom: 0 }}>
+            <Formik
+              initialValues={{
+                location: "",
+                propertyType: "apartment",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              <Form className="form">
+                <div id="close-filter">
+                  <i className="fas fa-times"></i>
+                </div>
+                <h3>Find your perfect HOME</h3>
+                <div className="flex">
+                  <div className="box">
+                    <p>Location</p>
+                    <Field
+                      type="text"
+                      name="location"
+                      required
+                      maxLength="50"
+                      placeholder="Search by city or Postal code"
+                      className="input"
+                    />
+                    <ErrorMessage
+                      name="location"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="box">
+                    <p>Property type</p>
+                    <Field
+                      as="select"
+                      name="propertyType"
+                      className="input"
+                      required
+                    >
+                      <option value="apartment">Apartment</option>
+                      <option value="house">House</option>
+                      <option value="duplexTriplex">Duplex or Triplex</option>
+                      <option value="condo">Condo</option>
+                      <option value="commercialBuilding">
+                        Commercial Building
+                      </option>
+                    </Field>
+                  </div>
+                </div>
+                <button type="submit" className="btn">
+                  Search Property
+                </button>
+              </Form>
+            </Formik>
+          </section>
+        </section>
+      </div>
 
       <div id="filter-btn" className="fas fa-filter"></div>
       <section className="listings">
         {searchPerformed ? (
           <>
             <h1 className="heading">Search Results</h1>
-           
-  
-
 
             <div className="box-container">
               {listOfProperties.map((property) => (
@@ -133,10 +127,7 @@ function Filter() {
                       value={property.propertyID}
                     />
                     <div className="thumb">
-                      {/* <img
-                        src={`images/PropertiesImages/${property.imageFileName}`}
-                        alt="Property"
-                      /> */}
+                      <img src={property.imageUrl} alt="Property" />
                     </div>
                     <div className="box">
                       <div className="price">

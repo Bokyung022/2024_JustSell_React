@@ -74,6 +74,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imageName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
   properties.associate = (models) => {
     properties.hasMany(models.images, {

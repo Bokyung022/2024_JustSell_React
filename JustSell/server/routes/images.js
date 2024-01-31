@@ -47,11 +47,12 @@ router.post("/", upload.single("image"), async (req, res) => {
   try {
     const file = req.file;
     const description = req.body.description;
-    const isPrimaryPicture = req.body.isPrimaryPicture;
+    const isPrimaryPicture = req.body.isPrimaryPicture === "true";
     const imageName = generateFileName();
+    const propertyPropertyID = req.body.propertyID;
 
     const fileBuffer = await sharp(file.buffer)
-      .resize({ height: 1920, width: 1080, fit: "contain" })
+      .resize({ height: 1080, width: 1920, fit: "contain" })
       .toBuffer();
 
     await uploadFile(fileBuffer, imageName, file.mimetype);
@@ -60,9 +61,15 @@ router.post("/", upload.single("image"), async (req, res) => {
       imageName,
       description,
       isPrimaryPicture,
+      propertyPropertyID,
     });
-
-    res.status(201).send(post);
+    if (isPrimaryPicture) {
+      await properties.update(
+        { imageName },
+        { where: { propertyID: propertyPropertyID } }
+      );
+    }
+    res.status(201).send(image);
   } catch (error) {
     console.error(error);
     res.status(500).send({ error: "Internal Server Error" });

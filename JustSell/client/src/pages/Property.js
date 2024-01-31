@@ -19,7 +19,7 @@ function Property() {
           `http://localhost:3001/properties/byId/${id}`
         );
         /*
-        const imagesResponse = await axios.get(`http://localhost:3001/images/byPropertyId/${id}`);
+        const imagesResponse = await axios.get(`http://localhost:3001/images/${id}`);
         */
         setProperty(propertyResponse.data);
         /*
@@ -38,7 +38,7 @@ function Property() {
   /*
   const renderImages = () => {
     return images.map((image) => (
-      <img key={image.id} src={`images/PropertiesImages/${image.ImageFileName}`} alt="Missing the property picture" className="swiper-slide" />
+      <img key={image.id} src={image.imageUrl} alt="Missing the property picture" className="swiper-slide" />
     ));
   };
   */

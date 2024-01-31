@@ -11,6 +11,7 @@ function Listings() {
   useEffect(() => {
     axios.get("http://localhost:3001/properties").then((response) => {
       setListOfProperties(response.data);
+      console.log(response.data);
     });
   }, []);
   return (
@@ -19,7 +20,7 @@ function Listings() {
         <h1 class="heading">All Listings</h1>
         <div className="box-container">
           {listOfProperties.map((property) => (
-            <form key={property.PropertyID} action="" method="POST">
+            <form key={property.propertyID} action="" method="POST">
               <div className="box">
                 <input
                   type="hidden"
@@ -27,10 +28,7 @@ function Listings() {
                   value={property.propertyID}
                 />
                 <div className="thumb">
-                  <img
-                    // src={}
-                    alt="Missing the property picture"
-                  />
+                  <img src={property.imageUrl} alt="the property picture" />
                 </div>
               </div>
               <div className="box">

@@ -175,10 +175,7 @@ function Filter() {
                           value={property.propertyID}
                         />
                         <div className="thumb">
-                          <img
-                            src={`images/PropertiesImages/${property.imageFileName}`}
-                            alt="Property"
-                          />
+                          <img src={property.imageUrl} alt="Property" />
                         </div>
                         <div className="box">
                           <div className="price">

@@ -4,10 +4,16 @@ const { properties } = require("../models");
 const Sequelize = require("sequelize");
 const { Op } = require("sequelize");
 const { validateToken } = require("../middleware/AuthMiddleware");
+const { uploadFile, deleteFile, getObjectSignedUrl } = require("../s3");
 
 router.get("/", async (req, res) => {
-  const listOfProperties = await properties.findAll();
-  res.json(listOfProperties);
+  let listOfProperties = await properties.findAll();
+  const updatedProperties = listOfProperties.map(async (property) => {
+    property.imageUrl = await getObjectSignedUrl(property.imageName);
+    return property;
+  });
+  const listProperties = await Promise.all(updatedProperties);
+  res.json(listProperties);
 });
 
 router.get("/search", async (req, res) => {

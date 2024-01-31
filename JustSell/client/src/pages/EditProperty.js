@@ -26,6 +26,9 @@ function EditProperty() {
     constructionStatus: "",
   });
   const navigate = useNavigate();
+  const [file, setFile] = useState();
+  const [description, setDescription] = useState("");
+  const [isPrimaryPicture, setIsPrimaryPicture] = useState(false);
 
   useEffect(() => {
     axios
@@ -54,7 +57,24 @@ function EditProperty() {
         console.error("Error updating property:", error);
       });
   };
+  const submitImage = async (event) => {
+    event.preventDefault();
 
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("description", description);
+    formData.append("propertyID", { id });
+    formData.append("isPrimaryPicture", isPrimaryPicture);
+    await axios.post("http://localhost:3001/images", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    navigate("/");
+  };
+  const fileSelected = (event) => {
+    const file = event.target.files[0];
+    setFile(file);
+  };
   return (
     <>
       <div className="home">
@@ -346,7 +366,7 @@ function EditProperty() {
       </div>
       <div className="home">
         <section className="center">
-          <form action="/images" method="POST" enctype="multipart/form-data">
+          <form onSubmit={submitImage}>
             <h3>Attach Image to Property</h3>
             <div className="box">
               <p>Property ID: </p>
@@ -360,12 +380,20 @@ function EditProperty() {
 
             <div className="box">
               <p>Image: </p>
-              <input className="input" type="file" name="image" />
+              <input
+                onChange={fileSelected}
+                accept="image/* "
+                className="input"
+                type="file"
+                name="image"
+              />
             </div>
 
             <div className="box">
               <p>Description: </p>
               <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="input"
                 type="text"
                 name="description"
@@ -374,12 +402,26 @@ function EditProperty() {
             </div>
             <div className="box">
               <p>isPrimaryPicture: </p>
-              <input
-                className="input"
-                type="text"
-                name="isPrimaryPicture"
-                placeholder="true or false"
-              />
+              <label>
+                <input
+                  type="radio"
+                  name="isPrimaryPicture"
+                  value={true}
+                  checked={isPrimaryPicture === true}
+                  onChange={(e) => setIsPrimaryPicture(true)}
+                />
+                True
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="isPrimaryPicture"
+                  value={false}
+                  checked={isPrimaryPicture === false}
+                  onChange={(e) => setIsPrimaryPicture(false)}
+                />
+                False
+              </label>
             </div>
 
             <input className="btn" type="submit" value="Submit" />
