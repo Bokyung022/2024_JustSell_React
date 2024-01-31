@@ -6,6 +6,7 @@ const Admin = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [editedData, setEditedData] = useState({});
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +39,21 @@ const Admin = () => {
 
   const handleSaveClick = async (userID) => {
     try {
-      await axios.put(`http://localhost:3001/auth/${userID}`, editedData);
-      const response = await axios.get("http://localhost:3001/auth");
-      setUsers(response.data);
+      console.log("Updating user with ID:", userID);
+      console.log("Data to be sent:", editedData);
+
+      const response = await axios.put(
+        `http://localhost:3001/auth/${userID}`,
+        editedData
+      );
+
+      console.log("Response from server:", response.data);
+
+      const updatedUsersResponse = await axios.get(
+        "http://localhost:3001/auth"
+      );
+      setUsers(updatedUsersResponse.data);
+
       setEditingUser(null);
       setEditedData({});
     } catch (error) {

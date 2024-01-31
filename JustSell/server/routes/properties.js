@@ -3,6 +3,7 @@ const router = express.Router();
 const { properties } = require("../models");
 const Sequelize = require("sequelize");
 const { Op } = require("sequelize");
+const { validateToken } = require("../middleware/AuthMiddleware");
 
 router.get("/", async (req, res) => {
   const listOfProperties = await properties.findAll();
@@ -112,25 +113,21 @@ router.delete("/:propertyID", async (req, res) => {
   res.json("Deleted Successfully");
 });
 
-// Update a property by ID
 router.put("/:id", async (req, res) => {
   const propertyID = req.params.id;
   const updatedData = req.body;
 
   try {
-    // Check if the property exists
     const existingProperty = await properties.findByPk(propertyID);
 
     if (!existingProperty) {
       return res.status(404).json({ error: "Property not found" });
     }
 
-    // Update the property
     await properties.update(updatedData, {
       where: { propertyID: propertyID },
     });
 
-    // Fetch and return the updated property
     const updatedProperty = await properties.findByPk(propertyID);
     res.json(updatedProperty);
   } catch (error) {

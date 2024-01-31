@@ -6,11 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    imagePath: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    imageFileName: {
+    imageName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,11 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  images.associate = (models) => {
-    images.belongsTo(models.properties, {
-      foreignKey: "propertiesPropertyID",
-      as: "property",
-    });
-  };
+
   return images;
 };

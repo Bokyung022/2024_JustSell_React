@@ -74,19 +74,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    users_UserID: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
   });
   properties.associate = (models) => {
     properties.hasMany(models.images, {
       onDelete: "cascade",
-    });
-
-    properties.belongsTo(models.users, {
-      foreignKey: "users_UserID",
-      as: "user",
     });
   };
 
