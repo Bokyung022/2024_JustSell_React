@@ -189,7 +189,8 @@ do we need setup heroku at the begining ? or implement at the end?
 - Working on home page body
 3. Need assistance / figure things out
 - Log out functionalities, auth client side
- 2024/01/31 Xing
+ 
+2024/01/31 Xing
 1. Done since last scrum
 - implemented payment functionality
 2. Plan until next Scrum
@@ -199,7 +200,13 @@ do we need setup heroku at the begining ? or implement at the end?
 3. Need assistance / figure things out
 -   understanding how to intergate s3
 
-
-
+2024/01/31 Bo Kyung
+1. Done since last scrum
+- Implemented Admin page CRUD function
+- Helped to fix the error in registration page
+2. Plan until next Scrum
+- Adjust accessible pages based on role
+- watch tutorials for deploying application on Heroku
+3. Need assistance / figure things out
 
 
