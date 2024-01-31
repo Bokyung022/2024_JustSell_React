@@ -12,12 +12,11 @@ import {
   NavbarLinkContainer,
   NavbarLinkExtended,
   OpenLinksButton,
-  RightContainer
+  RightContainer,
 } from "../styles/Navbar.style";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
-  
   const [authState, setAuthState] = useState({
     username: "",
     userID: 0,
@@ -36,13 +35,13 @@ function Navbar() {
           setAuthState({ ...authState, status: false }); //destructor the object
         } else {
           setAuthState({
-            username: response.data.username,
+            username: response.data.userName,
             userID: response.data.userID,
             status: true,
           });
         }
       });
-  }, []);
+  }, [authState]);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -80,11 +79,16 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
 
-        <loggedInContainer>
-              <h1>{authState.username} </h1>
-              {authState.status && <button className="btn" onClick={logout}> Logout</button>}
-        </loggedInContainer>
-        
+          {authState.status ? (
+            <loggedInContainer>
+              <h1 style={{ color: "blue", fontSize: "18px", margin: "0" }}>
+                Welcome! {authState.username}
+              </h1>
+              <button className="btn" onClick={logout}>
+                Logout
+              </button>
+            </loggedInContainer>
+          ) : null}
 
           <Logo src={LogoImg}></Logo>
         </RightContainer>

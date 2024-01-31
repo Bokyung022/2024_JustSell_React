@@ -8,7 +8,7 @@ const router = express.Router();
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
-const { images } = require("../models");
+const { images, properties } = require("../models");
 const { Op } = require("sequelize");
 const { uploadFile, deleteFile, getObjectSignedUrl } = require("../s3");
 const storage = multer.memoryStorage();
@@ -47,10 +47,10 @@ router.post("/", upload.single("image"), async (req, res) => {
   try {
     const file = req.file;
     const description = req.body.description;
-    const isPrimaryPicture = req.body.isPrimaryPicture === "true";
+    const isPrimaryPicture = req.body.isPrimaryPicture;
     const imageName = generateFileName();
     const propertyPropertyID = req.body.propertyID;
-
+    console.log(isPrimaryPicture);
     const fileBuffer = await sharp(file.buffer)
       .resize({ height: 1080, width: 1920, fit: "contain" })
       .toBuffer();
@@ -65,9 +65,10 @@ router.post("/", upload.single("image"), async (req, res) => {
     });
     if (isPrimaryPicture) {
       await properties.update(
-        { imageName },
+        { imageName: imageName },
         { where: { propertyID: propertyPropertyID } }
       );
+      console.log("we are here");
     }
     res.status(201).send(image);
   } catch (error) {

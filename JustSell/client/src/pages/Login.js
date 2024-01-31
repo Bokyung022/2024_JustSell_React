@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState(" ");
   const [loginMessage, setLoginMessage] = useState(null);
   const { setAuthState } = useContext(AuthContext);
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const login = () => {
     const data = { userName: userName, password: password };
@@ -28,7 +28,7 @@ function Login() {
         setLoginMessage("You are logged in");
         setTimeout(() => setLoginMessage(null), 5000);
         // Reload the entire page
-        window.location.reload();
+        navigate("/");
       }
     });
   };
@@ -38,7 +38,7 @@ function Login() {
       <div className="center">
         <div className="box-container">
           <div className="formcontainer">
-            <h1 className="heading">Login here:</h1>
+            <h1 className="heading">User Login</h1>
             <div className="box">
               <label>Username</label>
               <input
@@ -64,12 +64,22 @@ function Login() {
             <button type="submit" className="btn" onClick={login}>
               Login
             </button>
-
-            {loginMessage && (
-              <div className="login-message">
-                <p>{loginMessage}</p>
-              </div>
-            )}
+            
+            {/* {loginMessage && (
+              <p
+                style={{
+                  color: "green", 
+                  fontWeight: "bold",
+                  marginTop: "30px",
+                  textAlign: "center",
+                  fontSize: "40px",
+                  textTransform: "uppercase",
+                  letterSpacing: "2px", 
+                }}
+              >
+                {loginMessage}
+              </p>
+            )} */}
           </div>
         </div>
       </div>

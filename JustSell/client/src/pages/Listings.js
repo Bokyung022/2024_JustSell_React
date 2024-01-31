@@ -9,10 +9,17 @@ function Listings() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/properties").then((response) => {
-      setListOfProperties(response.data);
-      console.log(response.data);
-    });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/properties");
+        const updatedProperties = response.data;
+        setListOfProperties(updatedProperties);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
   return (
     <div>

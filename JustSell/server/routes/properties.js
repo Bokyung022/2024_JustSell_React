@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { properties } = require("../models");
+const { properties, images } = require("../models");
 const Sequelize = require("sequelize");
 const { Op } = require("sequelize");
 const { validateToken } = require("../middleware/AuthMiddleware");
@@ -8,12 +8,18 @@ const { uploadFile, deleteFile, getObjectSignedUrl } = require("../s3");
 
 router.get("/", async (req, res) => {
   let listOfProperties = await properties.findAll();
-  const updatedProperties = listOfProperties.map(async (property) => {
-    property.imageUrl = await getObjectSignedUrl(property.imageName);
-    return property;
-  });
-  const listProperties = await Promise.all(updatedProperties);
-  res.json(listProperties);
+
+  const updatedProperties = await Promise.all(
+    listOfProperties.map(async (property) => {
+      property.dataValues.imageUrl = await getObjectSignedUrl(
+        property.imageName
+      );
+
+      return property;
+    })
+  );
+
+  res.json(updatedProperties);
 });
 
 router.get("/search", async (req, res) => {
@@ -91,9 +97,17 @@ router.get("/search", async (req, res) => {
       offset: startIndex,
       order: [[order, "ASC"]],
     });
+    const updatedProperties = await Promise.all(
+      listOfProperties.map(async (property) => {
+        property.dataValues.imageUrl = await getObjectSignedUrl(
+          property.imageName
+        );
 
-    console.log("List of Properties:", listOfProperties);
-    res.json(listOfProperties);
+        return property;
+      })
+    );
+
+    res.json(updatedProperties);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
