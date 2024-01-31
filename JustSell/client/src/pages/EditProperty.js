@@ -63,7 +63,7 @@ function EditProperty() {
     const formData = new FormData();
     formData.append("image", file);
     formData.append("description", description);
-    formData.append("propertyID", { id });
+    formData.append("propertyID", id);
     formData.append("isPrimaryPicture", isPrimaryPicture);
     await axios.post("http://localhost:3001/images", formData, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -406,9 +406,9 @@ function EditProperty() {
                 <input
                   type="radio"
                   name="isPrimaryPicture"
-                  value={true}
+                  value="true"
                   checked={isPrimaryPicture === true}
-                  onChange={(e) => setIsPrimaryPicture(true)}
+                  onChange={() => setIsPrimaryPicture(true)}
                 />
                 True
               </label>
@@ -416,9 +416,9 @@ function EditProperty() {
                 <input
                   type="radio"
                   name="isPrimaryPicture"
-                  value={false}
+                  value="false"
                   checked={isPrimaryPicture === false}
-                  onChange={(e) => setIsPrimaryPicture(false)}
+                  onChange={() => setIsPrimaryPicture(false)}
                 />
                 False
               </label>
