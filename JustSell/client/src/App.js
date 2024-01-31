@@ -13,11 +13,11 @@ import Listings from "./pages/Listings";
 import Login from "./pages/Login";
 import Property from "./pages/Property";
 import Registration from "./pages/Registration";
-
+import EditUser from "./pages/EditUser";
 
 function App() {
   const [authState, setAuthState] = useState(false);
-    
+
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
@@ -33,6 +33,7 @@ function App() {
             <Route path="/property/:id" element={<Property />} />
             <Route path="/editProperty/:id" element={<EditProperty />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/editUser/:userID" element={<EditUser />} />
           </Routes>
           <Footer />
         </Router>

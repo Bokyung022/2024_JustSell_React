@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [users, setUsers] = useState([]);
-  const [editingUser, setEditingUser] = useState(null);
-  const [editedData, setEditedData] = useState({});
-  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,51 +23,11 @@ const Admin = () => {
       await axios.delete(`http://localhost:3001/auth/${userID}`);
       const response = await axios.get("http://localhost:3001/auth");
       setUsers(response.data);
+      window.alert("User deleted successfully!");
     } catch (error) {
       console.error("Error deleting user:", error);
+      window.alert("Error deleting user. Please try again.");
     }
-  };
-
-  const handleEditClick = (userID) => {
-    setEditingUser(userID);
-    const userToEdit = users.find((user) => user.userID === userID);
-    setEditedData({ ...userToEdit });
-  };
-
-  const handleSaveClick = async (userID) => {
-    try {
-      console.log("Updating user with ID:", userID);
-      console.log("Data to be sent:", editedData);
-
-      const response = await axios.put(
-        `http://localhost:3001/auth/${userID}`,
-        editedData
-      );
-
-      console.log("Response from server:", response.data);
-
-      const updatedUsersResponse = await axios.get(
-        "http://localhost:3001/auth"
-      );
-      setUsers(updatedUsersResponse.data);
-
-      setEditingUser(null);
-      setEditedData({});
-    } catch (error) {
-      console.error("Error updating user:", error);
-    }
-  };
-
-  const handleCancelClick = () => {
-    setEditingUser(null);
-    setEditedData({});
-  };
-
-  const handleInputChange = (e, field) => {
-    setEditedData((prevData) => ({
-      ...prevData,
-      [field]: e.target.value,
-    }));
   };
 
   return (
@@ -90,7 +47,7 @@ const Admin = () => {
                 <th>Company</th>
                 <th>Role</th>
                 <th>Realtor Approved</th>
-                <th>Realtor Certification</th>
+                <th>Realtor Cert.</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -98,130 +55,19 @@ const Admin = () => {
               {users.map((user) => (
                 <tr key={user.userID}>
                   <td>{user.userID}</td>
+                  <td>{user.userName}</td>
+                  <td>{user.email}</td>
+                  <td>{user.firstName}</td>
+                  <td>{user.lastName}</td>
+                  <td>{user.Phone}</td>
+                  <td>{user.company}</td>
+                  <td>{user.role}</td>
+                  <td>{user.isRealtorApproved}</td>
+                  <td>{user.realtorCertification}</td>
                   <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.userName}
-                        onChange={(e) => handleInputChange(e, "userName")}
-                      />
-                    ) : (
-                      user.userName
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.email}
-                        onChange={(e) => handleInputChange(e, "email")}
-                      />
-                    ) : (
-                      user.email
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.firstName}
-                        onChange={(e) => handleInputChange(e, "firstName")}
-                      />
-                    ) : (
-                      user.firstName
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.lastName}
-                        onChange={(e) => handleInputChange(e, "lastName")}
-                      />
-                    ) : (
-                      user.lastName
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.Phone}
-                        onChange={(e) => handleInputChange(e, "Phone")}
-                      />
-                    ) : (
-                      user.Phone
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.company}
-                        onChange={(e) => handleInputChange(e, "company")}
-                      />
-                    ) : (
-                      user.company
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.role}
-                        onChange={(e) => handleInputChange(e, "role")}
-                      />
-                    ) : (
-                      user.role
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.isRealtorApproved}
-                        onChange={(e) =>
-                          handleInputChange(e, "isRealtorApproved")
-                        }
-                      />
-                    ) : (
-                      user.isRealtorApproved
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <input
-                        type="text"
-                        value={editedData.realtorCertification}
-                        onChange={(e) =>
-                          handleInputChange(e, "realtorCertification")
-                        }
-                      />
-                    ) : (
-                      user.realtorCertification
-                    )}
-                  </td>
-                  <td>
-                    {editingUser === user.userID ? (
-                      <>
-                        <button
-                          className="btn"
-                          onClick={() => handleSaveClick(user.userID)}
-                        >
-                          Save
-                        </button>
-                        <button className="btn" onClick={handleCancelClick}>
-                          Cancel
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        className="btn"
-                        onClick={() => handleEditClick(user.userID)}
-                      >
-                        Edit
-                      </button>
-                    )}
+                    <Link to={`/editUser/${user.userID}`}>
+                      <button className="btn">Edit</button>
+                    </Link>
                     <button
                       className="btn"
                       onClick={() => deleteUser(user.userID)}
