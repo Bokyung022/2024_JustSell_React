@@ -57,6 +57,7 @@ function Registration() {
   return (
     <div className="home">
       <div className="center">
+      <div className="box-container">
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -204,6 +205,7 @@ function Registration() {
             </Form>
           )}
         </Formik>
+      </div>
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ function Navbar() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState({ ...authState, status: false });
+          setAuthState({ ...authState, status: false }); //destructor the object
         } else {
           setAuthState({
             username: response.data.username,
@@ -84,6 +84,7 @@ function Navbar() {
               <h1>{authState.username} </h1>
               {authState.status && <button className="btn" onClick={logout}> Logout</button>}
         </loggedInContainer>
+        
 
           <Logo src={LogoImg}></Logo>
         </RightContainer>

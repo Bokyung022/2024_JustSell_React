@@ -203,14 +203,6 @@ section {
   display: block;
 }
 
-/* ********LOGOUT BTN********** */
-.logoutbutton {
-  background-color: #007bff;
-  color: #fff; 
-  padding: 10px 20px; 
-  cursor: pointer;
-}
-
 
 /* ********MENU BTN********** */
 #menu-btn {
@@ -227,12 +219,11 @@ section {
 }
 
 .home .center {
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
+  min-height: 50vh;
+  display: flex;  
   justify-content: center;
-  padding: 8rem;
-  padding-bottom: 10rem;
+  padding-top: 20rem; /* do not touch it, it is for the top of the pages */
+  padding-bottom: 20rem;
 }
 
 .home .center form {
@@ -1226,3 +1217,26 @@ section {
   font-size: 14px;
 }
 
+/* LOGIN MESSAGE */
+.login-message {
+  background-color: #4caf50; 
+  color: white; 
+  text-align: center;
+  padding: 50px; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container .btn {
+  margin-right: 10px; 
+  padding: 10px;
+  color: white;
+}

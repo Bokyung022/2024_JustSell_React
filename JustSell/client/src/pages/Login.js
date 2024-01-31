@@ -10,7 +10,6 @@ function Login() {
   const [password, setPassword] = useState(" ");
   const [loginMessage, setLoginMessage] = useState(null);
   const { setAuthState } = useContext(AuthContext);
-
   const history = useNavigate();
 
   const login = () => {
@@ -25,20 +24,23 @@ function Login() {
           id: response.data.userID,
           status: true,
         });
+        // Set login message and reset after 5 seconds
+        setLoginMessage("You are logged in");
+        setTimeout(() => setLoginMessage(null), 5000);
         // Reload the entire page
         window.location.reload();
       }
     });
-  };      
+  };
 
   return (
     <div className="home">
-      <div className="center">     
+      <div className="center">
         <div className="box-container">
           <div className="formcontainer">
             <h1 className="heading">Login here:</h1>
             <div className="box">
-              <label>Username</label>          
+              <label>Username</label>
               <input
                 className="input"
                 type="text"
@@ -59,29 +61,15 @@ function Login() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn"
-              onClick={login}
-            >
+            <button type="submit" className="btn" onClick={login}>
               Login
             </button>
-            
-            {/* {loginMessage && (
-              <p
-                style={{
-                  color: "green", 
-                  fontWeight: "bold",
-                  marginTop: "30px",
-                  textAlign: "center",
-                  fontSize: "40px",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px", 
-                }}
-              >
-                {loginMessage}
-              </p>
-            )} */}
+
+            {loginMessage && (
+              <div className="login-message">
+                <p>{loginMessage}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
