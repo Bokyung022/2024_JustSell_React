@@ -46,43 +46,45 @@ function CreateProperty() {
   }, []);
 
   const initialValues = {
-    streetNum: 0,
+    streetNum: "",
     streetName: "",
     city: "",
     province: "",
     postal: "",
     description: "",
-    price: 0.0,
-    bathrooms: 0,
-    bedrooms: 0,
-    floors: 0,
-    size: 0.0,
-    furnished: 0,
+    price: "",
+    bathrooms: "",
+    bedrooms: "",
+    floors: "",
+    size: "",
+    furnished: "",
     propertyType: "",
-    yearOfBuilt: 0,
+    yearOfBuilt: "",
     amenities: "",
     sellOption: "",
     constructionStatus: "",
   };
 
   const validationSchema = Yup.object().shape({
-    streetNum: Yup.number().required().min(0),
-    streetName: Yup.string().required(),
-    city: Yup.string().required(),
-    province: Yup.string().required(),
-    postal: Yup.string().required(),
-    description: Yup.string().required(),
-    price: Yup.number().required().min(0),
-    bathrooms: Yup.number().required().min(0),
-    bedrooms: Yup.number().required().min(0),
-    floors: Yup.number().required().min(0),
-    size: Yup.number().required().min(0),
-    furnished: Yup.number().required(),
-    propertyType: Yup.string().required(),
-    yearOfBuilt: Yup.number().required().min(0),
-    amenities: Yup.string().required(),
-    sellOption: Yup.string().required(),
-    constructionStatus: Yup.string().required(),
+    streetNum: Yup.number().required("Street Number is required field.").min(0),
+    streetName: Yup.string().required("Street Name is required field."),
+    city: Yup.string().required("City is required field."),
+    province: Yup.string().required("Province is required field."),
+    postal: Yup.string().required("Postal Code is required field."),
+    description: Yup.string().required("Description is required field."),
+    price: Yup.number().required("Price is required field.").min(0),
+    bathrooms: Yup.number().required("Bathrooms is required field.").min(0),
+    bedrooms: Yup.number().required("Bedrooms is required field.").min(0),
+    floors: Yup.number().required("Floors is required field.").min(0),
+    size: Yup.number().required("Size is required field.").min(0),
+    furnished: Yup.number().required("Please select the option."),
+    propertyType: Yup.string().required("Please select the option."),
+    yearOfBuilt: Yup.number()
+      .required("Year of Built is required field.")
+      .min(0),
+    amenities: Yup.string().required("Amenities is required field."),
+    sellOption: Yup.string().required("Please select the option."),
+    constructionStatus: Yup.string().required("Please select the option."),
   });
 
   const onSubmit = (data) => {
@@ -150,6 +152,7 @@ function CreateProperty() {
                     name="streetNum"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -164,6 +167,7 @@ function CreateProperty() {
                     name="streetName"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -174,6 +178,7 @@ function CreateProperty() {
                     name="city"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -188,6 +193,7 @@ function CreateProperty() {
                     name="province"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -198,6 +204,7 @@ function CreateProperty() {
                     name="postal"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -212,6 +219,7 @@ function CreateProperty() {
                     name="description"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -227,6 +235,7 @@ function CreateProperty() {
                     name="price"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -242,6 +251,7 @@ function CreateProperty() {
                     name="bathrooms"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -257,6 +267,7 @@ function CreateProperty() {
                     name="bedrooms"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -272,6 +283,7 @@ function CreateProperty() {
                     name="floors"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -287,6 +299,7 @@ function CreateProperty() {
                     name="size"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -301,6 +314,12 @@ function CreateProperty() {
                     <option value={0}>No</option>
                     <option value={1}>Yes</option>
                   </Field>
+                  <ErrorMessage
+                    name="furnished"
+                    component="span"
+                    className="error"
+                    style={{ fontSize: "15px", color: "red" }}
+                  />
                 </div>
 
                 <div className="box">
@@ -319,6 +338,12 @@ function CreateProperty() {
                       Commercial Building
                     </option>
                   </Field>
+                  <ErrorMessage
+                    name="propertyType"
+                    component="span"
+                    className="error"
+                    style={{ fontSize: "15px", color: "red" }}
+                  />
                 </div>
 
                 <div className="box">
@@ -333,6 +358,7 @@ function CreateProperty() {
                     name="yearOfBuilt"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -347,6 +373,7 @@ function CreateProperty() {
                     name="amenities"
                     component="span"
                     className="error"
+                    style={{ fontSize: "15px", color: "red" }}
                   />
                 </div>
 
@@ -362,6 +389,12 @@ function CreateProperty() {
                     <option value="Resale">Resale</option>
                     <option value="Leasing">Leasing</option>
                   </Field>
+                  <ErrorMessage
+                    name="sellOption"
+                    component="span"
+                    className="error"
+                    style={{ fontSize: "15px", color: "red" }}
+                  />
                 </div>
 
                 <div className="box">
@@ -377,6 +410,12 @@ function CreateProperty() {
                       Under Construction
                     </option>
                   </Field>
+                  <ErrorMessage
+                    name="constructionStatus"
+                    component="span"
+                    className="error"
+                    style={{ fontSize: "15px", color: "red" }}
+                  />
                 </div>
 
                 <button type="submit" className="btn">

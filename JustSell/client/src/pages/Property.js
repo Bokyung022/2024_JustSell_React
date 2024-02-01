@@ -29,9 +29,7 @@ function Property() {
         );
 
         setProperty(propertyResponse.data);
-
         setImages(imagesResponse.data);
-
         setLoading(false);
       } catch (error) {
         console.error("Error fetching property details:", error);
@@ -122,7 +120,7 @@ function Property() {
         <h3 className="name">{property.propertyType}</h3>
         <p className="location">
           <i className="fas fa-map-marker-alt"></i>
-          <span>{`${property.streetNum}-${property.streetName} - ${property.city} - ${property.province} - Postal: ${property.postal}`}</span>
+          <span>{`${property.streetNum} ${property.streetName}, ${property.city}, ${property.province}, ${property.postal}`}</span>
         </p>
         <div className="info">
           <p>
@@ -146,18 +144,14 @@ function Property() {
         <div className="flex">
           <div className="box">
             <p>
-              <i>Deposit Amount (10%) :</i>
+              <i>Down Payment (1%) :</i>
               <span>
                 <span
                   className="fas fa-dollar-sign"
                   style={{ marginRight: ".5rem" }}
                 ></span>
-                {new Intl.NumberFormat("en-US").format(property.price / 10)}
+                {new Intl.NumberFormat("en-US").format(property.price / 100)}
               </span>
-            </p>
-            <p>
-              <i>Status :</i>
-              <span>{property.constructionStatus}</span>
             </p>
             <p>
               <i>Bedroom :</i>
@@ -181,16 +175,6 @@ function Property() {
               <i>Furnished :</i>
               <span>
                 {property.furnished === 1 ? "Furnished" : "Not Furnished"}
-              </span>
-            </p>
-            <p>
-              <i>Loan :</i>
-              <span>
-                <span
-                  className="fas fa-dollar-sign"
-                  style={{ marginRight: ".5rem" }}
-                ></span>
-                {new Intl.NumberFormat("en-US").format(property.price * 0.9)}
               </span>
             </p>
           </div>
@@ -234,6 +218,7 @@ function Property() {
     axios
       .delete(`http://localhost:3001/properties/${id}`)
       .then(() => {
+        window.alert("Property deleted successfully!");
         navigate("/listings");
       })
       .catch((error) => {

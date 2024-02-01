@@ -34,9 +34,13 @@ const EditUser = () => {
 
       await axios.put(`http://localhost:3001/auth/${userID}`, editedData);
 
+      alert("User updated successfully!");
       navigate("/admin"); // Redirect to the admin page after saving
     } catch (error) {
       console.error("Error updating user:", error);
+      alert(
+        "An error occurred while updating the user. Please try again later."
+      );
     }
   };
 

@@ -71,7 +71,7 @@ function Listings() {
                   </p>
                   <p>
                     <i className="fas fa-maximize"></i>
-                    <span>{property.size}sqft</span>
+                    <span>{property.size} sqft</span>
                   </p>
                 </div>
                 <div class="flex-btn">
@@ -84,7 +84,6 @@ function Listings() {
                   >
                     View Details
                   </div>
-                  {/* <div class="btn">Check Out</div> */}
                 </div>
               </div>
             </form>
