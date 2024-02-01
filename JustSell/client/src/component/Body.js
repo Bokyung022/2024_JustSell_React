@@ -7,10 +7,10 @@ import consultSpecialistImage from "../images/consultSpecialist.jpg";
 import sellYourPropertyImage from "../images/sellYourProperty.png";
 import HomeFilter from "../pages/HomeFilter";
 import {
-    FirstInnerContainerBody,
-    MainContainerBody,
-    SecondInnerContainerBody,
-    ThirdInnerContainerBody
+  FirstInnerContainerBody,
+  MainContainerBody,
+  SecondInnerContainerBody,
+  ThirdInnerContainerBody
 } from "../styles/Body.style";
 
 
@@ -20,6 +20,7 @@ const Body = () => {
     return (
         <MainContainerBody>
           <FirstInnerContainerBody>
+        
             <HomeFilter />
           </FirstInnerContainerBody>
     

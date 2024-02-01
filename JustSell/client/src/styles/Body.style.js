@@ -1,8 +1,6 @@
 // https://www.youtube.com/watch?v=1yMrdBsep-A
 import styled from "styled-components";
 import downloadapp from "../images/download_app02.jpg";
-import homeImage from "../images/home-bg_opt1.jpg";
-import specialistImage from "../images/logo.png";
 
 
 
@@ -12,22 +10,20 @@ export const MainContainerBody = styled.div`
 `;
 
 export const FirstInnerContainerBody = styled.div`
-    background: url(${homeImage}) no-repeat center ;
-    background-size: cover;
-    height: 60vh;
-    background-color: #e59524;
+    height: 40%;
+    background-color: pink;
 `;
 
 export const SecondInnerContainerBody = styled.div`
-    //background: url(${specialistImage}) no-repeat center;
-    height: 100vh;
+    height: 80%;
     background-color: white;
 `;
 
 export const ThirdInnerContainerBody = styled.div`
     background: url(${downloadapp}) no-repeat center;
     background-size: cover;
-    height: 70vh;
+    height: 70%;
+    min-height: 600px; 
     background-color: white;
-    margin-bottom:10vh;
+    margin-bottom: 1%;
 `;

@@ -105,12 +105,32 @@ export const NavbarExtendedContainer = styled.div`
   }
 `;
 
-export const loggedInContainer = styled.div`
-  background-color: #e59524;
-  flex: 50%;
-  height: 100%;
+export const LoggedInContainer = styled.div`
+  height: 80%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
   `;
+
+export const LogoutBtn = styled.div`
+  padding-left: 60px;
+  padding-right: 60px;
+  /* background-color: #e59524; */
+  /* flex: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer; */
+  `;
+
+export const WelcomeContainer = styled.div`
+//background-color: #e59524;
+padding-left: 30px;
+padding-top: 15px;
+color: white;
+font-size: large;
+font-family: Arial, Helvetica, sans-serif;
+
+`;

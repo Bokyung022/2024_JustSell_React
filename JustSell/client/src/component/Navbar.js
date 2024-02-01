@@ -4,7 +4,9 @@ import React, { useEffect, useState } from "react";
 import LogoImg from "../images/logo.png";
 import {
   LeftContainer,
+  LoggedInContainer,
   Logo,
+  LogoutBtn,
   NavbarContainer,
   NavbarExtendedContainer,
   NavbarInnerContainer,
@@ -13,6 +15,7 @@ import {
   NavbarLinkExtended,
   OpenLinksButton,
   RightContainer,
+  WelcomeContainer
 } from "../styles/Navbar.style";
 
 function Navbar() {
@@ -88,14 +91,22 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
           {authState.status ? (
-            <loggedInContainer>
-              <h1 style={{ color: "blue", fontSize: "18px", margin: "0" }}>
+           <LoggedInContainer>
+
+            <WelcomeContainer>
+              <h1>
                 Welcome! {authState.username}
               </h1>
+              </WelcomeContainer>
+
+              <LogoutBtn>
               <button className="btn" onClick={logout}>
                 Logout
               </button>
-            </loggedInContainer>
+              </LogoutBtn>
+              
+            </LoggedInContainer>
+
           ) : null}
 
           <Logo src={LogoImg}></Logo>
