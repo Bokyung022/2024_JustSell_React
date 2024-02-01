@@ -227,4 +227,16 @@ do we need setup heroku at the begining ? or implement at the end?
 - Add Validations on all the pages
 3. Need assistance / figure things out
 
+2024/01/31 Karina
+1. Done since last scrum
+- logout funtion works
+- CSS for logout revised
+- hme page section one, two and three done
+2. Plan until next Scrum
+- touch css for user name on nav bar
+- Start heroku
+- Work on validations on all the pages
+3. Need assistance / figure things out
+- Heroku config
+
 
