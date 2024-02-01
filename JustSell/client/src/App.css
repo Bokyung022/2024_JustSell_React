@@ -211,6 +211,7 @@ section {
 }
 
 /* ********HOME********** */
+
 .home {
   background: url("./images/home-bg_opt1.jpg") no-repeat;
   background-size: cover;
@@ -225,56 +226,7 @@ section {
   padding-bottom: 20rem;
 }
 
-.home .center form {
-  background-color: var(--white);
-  padding: 2rem;
-  box-shadow: var(--box-shodow);
-  width: 80rem;
-}
-
-.home .center form h3 {
-  padding-bottom: 1rem;
-  text-align: center;
-  color: var(--black);
-  text-transform: capitalize;
-  font-size: 2.5rem;
-}
-
-.home .center form .flex {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.home .center form .box {
-  flex: 1 1 20rem;
-}
-
-.home .center form .box .input {
-  width: 100%;
-  border: var(--border);
-  padding: 1.4rem;
-  color: var(--black);
-  font-size: 1.8rem;
-  margin: 1rem 0;
-}
-
-.home .center form .box p {
-  color: var(--light-color);
-  font-size: 1.7rem;
-  padding-top: 1rem;
-}
-
-.home .center form .box label {
-  color: var(--light-color);
-  font-size: 1.7rem;
-  padding-top: 1rem;
-}
-
-.home .center form .box p span {
-  color: var(--main-color);
-}
-
+.home .center form,
 .home .center .formcontainer {
   background-color: var(--white);
   padding: 2rem;
@@ -282,6 +234,7 @@ section {
   width: 80rem;
 }
 
+.home .center form h3,
 .home .center .formcontainer h3 {
   padding-bottom: 1rem;
   text-align: center;
@@ -290,16 +243,19 @@ section {
   font-size: 2.5rem;
 }
 
+.home .center form .flex,
 .home .center .formcontainer .flex {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+.home .center form .box,
 .home .center .formcontainer .box {
   flex: 1 1 20rem;
 }
 
+.home .center form .box .input,
 .home .center .formcontainer .box .input {
   width: 100%;
   border: var(--border);
@@ -309,21 +265,43 @@ section {
   margin: 1rem 0;
 }
 
-.home .center .formcontainer .box p {
-  color: var(--light-color);
-  font-size: 1.7rem;
-  padding-top: 1rem;
-}
-
+.home .center form .box p,
+.home .center .formcontainer .box p,
+.home .center form .box label,
 .home .center .formcontainer .box label {
   color: var(--light-color);
   font-size: 1.7rem;
   padding-top: 1rem;
 }
 
+.home .center form .box p span,
 .home .center .formcontainer .box p span {
   color: var(--main-color);
 }
+
+/* Media queries for responsiveness */
+
+@media (max-width: 1200px) {
+  .home .center form,
+  .home .center .formcontainer {
+    width: 60rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .home .center form,
+  .home .center .formcontainer {
+    width: 50rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .center form,
+  .home .center .formcontainer {
+    width: 80%;
+  }
+}
+
 
 /* ********SERVICES********** */
 .services {

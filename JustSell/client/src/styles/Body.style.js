@@ -20,10 +20,30 @@ export const SecondInnerContainerBody = styled.div`
 `;
 
 export const ThirdInnerContainerBody = styled.div`
-    background: url(${downloadapp}) no-repeat center;
-    background-size: cover;
-    height: 70%;
-    min-height: 800px; 
-    background-color: white;
-    margin-bottom: 1%;
+  background: url(${downloadapp}) no-repeat center;
+  background-size: cover;
+  height: 70%;
+  min-height: 800px;
+  background-color: white;
+  margin-bottom: 1%;
+
+  @media (max-width: 1200px) {
+    height: 60%;
+    min-height: 600px;
+  }
+
+  @media (max-width: 992px) {
+    height: 50%;
+    min-height: 500px;
+  }
+
+  @media (max-width: 768px) {
+    height: 40%;
+    min-height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    height: 30%;
+    min-height: 300px;
+  }
 `;
