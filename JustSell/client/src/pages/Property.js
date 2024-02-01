@@ -5,6 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 function Property() {
   let { id } = useParams();
   const [property, setProperty] = useState({});
@@ -18,13 +23,15 @@ function Property() {
         const propertyResponse = await axios.get(
           `http://localhost:3001/properties/byId/${id}`
         );
-        /*
-        const imagesResponse = await axios.get(`http://localhost:3001/images/${id}`);
-        */
+
+        const imagesResponse = await axios.get(
+          `http://localhost:3001/images/${id}`
+        );
+
         setProperty(propertyResponse.data);
-        /*
+
         setImages(imagesResponse.data);
-        */
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching property details:", error);
@@ -35,13 +42,28 @@ function Property() {
     fetchData();
   }, [id]);
 
-  /*
   const renderImages = () => {
-    return images.map((image) => (
-      <img key={image.id} src={image.imageUrl} alt="Missing the property picture" className="swiper-slide" />
-    ));
+    return (
+      <Swiper
+        navigation={true}
+        modules={[Navigation]}
+        centeredSlides={true}
+        className="mySwiper  images-container"
+      >
+        {images.map((image) => (
+          <SwiperSlide>
+            <img
+              key={image.imageID}
+              src={image.imageUrl}
+              alt="Missing the property picture"
+            />
+          </SwiperSlide>
+        ))}
+        ;
+      </Swiper>
+    );
   };
-  */
+
   const handleSuccess = () => {
     MySwal.fire({
       icon: "success",
@@ -96,6 +118,7 @@ function Property() {
   const renderDetails = () => {
     return (
       <div className="details">
+        {renderImages()}
         <h3 className="name">{property.propertyType}</h3>
         <p className="location">
           <i className="fas fa-map-marker-alt"></i>

@@ -77,6 +77,8 @@ module.exports = (sequelize, DataTypes) => {
     imageName: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue:
+        "01ceecc1ee3cc7a478c7c56e03df15d115f40537cf9f6ebeed896f44392e4b10",
     },
   });
   properties.associate = (models) => {

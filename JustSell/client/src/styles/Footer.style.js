@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  background-color: black;
+  background-color: #666;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;

@@ -15,15 +15,20 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const generateFileName = (bytes = 32) =>
   crypto.randomBytes(bytes).toString("hex");
-router.get("/:propertyId", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const images = await images.findAll({
+    const propertyID = req.params.id;
+    const listImages = await images.findAll({
       where: { propertyPropertyID: propertyID },
     });
-    for (let image of images) {
-      image.imageUrl = await getObjectSignedUrl(image.imageName);
-    }
-    res.send(images);
+    const updatedImages = await Promise.all(
+      listImages.map(async (image) => {
+        image.dataValues.imageUrl = await getObjectSignedUrl(image.imageName);
+
+        return image;
+      })
+    );
+    res.json(updatedImages);
   } catch (error) {
     console.error(error);
     res.status(500).send({ error: "Internal Server Error" });
@@ -52,7 +57,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     const propertyPropertyID = req.body.propertyID;
     console.log(isPrimaryPicture);
     const fileBuffer = await sharp(file.buffer)
-      .resize({ height: 1080, width: 1920, fit: "contain" })
+      .resize({ height: 1080, width: 1920, fit: "cover" })
       .toBuffer();
 
     await uploadFile(fileBuffer, imageName, file.mimetype);
