@@ -40,14 +40,12 @@ const Admin = () => {
               <tr>
                 <th>User ID</th>
                 <th>Username</th>
-                <th>Email</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Email</th>
                 <th>Phone Number</th>
-                <th>Company</th>
                 <th>Role</th>
-                <th>Realtor Approved</th>
-                <th>Realtor Cert.</th>
+                <th>Company</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -56,14 +54,12 @@ const Admin = () => {
                 <tr key={user.userID}>
                   <td>{user.userID}</td>
                   <td>{user.userName}</td>
-                  <td>{user.email}</td>
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
+                  <td>{user.email}</td>
                   <td>{user.Phone}</td>
-                  <td>{user.company}</td>
                   <td>{user.role}</td>
-                  <td>{user.isRealtorApproved}</td>
-                  <td>{user.realtorCertification}</td>
+                  <td>{user.company}</td>
                   <td>
                     <Link to={`/editUser/${user.userID}`}>
                       <button className="btn">Edit</button>

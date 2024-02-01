@@ -31,6 +31,7 @@ function Navbar() {
         },
       })
       .then((response) => {
+        console.log("Server Response:", response);
         if (response.data.error) {
           setAuthState({ ...authState, status: false }); //destructor the object
         } else {
@@ -38,6 +39,7 @@ function Navbar() {
             username: response.data.userName,
             userID: response.data.userID,
             status: true,
+            role: response.data.role,
           });
         }
       });
@@ -60,8 +62,15 @@ function Navbar() {
             <NavbarLink to="/">Home Page</NavbarLink>
             <NavbarLink to="/search">Search</NavbarLink>
             <NavbarLink to="/listings">Listings</NavbarLink>
-            <NavbarLink to="/createProperty">Create Property</NavbarLink>
-            <NavbarLink to="/admin">Admin</NavbarLink>
+
+            {authState.status && authState.role === "Realtor" && (
+              <NavbarLink to="/createProperty">Create Property</NavbarLink>
+            )}
+
+            {authState.status && authState.role === "Admin" && (
+              <NavbarLink to="/admin">Admin</NavbarLink>
+            )}
+
             {!authState.status && (
               <>
                 <NavbarLink to="/login"> Login</NavbarLink>
@@ -78,7 +87,6 @@ function Navbar() {
           </NavbarLinkContainer>
         </LeftContainer>
         <RightContainer>
-
           {authState.status ? (
             <loggedInContainer>
               <h1 style={{ color: "blue", fontSize: "18px", margin: "0" }}>
@@ -99,10 +107,17 @@ function Navbar() {
           <NavbarLinkExtended to="/">Home Page</NavbarLinkExtended>
           <NavbarLinkExtended to="/search">Search</NavbarLinkExtended>
           <NavbarLinkExtended to="/listings">Listings</NavbarLinkExtended>
-          <NavbarLinkExtended to="/createProperty">
-            Create Property
-          </NavbarLinkExtended>
-          <NavbarLinkExtended to="/admin">Admin</NavbarLinkExtended>
+
+          {authState.status && authState.role === "Realtor" && (
+            <NavbarLinkExtended to="/createProperty">
+              Create Property
+            </NavbarLinkExtended>
+          )}
+
+          {authState.status && authState.role === "Admin" && (
+            <NavbarLinkExtended to="/admin">Admin</NavbarLinkExtended>
+          )}
+
           <NavbarLinkExtended to="/login">Login</NavbarLinkExtended>
           <NavbarLinkExtended to="/registration">
             Registration

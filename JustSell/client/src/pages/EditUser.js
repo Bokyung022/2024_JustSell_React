@@ -63,18 +63,6 @@ const EditUser = () => {
           </div>
 
           <div className="box">
-            <label htmlFor="email">Email:</label>
-            <input
-              className="input"
-              type="text"
-              id="email"
-              name="email"
-              value={editedData.email || ""}
-              onChange={(e) => handleInputChange(e, "email")}
-            />
-          </div>
-
-          <div className="box">
             <label htmlFor="firstName">First Name:</label>
             <input
               className="input"
@@ -99,6 +87,18 @@ const EditUser = () => {
           </div>
 
           <div className="box">
+            <label htmlFor="email">Email:</label>
+            <input
+              className="input"
+              type="text"
+              id="email"
+              name="email"
+              value={editedData.email || ""}
+              onChange={(e) => handleInputChange(e, "email")}
+            />
+          </div>
+
+          <div className="box">
             <label htmlFor="Phone">Phone Number:</label>
             <input
               className="input"
@@ -107,6 +107,18 @@ const EditUser = () => {
               name="Phone"
               value={editedData.Phone || ""}
               onChange={(e) => handleInputChange(e, "Phone")}
+            />
+          </div>
+
+          <div className="box">
+            <label htmlFor="role">Role:</label>
+            <input
+              className="input"
+              type="text"
+              id="role"
+              name="role"
+              value={editedData.role || ""}
+              onChange={(e) => handleInputChange(e, "role")}
             />
           </div>
 
@@ -135,7 +147,7 @@ const EditUser = () => {
           </div>
 
           <div className="box">
-            <label htmlFor="realtorCertification">Realtor Cert.:</label>
+            <label htmlFor="realtorCertification">Realtor Certification:</label>
             <input
               className="input"
               type="text"

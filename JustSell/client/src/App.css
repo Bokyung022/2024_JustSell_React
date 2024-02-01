@@ -203,7 +203,6 @@ section {
   display: block;
 }
 
-
 /* ********MENU BTN********** */
 #menu-btn {
   font-size: 2.5rem;
@@ -220,7 +219,7 @@ section {
 
 .home .center {
   min-height: 50vh;
-  display: flex;  
+  display: flex;
   justify-content: center;
   padding-top: 20rem; /* do not touch it, it is for the top of the pages */
   padding-bottom: 20rem;
@@ -1027,7 +1026,7 @@ section {
 .table th,
 .table td {
   padding: 12px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
@@ -1192,8 +1191,6 @@ section {
   color: red;
 }
 
-
-
 .footerbox {
   display: flex;
   flex-direction: column;
@@ -1219,16 +1216,15 @@ section {
 
 /* LOGIN MESSAGE */
 .login-message {
-  background-color: #4caf50; 
-  color: white; 
+  background-color: #4caf50;
+  color: white;
   text-align: center;
-  padding: 50px; 
+  padding: 50px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-
 
 .button-container {
   display: flex;
@@ -1236,7 +1232,7 @@ section {
 }
 
 .button-container .btn {
-  margin-right: 10px; 
+  margin-right: 10px;
   padding: 10px;
   color: white;
 }
