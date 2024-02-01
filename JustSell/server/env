@@ -1,16 +1,7 @@
-# https://www.youtube.com/watch?v=eQAIojcArRY - Sam uses PRISMA, not Sequelizer
-
-# Database Configuration
-DB_HOST='fsd10-justselldb.cj4k4u2em2n1.us-east-1.rds.amazonaws.com'
-DB_PORT='3306'
-DB_NAME='justselldb'
-DB_USER='admin'
-DB_PASSWORD='adminadmin'
-
-# S3 Bucket Configuration
-S3_BUCKET='bucket-justsell'
-AWS_ACCESS_KEY_ID='AKIAW3MEAXPJSAGQ3M5I'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_REGION='us-east-1'
+STRIPE_KEY=sk_test_51Odw1mCo376H9Bv8BU2gerrNQYDOPoZSOHHiPMhK7KjafPwNaRIGos8Cxyhuko3XMbfzjdAJRc8wHSJB0Q2BOJBq00Trfm7ytC
 
 
+AWS_BUCKET_NAME=bucket-justsell
+AWS_BUCKET_REGION=us-east-1
+AWS_ACCESS_KEY=AKIAW3MEAXPJSAGQ3M5I
+AWS_SECRET_ACCESS_KEY=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
