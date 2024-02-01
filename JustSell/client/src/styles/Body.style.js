@@ -23,7 +23,7 @@ export const ThirdInnerContainerBody = styled.div`
     background: url(${downloadapp}) no-repeat center;
     background-size: cover;
     height: 70%;
-    min-height: 600px; 
+    min-height: 800px; 
     background-color: white;
     margin-bottom: 1%;
 `;

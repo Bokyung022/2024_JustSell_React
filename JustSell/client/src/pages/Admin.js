@@ -58,6 +58,7 @@ const Admin = () => {
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
+        setError("Error fetching users. Please try again.");
       }
     };
 
