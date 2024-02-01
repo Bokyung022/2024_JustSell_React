@@ -209,7 +209,7 @@ do we need setup heroku at the begining ? or implement at the end?
 - watch tutorials for deploying application on Heroku
 3. Need assistance / figure things out
 ------------------------------------------------------
-2024/02/1 Xing
+2024/02/01 Xing
 1. Done since last scrum
 - success to  implemented s3 intergration, so user now can upload file, and web can retrieve the file from the s3 bucket
 2. Plan until next Scrum
@@ -217,5 +217,14 @@ do we need setup heroku at the begining ? or implement at the end?
 - css
 3. Need assistance / figure things out
 
+2024/02/01 Bo Kyung
+1. Done since last scrum
+- Updated Registration Page
+- Revised Admin Page, especially the Edit function (inline editing -> separate page)
+- Updated Navbar (display user's name, adjust accessible pages based on the user's role) 
+2. Plan until next Scrum
+- Adjust accessible button on "Listings" page
+- Add Validations on all the pages
+3. Need assistance / figure things out
 
 
