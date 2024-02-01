@@ -84,7 +84,7 @@ function Listings() {
                   >
                     View Details
                   </div>
-                  <div class="btn">Check Out</div>
+                  {/* <div class="btn">Check Out</div> */}
                 </div>
               </div>
             </form>

@@ -372,7 +372,7 @@ function EditProperty() {
               <p>Property ID: </p>
               <input
                 className="input"
-                type="number"
+                type="hidden"
                 name="propertyID"
                 value={id}
               />
