@@ -31,24 +31,7 @@ function Filter() {
       console.error("Error:", error.message);
     }
   };
-  const makePayment = (token, property) => {
-    const body = {
-      token,
-      property,
-    };
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    return fetch("http://localhost:3001/payment", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    })
-      .then((response) => console.log("response", response))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
   return (
     <>
       <section className="filters" style={{ paddingBottom: 0 }}>
@@ -158,7 +141,8 @@ function Filter() {
           </Form>
         </Formik>
       </section>
-      <div id="filter-btn" className="fas fa-filter"></div>
+      {/* <div id="filter-btn" className="fas fa-filter"></div> */}
+
       <section className="listings">
         {searchPerformed ? (
           <>
@@ -167,8 +151,8 @@ function Filter() {
                 <h1 className="heading">Search Results</h1>
                 <div className="box-container">
                   {listOfProperties.map((property) => (
-                    <div key={property.propertyID} className="box">
-                      <form>
+                    <form>
+                      <div key={property.propertyID} className="box">
                         <input
                           type="hidden"
                           name="propertyID"
@@ -177,67 +161,67 @@ function Filter() {
                         <div className="thumb">
                           <img src={property.imageUrl} alt="Property" />
                         </div>
-                        <div className="box">
-                          <div className="price">
-                            <i className="fas fa-dollar-sign"></i>
-                            <span>
-                              {property.price
-                                .toFixed(2)
-                                .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                            </span>
-                          </div>
-                          <h3 className="name">{property.propertyType}</h3>
-                          <p className="location">
-                            <i className="fas fa-map-marker-alt"></i>
-                            <span>{property.city}</span>
+                      </div>
+                      <div className="box">
+                        <div className="price">
+                          <i className="fas fa-dollar-sign"></i>
+                          <span>
+                            {property.price
+                              .toFixed(2)
+                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                          </span>
+                        </div>
+                        <h3 className="name">{property.propertyType}</h3>
+                        <p className="location">
+                          <i className="fas fa-map-marker-alt"></i>
+                          <span>{property.city}</span>
+                        </p>
+                        <div className="flex">
+                          <p>
+                            <i className="fas fa-house"></i>
+                            <span>{property.propertyType}</span>
                           </p>
-                          <div className="flex">
-                            <p>
-                              <i className="fas fa-house"></i>
-                              <span>{property.propertyType}</span>
-                            </p>
-                            <p>
-                              <i className="fas fa-bed"></i>
-                              <span>{property.bedrooms}</span>
-                            </p>
-                            <p>
-                              <i className="fas fa-trowel"></i>
-                              <span>{property.constructionStatus}</span>
-                            </p>
-                            <p>
-                              <i className="fas fa-couch"></i>
-                              <span>
-                                {property.furnished
-                                  ? "furnished"
-                                  : "not furnished"}
-                              </span>
-                            </p>
-                            <p>
-                              <i className="fas fa-maximize"></i>
-                              <span>{property.size}sqft</span>
-                            </p>
+                          <p>
+                            <i className="fas fa-bed"></i>
+                            <span>{property.bedrooms}</span>
+                          </p>
+                          <p>
+                            <i className="fas fa-trowel"></i>
+                            <span>{property.constructionStatus}</span>
+                          </p>
+                          <p>
+                            <i className="fas fa-couch"></i>
+                            <span>
+                              {property.furnished
+                                ? "furnished"
+                                : "not furnished"}
+                            </span>
+                          </p>
+                          <p>
+                            <i className="fas fa-maximize"></i>
+                            <span>{property.size}sqft</span>
+                          </p>
+                        </div>
+                        <div className="flex-btn">
+                          <div
+                            className="btn"
+                            onClick={() => {
+                              navigate(`/property/${property.propertyID}`);
+                            }}
+                          >
+                            View Details
                           </div>
-                          <div className="flex-btn">
-                            <div
-                              className="btn"
-                              onClick={() => {
-                                navigate(`/property/${property.propertyID}`);
-                              }}
-                            >
-                              View Details
-                            </div>
-                            <StripeCheckout
+                          {/* <StripeCheckout
                               stripeKey={process.env.REACT_APP_STRIPE_KEY}
                               token={(token) => makePayment(token, property)}
                               name="Down Payment"
                               amount={property.price}
                             >
                               <button className="btn">Send Offer</button>
-                            </StripeCheckout>
-                          </div>
+                            </StripeCheckout> */}
                         </div>
-                      </form>
-                    </div>
+                      </div>
+                    </form>
                   ))}
                 </div>
               </>

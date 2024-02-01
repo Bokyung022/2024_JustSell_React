@@ -211,7 +211,8 @@ do we need setup heroku at the begining ? or implement at the end?
 ------------------------------------------------------
 2024/02/01 Xing
 1. Done since last scrum
-- success to  implemented s3 intergration, so user now can upload file, and web can retrieve the file from the s3 bucket
+- success to  implemented s3 intergration,web can have read, create,delete  actions in the bucket:
+ user now can upload file, and web can retrieve the file from the s3 bucket
 2. Plan until next Scrum
 - improve payment part and s3 part, for example the image size setting, payment table insertion
 - css
