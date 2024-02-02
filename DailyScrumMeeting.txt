@@ -239,5 +239,15 @@ do we need setup heroku at the begining ? or implement at the end?
 - Work on validations on all the pages
 3. Need assistance / figure things out
 - Heroku config
-
+-------------------------------------------------
+2024/02/02 Xing
+1. Done since last scrum
+-  improve payment part let payment record be written in database
+-  s3 part, improve the image display on webpage: setting style and insert image (images display sucessefully and beautifully
+- improve property page, make content display accoding role( the button part), make property display beatifully
+2. Plan until next Scrum
+- discuss to improve the whole web
+- considering deployment
+3. Need assistance / figure things out
+need watching tutorials for deployment
 
