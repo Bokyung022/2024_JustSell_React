@@ -302,7 +302,6 @@ section {
   }
 }
 
-
 /* ********SERVICES********** */
 .services {
   padding-top: 10rem;
@@ -1167,6 +1166,11 @@ section {
 
 .error-message {
   color: red;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 15px;
 }
 
 .footerbox {

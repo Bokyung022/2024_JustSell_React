@@ -26,18 +26,18 @@ function Registration() {
   };
 
   const validationSchema = Yup.object().shape({
-    userName: Yup.string().min(3).max(15).required("Username is required"),
-    firstName: Yup.string().required("First Name is required"),
-    lastName: Yup.string().required("Last Name is required"),
+    userName: Yup.string().min(3).max(15).required("Username is required."),
+    firstName: Yup.string().required("First Name is required."),
+    lastName: Yup.string().required("Last Name is required."),
     email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    password: Yup.string().min(4).max(20).required("Password is required"),
+      .email("Invalid email address.")
+      .required("Email is required."),
+    password: Yup.string().min(4).max(20).required("Password is required."),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
-      .required("Confirm Password is required"),
-    Phone: Yup.string().required("Phone is required"),
-    role: Yup.string(),
+      .oneOf([Yup.ref("password"), null], "Passwords do not match.")
+      .required("Please confirm password."),
+    Phone: Yup.string().required("Phone Number is required"),
+    role: Yup.string().required("Please select the option."),
   });
 
   const onSubmit = (data) => {
@@ -46,6 +46,7 @@ function Registration() {
       .then(() => {
         // handle success
         console.log(data);
+        alert("Registered successfully!");
         navigate("/login");
       })
       .catch((error) => {
@@ -66,20 +67,24 @@ function Registration() {
             {({ handleChange, values }) => (
               <Form className="formContainer">
                 <h3>Registration</h3>
+
                 <div className="box">
                   <label htmlFor="userName">Username:</label>
-                  <ErrorMessage name="userName" component="span" />
                   <Field
                     className="input"
                     id="userName"
                     name="userName"
                     placeholder="Enter your username"
                   />
+                  <ErrorMessage
+                    name="userName"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="password">Password:</label>
-                  <ErrorMessage name="password" component="span" />
                   <Field
                     className="input"
                     type="password"
@@ -87,11 +92,16 @@ function Registration() {
                     name="password"
                     placeholder="Enter your password"
                   />
+                  <ErrorMessage
+                    name="password"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="confirmPassword">Confirm Password:</label>
-                  <ErrorMessage name="confirmPassword" component="span" />
+
                   <Field
                     className="input"
                     type="password"
@@ -99,33 +109,48 @@ function Registration() {
                     name="confirmPassword"
                     placeholder="Confirm your password"
                   />
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="firstName">First Name:</label>
-                  <ErrorMessage name="firstName" component="span" />
+
                   <Field
                     className="input"
                     id="firstName"
                     name="firstName"
                     placeholder="Enter your first name"
                   />
+                  <ErrorMessage
+                    name="firstName"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="lastName">Last Name:</label>
-                  <ErrorMessage name="lastName" component="span" />
+
                   <Field
                     className="input"
                     id="lastName"
                     name="lastName"
                     placeholder="Enter your last name"
                   />
+                  <ErrorMessage
+                    name="lastName"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="email">Email:</label>
-                  <ErrorMessage name="email" component="span" />
+
                   <Field
                     className="input"
                     type="email"
@@ -133,22 +158,32 @@ function Registration() {
                     name="email"
                     placeholder="Enter your email"
                   />
+                  <ErrorMessage
+                    name="email"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
-                  <label htmlFor="Phone">Phone:</label>
-                  <ErrorMessage name="Phone" component="span" />
+                  <label htmlFor="Phone">Phone Number:</label>
+
                   <Field
                     className="input"
                     id="Phone"
                     name="Phone"
                     placeholder="Enter your phone number"
                   />
+                  <ErrorMessage
+                    name="Phone"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 <div className="box">
                   <label htmlFor="role">User Role:</label>
-                  <ErrorMessage name="role" component="span" />
+
                   <Field
                     as="select"
                     className="input"
@@ -159,6 +194,11 @@ function Registration() {
                     <option value="Client">Client</option>
                     <option value="Realtor">Realtor</option>
                   </Field>
+                  <ErrorMessage
+                    name="role"
+                    component="span"
+                    className="errorMessage"
+                  />
                 </div>
 
                 {/* Conditionally render fields based on the selected role */}

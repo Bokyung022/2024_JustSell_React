@@ -20,6 +20,8 @@ function Property() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        await checkAuthentication();
+
         const propertyResponse = await axios.get(
           `http://localhost:3001/properties/byId/${id}`
         );
@@ -122,6 +124,8 @@ function Property() {
   };
 
   const renderDetails = () => {
+    const isRealtor = authState.role === "Realtor";
+
     return (
       <div className="details">
         {renderImages()}
@@ -190,20 +194,26 @@ function Property() {
         <h3 className="title">Amenities</h3>
         <div className="flex">
           <div className="box">{renderAmenities()}</div>
-          {/* Render other details */}
         </div>
         <h3 className="title">Description</h3>
         <p className="description">{property.description}</p>
-        <div className="flex-btn">
-          <div className="btn" onClick={editProperty}>
-            Edit Property
+
+        {isRealtor && (
+          <div className="flex-btn">
+            <div className="btn" onClick={editProperty}>
+              Edit Property
+            </div>
           </div>
-        </div>
-        <div className="flex-btn">
-          <div className="btn" onClick={deleteProperty}>
-            Delete Property
+        )}
+
+        {isRealtor && (
+          <div className="flex-btn">
+            <div className="btn" onClick={deleteProperty}>
+              Delete Property
+            </div>
           </div>
-        </div>
+        )}
+
         <div className="flex-btn">
           <StripeCheckout
             stripeKey={process.env.REACT_APP_STRIPE_KEY}
@@ -211,11 +221,42 @@ function Property() {
             name="Down Payment"
             amount={property.price}
           >
-            <button className="btn">Send Offer</button>
+            <div className="btn">Send Offer</div>
           </StripeCheckout>
         </div>
       </div>
     );
+  };
+
+  const [authState, setAuthState] = useState({
+    username: "",
+    userID: 0,
+    status: false,
+    role: "",
+  });
+
+  const checkAuthentication = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/auth/auth", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      });
+      if (response.data.error) {
+        setAuthState((prevState) => ({ ...prevState, status: false }));
+      } else {
+        setAuthState((prevState) => ({
+          ...prevState,
+          username: response.data.userName,
+          userID: response.data.userID,
+          status: true,
+          role: response.data.role,
+        }));
+      }
+    } catch (error) {
+      console.error("Error checking authentication:", error);
+      setAuthState((prevState) => ({ ...prevState, status: false }));
+    }
   };
 
   const editProperty = () => {
