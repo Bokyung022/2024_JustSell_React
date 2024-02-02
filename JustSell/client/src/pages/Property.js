@@ -48,7 +48,7 @@ function Property() {
         navigation={true}
         modules={[Navigation]}
         centeredSlides={true}
-        className="mySwiper  images-container"
+        className="mySwiper  images-container "
       >
         {images.map((image) => (
           <SwiperSlide>
@@ -125,6 +125,7 @@ function Property() {
 
   const renderDetails = () => {
     const isRealtor = authState.role === "Realtor";
+    const isClient = authState.role === "Client";
 
     return (
       <div className="details">
@@ -203,27 +204,25 @@ function Property() {
             <div className="btn" onClick={editProperty}>
               Edit Property
             </div>
-          </div>
-        )}
-
-        {isRealtor && (
-          <div className="flex-btn">
             <div className="btn" onClick={deleteProperty}>
               Delete Property
             </div>
           </div>
         )}
-
-        <div className="flex-btn">
-          <StripeCheckout
-            stripeKey={process.env.REACT_APP_STRIPE_KEY}
-            token={makePayment}
-            name="Down Payment"
-            amount={property.price}
-          >
-            <div className="btn">Send Offer</div>
-          </StripeCheckout>
-        </div>
+        {isClient && (
+          <div className="flex-btn">
+            <StripeCheckout
+              stripeKey={process.env.REACT_APP_STRIPE_KEY}
+              token={makePayment}
+              name="Down Payment"
+              amount={property.price}
+            >
+              <div className="btn " id="offerbtn">
+                Send Offer
+              </div>
+            </StripeCheckout>
+          </div>
+        )}
       </div>
     );
   };

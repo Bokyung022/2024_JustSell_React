@@ -399,7 +399,6 @@ section {
   padding-bottom: 20rem;
 }
 
-
 .listings .box-container {
   display: grid;
   row-gap: 2rem;
@@ -572,7 +571,16 @@ section {
 .view-property .details .images-container {
   padding-bottom: 3rem;
 }
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
 
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: 0;
 }
