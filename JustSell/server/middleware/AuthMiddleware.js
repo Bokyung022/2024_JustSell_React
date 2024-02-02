@@ -1,5 +1,3 @@
-//https://www.youtube.com/watch?v=-UKPph5XU_c - PedroTech
-
 const { verify } = require("jsonwebtoken");
 
 const validateToken = (req, res, next) => {

@@ -5,25 +5,30 @@ import { useNavigate, useParams } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-function Property() {
+
+const Property = () => {
   let { id } = useParams();
   const [property, setProperty] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
+
   const MySwal = withReactContent(Swal);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         await checkAuthentication();
 
         const propertyResponse = await axios.get(
-          `http://localhost:3001/properties/byId/${id}`
+          `http://localhost:3001/properties/byId/${id}`,
+          {
+            params: { include: "user" },
+          }
         );
 
         const imagesResponse = await axios.get(
@@ -71,6 +76,7 @@ function Property() {
       time: 3000,
     });
   };
+
   const handleFailure = () => {
     MySwal.fire({
       icon: "error",
@@ -78,6 +84,7 @@ function Property() {
       time: 3000,
     });
   };
+
   const makePayment = (token) => {
     const body = {
       token,
@@ -109,6 +116,7 @@ function Property() {
         console.log(err);
       });
   };
+
   const renderAmenities = () => {
     // Assuming property.Amenities is a string with amenities separated by commas
     const amenitiesList = property.amenities
@@ -124,9 +132,6 @@ function Property() {
   };
 
   const renderDetails = () => {
-    const isRealtor = authState.role === "Realtor";
-    const isClient = authState.role === "Client";
-
     return (
       <div className="details">
         {renderImages()}
@@ -198,8 +203,25 @@ function Property() {
         </div>
         <h3 className="title">Description</h3>
         <p className="description">{property.description}</p>
+        <h3 className="title">Realtor Information</h3>
+        <div className="info">
+          <p>
+            <i className="fas fa-user"></i>
+            <span>
+              Name: {realtorInfo.firstName} {realtorInfo.lastName}
+            </span>
+          </p>
+          <p>
+            <i className="fas fa-phone"></i>
+            <span>Contact Number: {realtorInfo.Phone}</span>
+          </p>
+          <p>
+            <i className="fas fa-building"></i>
+            <span>Company: {realtorInfo.company}</span>
+          </p>
+        </div>
 
-        {isRealtor && (
+        {isPropertyRealtor && (
           <div className="flex-btn">
             <div className="btn" onClick={editProperty}>
               Edit Property
@@ -227,13 +249,6 @@ function Property() {
     );
   };
 
-  const [authState, setAuthState] = useState({
-    username: "",
-    userID: 0,
-    status: false,
-    role: "",
-  });
-
   const checkAuthentication = async () => {
     try {
       const response = await axios.get("http://localhost:3001/auth/auth", {
@@ -242,10 +257,14 @@ function Property() {
         },
       });
       if (response.data.error) {
-        setAuthState((prevState) => ({ ...prevState, status: false }));
+        setAuthState({
+          username: "",
+          userID: 0,
+          status: false,
+          role: "",
+        });
       } else {
         setAuthState((prevState) => ({
-          ...prevState,
           username: response.data.userName,
           userID: response.data.userID,
           status: true,
@@ -254,9 +273,93 @@ function Property() {
       }
     } catch (error) {
       console.error("Error checking authentication:", error);
-      setAuthState((prevState) => ({ ...prevState, status: false }));
+      setAuthState({
+        username: "",
+        userID: 0,
+        status: false,
+        role: "",
+      });
     }
   };
+
+  const [authState, setAuthState] = useState({
+    username: "",
+    userID: 0,
+    status: false,
+    role: "",
+  });
+
+  const [realtorInfo, setRealtorInfo] = useState({});
+
+  const isRealtor = authState.role === "Realtor";
+  const isClient = authState.role === "Client";
+  const isPropertyRealtor = isRealtor && property.userID === authState.userID;
+
+  useEffect(() => {
+    const fetchRealtorInfo = async (userID) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/auth/${userID}`
+        );
+        setRealtorInfo(response.data);
+      } catch (error) {
+        console.error("Error fetching realtor information:", error);
+      }
+    };
+
+    const getPropertyDetails = async () => {
+      try {
+        const propertyResponse = await axios.get(
+          `http://localhost:3001/properties/byId/${id}`,
+          {
+            params: { include: "user" },
+          }
+        );
+
+        setProperty(propertyResponse.data);
+
+        if (propertyResponse.data.userID) {
+          // Use propertyResponse.data.userID to fetch realtorInfo
+          fetchRealtorInfo(propertyResponse.data.userID);
+        }
+
+        const imagesResponse = await axios.get(
+          `http://localhost:3001/images/${id}`
+        );
+
+        setImages(imagesResponse.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching property details:", error);
+        setLoading(false);
+      }
+    };
+
+    // Check if there's an authenticated user
+    const isAuthenticated = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/auth/auth", {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        });
+
+        if (!response.data.error) {
+          setAuthState((prevState) => ({
+            username: response.data.userName,
+            userID: response.data.userID,
+            status: true,
+            role: response.data.role,
+          }));
+        }
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      }
+    };
+
+    getPropertyDetails();
+    isAuthenticated();
+  }, [id]);
 
   const editProperty = () => {
     navigate(`/editProperty/${id}`);
@@ -286,6 +389,6 @@ function Property() {
       )}
     </section>
   );
-}
+};
 
 export default Property;

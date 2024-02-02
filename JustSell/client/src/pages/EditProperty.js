@@ -55,22 +55,31 @@ function EditProperty() {
       })
       .catch((error) => {
         console.error("Error updating property:", error);
+        alert("Failed to update property. Please try again.");
       });
   };
   const submitImage = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("description", description);
-    formData.append("propertyID", id);
-    formData.append("isPrimaryPicture", isPrimaryPicture);
-    await axios.post("http://localhost:3001/images", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      formData.append("description", description);
+      formData.append("propertyID", id);
+      formData.append("isPrimaryPicture", isPrimaryPicture);
 
-    navigate("/");
+      await axios.post("http://localhost:3001/images", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Image submitted successfully!");
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting image:", error);
+      alert("Failed to submit image. Please try again.");
+    }
   };
+
   const fileSelected = (event) => {
     const file = event.target.files[0];
     setFile(file);
@@ -401,10 +410,10 @@ function EditProperty() {
               />
             </div>
             <div className="box">
-              <p>isPrimaryPicture: </p>
+              <p>Is this primary picture? </p>
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="isPrimaryPicture"
                   value="true"
                   checked={isPrimaryPicture === true}
@@ -414,7 +423,7 @@ function EditProperty() {
               </label>
               <label>
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="isPrimaryPicture"
                   value="false"
                   checked={isPrimaryPicture === false}
