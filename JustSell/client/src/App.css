@@ -380,6 +380,26 @@ section {
 }
 
 /* ********LISTINGS********** */
+
+.listings .listings-box {
+  padding-top: 100px;
+}
+
+.listingsFilter {
+  background: url("./images/home-bg_opt1.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.listingsFilter .center {
+  min-height: 50vh;
+  /* display: flex;
+  justify-content: center; */
+  padding-top: 20rem; /* do not touch it, it is for the top of the pages */
+  padding-bottom: 20rem;
+}
+
+
 .listings .box-container {
   display: grid;
   row-gap: 2rem;
@@ -1217,4 +1237,10 @@ section {
   margin-right: 10px;
   padding: 10px;
   color: white;
+}
+
+/* TESTE */
+
+.teste {
+  margin-top: 200px;
 }

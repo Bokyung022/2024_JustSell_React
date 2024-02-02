@@ -4,19 +4,22 @@ import "./App.css";
 import Footer from "./component/Footer";
 import Navbar from "./component/Navbar";
 import { AuthContext } from "./helpers/AuthContext";
+
 import Admin from "./pages/Admin";
 import CreateProperty from "./pages/CreateProperty";
 import EditProperty from "./pages/EditProperty";
+import EditUser from "./pages/EditUser";
 import Filter from "./pages/Filter";
 import Home from "./pages/Home";
 import Listings from "./pages/Listings";
 import Login from "./pages/Login";
 import Property from "./pages/Property";
 import Registration from "./pages/Registration";
-import EditUser from "./pages/EditUser";
 
 function App() {
   const [authState, setAuthState] = useState(false);
+
+  
 
   return (
     <div className="App">

@@ -10,6 +10,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
   position: fixed;
+  z-index: 3;
 
   @media (min-width: 700px) {
     height: 80px;

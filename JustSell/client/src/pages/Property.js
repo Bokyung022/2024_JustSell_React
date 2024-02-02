@@ -6,10 +6,10 @@ import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 function Property() {
   let { id } = useParams();
   const [property, setProperty] = useState({});
