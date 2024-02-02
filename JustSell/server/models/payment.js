@@ -11,12 +11,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  payment.associate = (models) => {
-    payment.belongsTo(models.users, { foreignKey: "usersUserID", as: "user" });
-    payment.belongsTo(models.properties, {
-      foreignKey: "propertiesPropertyID",
-      as: "property",
-    });
-  };
   return payment;
 };

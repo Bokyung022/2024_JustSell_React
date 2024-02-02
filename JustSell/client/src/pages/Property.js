@@ -92,6 +92,14 @@ function Property() {
       .then((response) => {
         if (response.status === 200) {
           handleSuccess();
+          const data = { propertyID: id };
+          axios
+            .post("http://localhost:3001/payment/payment", data, {
+              headers: { accessToken: localStorage.getItem("accessToken") },
+            })
+            .then((response) => {
+              console.log("payment complete");
+            });
         }
       })
       .catch((err) => {
