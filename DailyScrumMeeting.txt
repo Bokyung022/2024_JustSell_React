@@ -262,3 +262,15 @@ need watching tutorials for deployment
 - Start to prepare presentation
 - Help to deploy in Heroku
 3. Need assistance / figure things out 
+
+2024/01/31 Karina
+1. Done since last scrum
+- WElcome user on navbar is ready
+- HEroku account created
+- Image error corrected
+- Footer CSS adjusted
+2. Plan until next Scrum
+- Deployment with host 
+3. Need assistance / figure things out
+- Heroku config
+-------------------------------------------------
