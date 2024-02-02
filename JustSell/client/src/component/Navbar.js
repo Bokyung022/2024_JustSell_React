@@ -15,7 +15,7 @@ import {
   NavbarLinkExtended,
   OpenLinksButton,
   RightContainer,
-  WelcomeContainer
+  WelcomeContainer,
 } from "../styles/Navbar.style";
 
 function Navbar() {
@@ -91,22 +91,17 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
           {authState.status ? (
-           <LoggedInContainer>
-
-            <WelcomeContainer>
-              <h1>
-                Welcome! {authState.username}
-              </h1>
+            <LoggedInContainer>
+              <WelcomeContainer>
+                <h3>Welcome! {authState.username}</h3>
               </WelcomeContainer>
 
               <LogoutBtn>
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
+                <button className="btn" onClick={logout}>
+                  Logout
+                </button>
               </LogoutBtn>
-              
             </LoggedInContainer>
-
           ) : null}
 
           <Logo src={LogoImg}></Logo>

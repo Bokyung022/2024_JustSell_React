@@ -5,7 +5,8 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
   width: 100%;
-  height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};// find solution
+  height: ${(props) =>
+    props.extendNavbar ? "100vh" : "80px"}; // find solution
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -18,12 +19,11 @@ export const NavbarContainer = styled.nav`
 `;
 
 // Navbar divided in left and right
-export const LeftContainer = styled.div` 
+export const LeftContainer = styled.div`
   flex: 70%;
   display: flex;
   align-items: center;
   padding-left: 5%;
-  
 `;
 
 export const RightContainer = styled.div`
@@ -32,7 +32,6 @@ export const RightContainer = styled.div`
   justify-content: flex-end;
   padding-right: 50px;
 `;
-
 
 export const NavbarInnerContainer = styled.div`
   width: 100%;
@@ -43,7 +42,7 @@ export const NavbarInnerContainer = styled.div`
 
 // div that contains the links
 export const NavbarLinkContainer = styled.div`
-  display: flex;  
+  display: flex;
 `;
 
 // slyle for the links
@@ -60,7 +59,6 @@ export const NavbarLink = styled(Link)`
     color: black;
     border-radius: 5px;
     padding: 10px;
-
   }
 
   @media (max-width: 700px) {
@@ -112,7 +110,7 @@ export const LoggedInContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
-  `;
+`;
 
 export const LogoutBtn = styled.div`
   padding-left: 60px;
@@ -124,14 +122,12 @@ export const LogoutBtn = styled.div`
   justify-content: flex-end;
   align-items: center;
   cursor: pointer; */
-  `;
+`;
 
 export const WelcomeContainer = styled.div`
-//background-color: #e59524;
-padding-left: 30px;
-padding-top: 15px;
-color: white;
-font-size: large;
-font-family: Arial, Helvetica, sans-serif;
-
+  //background-color: #e59524;
+  padding-top: 15px;
+  color: white;
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
 `;
