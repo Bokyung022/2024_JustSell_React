@@ -32,6 +32,9 @@ function Filter() {
 
   return (
     <>
+    
+    <div className="listingsFilter">
+      <div className="center">
       <section className="filters" style={{ paddingBottom: 0 }}>
         <Formik
           initialValues={{
@@ -140,6 +143,12 @@ function Filter() {
         </Formik>
       </section>
       {/* <div id="filter-btn" className="fas fa-filter"></div> */}
+
+    
+
+
+      </div>
+      </div>
 
       <section className="listings">
         {searchPerformed ? (
