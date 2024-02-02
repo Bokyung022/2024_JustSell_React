@@ -254,10 +254,11 @@ need watching tutorials for deployment
 2024/02/02 Bo Kyung
 1. Done since last scrum
 - Adjust the accessibility to Admin page / Create Property page / Edit User page / Edit Property page
-- Add validation / error handling code to all client pages
+- Add validation / error handling code in all client pages
 - Fix the login error
 2. Plan until next Scrum
 - Improve single Property page
+- Check validation / error handling code in server side
 - Start to prepare presentation
 - Help to deploy in Heroku
 3. Need assistance / figure things out 
