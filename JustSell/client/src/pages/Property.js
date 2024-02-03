@@ -17,6 +17,10 @@ const Property = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
+  const deleteImage = async (id) => {
+    await axios.delete(`http://localhost:3001/images/${id}`);
+    setImages(images.filter((image) => image.imageID !== id));
+  };
 
   const [authState, setAuthState] = useState({
     username: "",
@@ -94,6 +98,14 @@ const Property = () => {
               src={image.imageUrl}
               alt="Missing the property picture"
             />
+            {isPropertyRealtor && (
+              <button
+                className="btn"
+                onClick={() => deleteImage(image.imageID)}
+              >
+                delete
+              </button>
+            )}
           </SwiperSlide>
         ))}
         ;

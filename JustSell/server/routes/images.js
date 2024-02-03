@@ -84,8 +84,10 @@ router.post("/", upload.single("image"), async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const id = +req.params.id;
-    const image = await images.findByPk(id);
+    const imageID = +req.params.id;
+    const image = await images.findOne({
+      where: { imageID: imageID },
+    });
 
     if (!image) {
       return res.status(404).send({ error: "Image not found" });
