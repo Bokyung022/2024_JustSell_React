@@ -1,7 +1,6 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -9,37 +8,70 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Property = () => {
-  let { id } = useParams();
+  const { id } = useParams();
   const [property, setProperty] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  let navigate = useNavigate();
-
+  const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
+
+  const [authState, setAuthState] = useState({
+    username: "",
+    userID: 0,
+    status: false,
+    role: "",
+  });
+
+  const [realtorInfo, setRealtorInfo] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await checkAuthentication();
-
-        const propertyResponse = await axios.get(
-          `http://localhost:3001/properties/byId/${id}`,
+        const authResponse = await axios.get(
+          "http://localhost:3001/auth/auth",
           {
-            params: { include: "user" },
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
           }
         );
 
-        const imagesResponse = await axios.get(
-          `http://localhost:3001/images/${id}`
-        );
+        if (!authResponse.data.error) {
+          setAuthState((prevState) => ({
+            username: authResponse.data.userName,
+            userID: authResponse.data.userID,
+            status: true,
+            role: authResponse.data.role,
+          }));
 
-        setProperty(propertyResponse.data);
-        setImages(imagesResponse.data);
-        setLoading(false);
+          const propertyResponse = await axios.get(
+            `http://localhost:3001/properties/byId/${id}`,
+            {
+              params: { include: "user" },
+            }
+          );
+
+          setProperty(propertyResponse.data);
+
+          if (propertyResponse.data.userID) {
+            const realtorResponse = await axios.get(
+              `http://localhost:3001/auth/${propertyResponse.data.userID}`
+            );
+            setRealtorInfo(realtorResponse.data);
+          }
+
+          const imagesResponse = await axios.get(
+            `http://localhost:3001/images/${id}`
+          );
+
+          setImages(imagesResponse.data);
+          setLoading(false);
+        }
       } catch (error) {
-        console.error("Error fetching property details:", error);
+        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };
@@ -248,48 +280,6 @@ const Property = () => {
       </div>
     );
   };
-
-  const checkAuthentication = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/auth/auth", {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      });
-      if (response.data.error) {
-        setAuthState({
-          username: "",
-          userID: 0,
-          status: false,
-          role: "",
-        });
-      } else {
-        setAuthState((prevState) => ({
-          username: response.data.userName,
-          userID: response.data.userID,
-          status: true,
-          role: response.data.role,
-        }));
-      }
-    } catch (error) {
-      console.error("Error checking authentication:", error);
-      setAuthState({
-        username: "",
-        userID: 0,
-        status: false,
-        role: "",
-      });
-    }
-  };
-
-  const [authState, setAuthState] = useState({
-    username: "",
-    userID: 0,
-    status: false,
-    role: "",
-  });
-
-  const [realtorInfo, setRealtorInfo] = useState({});
 
   const isRealtor = authState.role === "Realtor";
   const isClient = authState.role === "Client";

@@ -46,7 +46,7 @@ function Navbar() {
           });
         }
       });
-  }, [authState]);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");

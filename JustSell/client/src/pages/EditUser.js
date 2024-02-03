@@ -81,11 +81,13 @@ const EditUser = () => {
   return (
     <div className="home">
       <div className="center">
-        {error && (
-          <p style={{ fontSize: "25px", color: "red", textAlign: "center" }}>
-            {error}
-          </p>
-        )}
+        <div className="box">
+          {error && (
+            <p style={{ fontSize: "25px", color: "red", textAlign: "center" }}>
+              {error}
+            </p>
+          )}
+        </div>
       </div>
       {!error && (
         <div className="center">
