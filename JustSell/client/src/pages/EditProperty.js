@@ -413,7 +413,7 @@ function EditProperty() {
               <p>Is this primary picture? </p>
               <label>
                 <input
-                  type="checkbox"
+                  type="radio"
                   name="isPrimaryPicture"
                   value="true"
                   checked={isPrimaryPicture === true}
@@ -423,7 +423,7 @@ function EditProperty() {
               </label>
               <label>
                 <input
-                  type="checkbox"
+                  type="radio"
                   name="isPrimaryPicture"
                   value="false"
                   checked={isPrimaryPicture === false}

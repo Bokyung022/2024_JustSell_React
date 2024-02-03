@@ -52,7 +52,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   try {
     const file = req.file;
     const description = req.body.description;
-    const isPrimaryPicture = req.body.isPrimaryPicture;
+    const isPrimaryPicture = req.body.isPrimaryPicture === true;
     const imageName = generateFileName();
     const propertyPropertyID = req.body.propertyID;
     console.log(isPrimaryPicture);
