@@ -154,7 +154,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.get("/auth", validateToken, (req, res) => {
-  res.json(req.userName);
+  res.json(req.user);
 });
 
 module.exports = router;

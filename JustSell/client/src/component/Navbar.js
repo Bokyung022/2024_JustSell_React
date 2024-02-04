@@ -20,7 +20,7 @@ import {
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
   const [authState, setAuthState] = useState({
-    username: "",
+    userName: "",
     userID: 0,
     status: false,
   });
@@ -38,14 +38,14 @@ function Navbar() {
           setAuthState({ ...authState, status: false }); //destructor the object
         } else {
           setAuthState({
-            username: response.data.userName,
+            userName: response.data.userName,
             userID: response.data.userID,
             status: true,
             role: response.data.role,
           });
         }
       });
-  }, [authState]);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -92,7 +92,7 @@ function Navbar() {
           {authState.status ? (
             <LoggedInContainer>
               <WelcomeContainer>
-                <h3>Welcome! {authState.username}</h3>
+                <h3>Welcome! {authState.userName}</h3>
               </WelcomeContainer>
 
               <LogoutBtn>
