@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LogoImg from "../images/logo.png";
+import { AuthContext } from "../helpers/AuthContext";
 import {
   LeftContainer,
   LoggedInContainer,
@@ -19,43 +20,15 @@ import {
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
-  const [authState, setAuthState] = useState({
-    userName: "",
-    userID: 0,
-    status: false,
-  });
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/auth/auth", {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
-      .then((response) => {
-        console.log("Server Response:", response);
-        if (response.data.error) {
-          setAuthState({ ...authState, status: false }); //destructor the object
-        } else {
-          setAuthState({
-            userName: response.data.userName,
-            userID: response.data.userID,
-            status: true,
-            role: response.data.role,
-          });
-        }
-      });
-  }, []);
-
+  const { authState, setAuthState } = useContext(AuthContext);
   const logout = () => {
     localStorage.removeItem("accessToken");
     setAuthState({
-      username: "",
+      userName: "",
       userID: 0,
       status: false,
     });
   };
-
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>

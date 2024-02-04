@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./component/Footer";
 import Navbar from "./component/Navbar";
 import { AuthContext } from "./helpers/AuthContext";
+import axios from "axios";
 
 import Admin from "./pages/Admin";
 import CreateProperty from "./pages/CreateProperty";
@@ -17,9 +18,34 @@ import Property from "./pages/Property";
 import Registration from "./pages/Registration";
 
 function App() {
-  const [authState, setAuthState] = useState(false);
+  const [authState, setAuthState] = useState({
+    username: "",
+    userID: 0,
+    role: "",
+    status: false,
+  });
 
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/auth/auth", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        console.log("Server Response:", response);
+        if (response.data.error) {
+          setAuthState({ ...authState, status: false }); //destructor the object
+        } else {
+          setAuthState({
+            userName: response.data.userName,
+            userID: response.data.userID,
+            status: true,
+            role: response.data.role,
+          });
+        }
+      });
+  }, []);
 
   return (
     <div className="App">
