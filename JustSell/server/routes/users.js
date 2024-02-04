@@ -69,24 +69,34 @@ router.get("/auth", validateToken, (req, res) => {
 router.post("/login", async (req, res) => {
   const { userName, password } = req.body;
 
-  const user = await users.findOne({ where: { userName: userName } });
+  try {
+    const user = await users.findOne({ where: { userName: userName } });
 
-  if (!user) res.json({ error: "User Doesn't Exist" });
+    if (!user) {
+      return res.json({ error: "User Doesn't Exist" });
+    }
 
-  bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+    bcrypt.compare(password, user.password).then(async (match) => {
+      if (!match) {
+        return res.json({ error: "Wrong Username And Password Combination" });
+      }
 
-    const accessToken = sign(
-      { userName: user.userName, userID: user.userID, role: user.role },
-      "importantsecret"
-    );
-    res.json({
-      token: accessToken,
-      userName: userName,
-      userID: userName.userID,
-      role: user.role,
+      const accessToken = sign(
+        { userName: user.userName, userID: user.userID, role: user.role },
+        "importantsecret"
+      );
+
+      res.json({
+        token: accessToken,
+        userName: userName,
+        userID: user.userID,
+        role: user.role,
+      });
     });
-  });
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 router.delete("/:userID", async (req, res) => {
