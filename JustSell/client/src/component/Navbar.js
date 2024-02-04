@@ -1,4 +1,3 @@
-// https://www.youtube.com/watch?v=1yMrdBsep-A - PedroTech: Responsive Navbar In React With Styled Components Tutorial
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import LogoImg from "../images/logo.png";
@@ -46,7 +45,7 @@ function Navbar() {
           });
         }
       });
-  }, []);
+  }, [authState]);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
