@@ -263,7 +263,7 @@ need watching tutorials for deployment
 - Help to deploy in Heroku
 3. Need assistance / figure things out 
 
-2024/01/31 Karina
+2024/02/02 Karina
 1. Done since last scrum
 - WElcome user on navbar is ready
 - HEroku account created
@@ -274,3 +274,12 @@ need watching tutorials for deployment
 3. Need assistance / figure things out
 - Heroku config
 -------------------------------------------------
+2024/02/04 Bo Kyung
+1. Done since last scrum
+- Fix (another) login probelm
+- Add realtor information on each property page 
+- Prepare Presentation
+2. Plan until next Scrum
+- Prepare Presentation
+- Heroku Hosting
+3. Need assistance / figure things out 
