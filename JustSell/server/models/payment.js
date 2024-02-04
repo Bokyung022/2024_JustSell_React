@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     PaymentID: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
     },
     propertiesPropertyID: {

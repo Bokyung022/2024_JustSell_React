@@ -85,7 +85,10 @@ module.exports = (sequelize, DataTypes) => {
     properties.hasMany(models.images, {
       onDelete: "cascade",
     });
-
+    properties.hasOne(models.payment, {
+      foreignKey: "propertiesPropertyID",
+      as: "payment",
+    });
     properties.belongsTo(models.users, {
       foreignKey: "userID",
       as: "user",
