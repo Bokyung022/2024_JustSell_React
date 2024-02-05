@@ -16,7 +16,7 @@ function Filter() {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/properties/search",
+        "https://justsell-app-f94be96079f5.herokuapp.com/properties/search",
         { params: values }
       );
       console.log("Response data:", response.data);
@@ -32,122 +32,127 @@ function Filter() {
 
   return (
     <>
-    
-    <div className="listingsFilter">
-      <div className="center">
-      <section className="filters" style={{ paddingBottom: 0 }}>
-        <Formik
-          initialValues={{
-            location: "",
-            sellOption: "sale",
-            propertyType: "apartment",
-            bedrooms: "1",
-            minBudget: "0",
-            maxBudget: "50000",
-          }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          <Form className="form">
-            <div id="close-filter">
-              <i className="fas fa-times"></i>
-            </div>
-            <h3>Filter your search</h3>
-            <div className="flex">
-              <div className="box">
-                <p>Location</p>
-                <Field
-                  type="text"
-                  name="location"
-                  required
-                  maxLength="50"
-                  placeholder="Search by city or Postal code"
-                  className="input"
-                />
-                <ErrorMessage
-                  name="location"
-                  component="div"
-                  className="error"
-                />
-              </div>
-              <div className="box">
-                <p>Offer type</p>
-                <Field as="select" name="sellOption" className="input" required>
-                  <option value="sale">Sale</option>
-                  <option value="resale">Resale</option>
-                  <option value="leasing">Leasing</option>
-                </Field>
-              </div>
-              <div className="box">
-                <p>Property type</p>
-                <Field
-                  as="select"
-                  name="propertyType"
-                  className="input"
-                  required
-                >
-                  <option value="apartment">Apartment</option>
-                  <option value="house">House</option>
-                  <option value="duplexTriplex">Duplex or Triplex</option>
-                  <option value="condo">Condo</option>
-                  <option value="commercialBuilding">
-                    Commercial Building
-                  </option>
-                </Field>
-              </div>
-              <div className="box">
-                <p>Bedrooms</p>
-                <Field as="select" name="bedrooms" className="input" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6+</option>
-                </Field>
-              </div>
-              <div className="box">
-                <p>Minimum budget</p>
-                <Field as="select" name="min" className="input" required>
-                  <option value="0">0</option>
-                  <option value="50000">50k</option>
-                  <option value="100000">100k</option>
-                  <option value="150000">150k</option>
-                  <option value="200000">200k</option>
-                  <option value="300000">300k</option>
-                  <option value="400000">400k</option>
-                  <option value="450000">450k</option>
-                  <option value="500000">500k</option>
-                  <option value="1000000">1M</option>
-                </Field>
-              </div>
-              <div className="box">
-                <p>Maximum budget</p>
-                <Field as="select" name="max" className="input" required>
-                  <option value="50000">50k</option>
-                  <option value="100000">100k</option>
-                  <option value="150000">150k</option>
-                  <option value="200000">200k</option>
-                  <option value="300000">300k</option>
-                  <option value="400000">400k</option>
-                  <option value="450000">450k</option>
-                  <option value="500000">500k</option>
-                  <option value="1000000">1M+</option>
-                </Field>
-              </div>
-            </div>
-            <button type="submit" className="btn">
-              Search Property
-            </button>
-          </Form>
-        </Formik>
-      </section>
-      {/* <div id="filter-btn" className="fas fa-filter"></div> */}
-
-    
-
-
-      </div>
+      <div className="listingsFilter">
+        <div className="center">
+          <section className="filters" style={{ paddingBottom: 0 }}>
+            <Formik
+              initialValues={{
+                location: "",
+                sellOption: "sale",
+                propertyType: "apartment",
+                bedrooms: "1",
+                minBudget: "0",
+                maxBudget: "50000",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              <Form className="form">
+                <div id="close-filter">
+                  <i className="fas fa-times"></i>
+                </div>
+                <h3>Filter your search</h3>
+                <div className="flex">
+                  <div className="box">
+                    <p>Location</p>
+                    <Field
+                      type="text"
+                      name="location"
+                      required
+                      maxLength="50"
+                      placeholder="Search by city or Postal code"
+                      className="input"
+                    />
+                    <ErrorMessage
+                      name="location"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+                  <div className="box">
+                    <p>Offer type</p>
+                    <Field
+                      as="select"
+                      name="sellOption"
+                      className="input"
+                      required
+                    >
+                      <option value="sale">Sale</option>
+                      <option value="resale">Resale</option>
+                      <option value="leasing">Leasing</option>
+                    </Field>
+                  </div>
+                  <div className="box">
+                    <p>Property type</p>
+                    <Field
+                      as="select"
+                      name="propertyType"
+                      className="input"
+                      required
+                    >
+                      <option value="apartment">Apartment</option>
+                      <option value="house">House</option>
+                      <option value="duplexTriplex">Duplex or Triplex</option>
+                      <option value="condo">Condo</option>
+                      <option value="commercialBuilding">
+                        Commercial Building
+                      </option>
+                    </Field>
+                  </div>
+                  <div className="box">
+                    <p>Bedrooms</p>
+                    <Field
+                      as="select"
+                      name="bedrooms"
+                      className="input"
+                      required
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6+</option>
+                    </Field>
+                  </div>
+                  <div className="box">
+                    <p>Minimum budget</p>
+                    <Field as="select" name="min" className="input" required>
+                      <option value="0">0</option>
+                      <option value="50000">50k</option>
+                      <option value="100000">100k</option>
+                      <option value="150000">150k</option>
+                      <option value="200000">200k</option>
+                      <option value="300000">300k</option>
+                      <option value="400000">400k</option>
+                      <option value="450000">450k</option>
+                      <option value="500000">500k</option>
+                      <option value="1000000">1M</option>
+                    </Field>
+                  </div>
+                  <div className="box">
+                    <p>Maximum budget</p>
+                    <Field as="select" name="max" className="input" required>
+                      <option value="50000">50k</option>
+                      <option value="100000">100k</option>
+                      <option value="150000">150k</option>
+                      <option value="200000">200k</option>
+                      <option value="300000">300k</option>
+                      <option value="400000">400k</option>
+                      <option value="450000">450k</option>
+                      <option value="500000">500k</option>
+                      <option value="1000000">1M+</option>
+                    </Field>
+                  </div>
+                </div>
+                <button type="submit" className="btn">
+                  Search Property
+                </button>
+              </Form>
+            </Formik>
+          </section>
+          {/* <div id="filter-btn" className="fas fa-filter"></div> */}
+        </div>
       </div>
 
       <section className="listings">

@@ -32,7 +32,9 @@ function EditProperty() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/properties/byId/${id}`)
+      .get(
+        `https://justsell-app-f94be96079f5.herokuapp.com/properties/byId/${id}`
+      )
       .then((response) => {
         setPropertyObject(response.data);
         setEditedData(response.data);
@@ -49,7 +51,10 @@ function EditProperty() {
 
   const handleEditClick = () => {
     axios
-      .put(`http://localhost:3001/properties/${id}`, editedData)
+      .put(
+        `https://justsell-app-f94be96079f5.herokuapp.com/properties/${id}`,
+        editedData
+      )
       .then(() => {
         navigate(`/property/${id}`);
       })
@@ -68,9 +73,13 @@ function EditProperty() {
       formData.append("propertyID", id);
       formData.append("isPrimaryPicture", isPrimaryPicture);
 
-      await axios.post("http://localhost:3001/images", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "https://justsell-app-f94be96079f5.herokuapp.com/images",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       alert("Image submitted successfully!");
 
       navigate("/");

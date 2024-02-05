@@ -15,7 +15,7 @@ const Admin = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
+        const response = await axios.get("https://justsell-app-f94be96079f5.herokuapp.com/auth/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
@@ -54,7 +54,7 @@ const Admin = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:3001/auth");
+        const response = await axios.get("https://justsell-app-f94be96079f5.herokuapp.com/auth");
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -69,8 +69,8 @@ const Admin = () => {
 
   const deleteUser = async (userID) => {
     try {
-      await axios.delete(`http://localhost:3001/auth/${userID}`);
-      const response = await axios.get("http://localhost:3001/auth");
+      await axios.delete(`https://justsell-app-f94be96079f5.herokuapp.com/auth/${userID}`);
+      const response = await axios.get("https://justsell-app-f94be96079f5.herokuapp.com/auth");
       setUsers(response.data);
       window.alert("User deleted successfully!");
     } catch (error) {

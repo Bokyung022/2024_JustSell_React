@@ -13,7 +13,7 @@ function Login() {
   const login = () => {
     const data = { userName: userName, password: password };
     axios
-      .post("http://localhost:3001/auth/login", data)
+      .post("https://justsell-app-f94be96079f5.herokuapp.com/auth/login", data)
       .then((response) => {
         if (response.data.error) {
           alert("Login failed: " + response.data.error);
@@ -23,6 +23,7 @@ function Login() {
             userName: response.data.userName,
             id: response.data.userID,
             status: true,
+            role: response.data.role,
           });
           // Set login message and reset after 5 seconds
           setLoginMessage("You are logged in");
@@ -38,7 +39,7 @@ function Login() {
   };
 
   return (
-    <div className="home">
+    <div className="login">
       <div className="center">
         <div className="box-container">
           <div className="formcontainer">

@@ -42,7 +42,7 @@ function Registration() {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/auth", data)
+      .post("https://justsell-app-f94be96079f5.herokuapp.com/auth", data)
       .then(() => {
         // handle success
         console.log(data);
@@ -56,7 +56,7 @@ function Registration() {
   };
 
   return (
-    <div className="home">
+    <div className="login">
       <div className="center">
         <div className="box-container">
           <Formik

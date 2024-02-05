@@ -10,7 +10,9 @@ const EditUser = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/auth/${userID}`);
+      const response = await axios.get(
+        `https://justsell-app-f94be96079f5.herokuapp.com/auth/${userID}`
+      );
       setEditedData(response.data);
     } catch (error) {
       console.error("Error fetching user for editing:", error);
@@ -24,11 +26,14 @@ const EditUser = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        });
+        const response = await axios.get(
+          "https://justsell-app-f94be96079f5.herokuapp.com/auth/auth",
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          }
+        );
         if (response.data.error) {
           setError("You are not logged in. Please log in to access this page.");
         } else {
@@ -62,7 +67,10 @@ const EditUser = () => {
       console.log("Updating user with ID:", userID);
       console.log("Data to be sent:", editedData);
 
-      await axios.put(`http://localhost:3001/auth/${userID}`, editedData);
+      await axios.put(
+        `https://justsell-app-f94be96079f5.herokuapp.com/auth/${userID}`,
+        editedData
+      );
 
       alert("User updated successfully!");
       navigate("/admin"); // Redirect to the admin page after saving

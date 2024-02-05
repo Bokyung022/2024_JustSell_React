@@ -5,7 +5,6 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  margin-top: 30vh;
   width: 100%;
   background-color: #666;
   color: white;
@@ -13,7 +12,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
 `;
 
 export const FooterContent = styled.div`

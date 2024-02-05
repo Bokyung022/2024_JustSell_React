@@ -10,7 +10,9 @@ function Listings() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/properties");
+        const response = await axios.get(
+          "https://justsell-app-f94be96079f5.herokuapp.com/properties"
+        );
         const updatedProperties = response.data;
         setListOfProperties(updatedProperties);
       } catch (error) {
@@ -67,7 +69,9 @@ function Listings() {
                     <p>
                       <i className="fas fa-couch"></i>
                       <span>
-                        {property.furnished === 1 ? "Furnished" : "Not Furnished"}
+                        {property.furnished === 1
+                          ? "Furnished"
+                          : "Not Furnished"}
                       </span>
                     </p>
                     <p>

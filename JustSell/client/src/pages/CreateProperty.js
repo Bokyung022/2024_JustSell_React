@@ -18,11 +18,14 @@ function CreateProperty() {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        });
+        const response = await axios.get(
+          "https://justsell-app-f94be96079f5.herokuapp.com/auth/auth",
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          }
+        );
         if (response.data.error) {
           setAuthState((prevState) => ({ ...prevState, status: false }));
           setError("You are not logged in. Please log in to access this page.");
@@ -89,7 +92,7 @@ function CreateProperty() {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/properties", data)
+      .post("https://justsell-app-f94be96079f5.herokuapp.com/properties", data)
       .then((response) => {
         navigate("/listings");
       })

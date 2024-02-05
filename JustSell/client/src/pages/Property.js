@@ -18,7 +18,9 @@ const Property = () => {
   const navigate = useNavigate();
   const MySwal = withReactContent(Swal);
   const deleteImage = async (id) => {
-    await axios.delete(`http://localhost:3001/images/${id}`);
+    await axios.delete(
+      `https://justsell-app-f94be96079f5.herokuapp.com/images/${id}`
+    );
     setImages(images.filter((image) => image.imageID !== id));
   };
 
@@ -35,7 +37,7 @@ const Property = () => {
     const fetchData = async () => {
       try {
         const authResponse = await axios.get(
-          "http://localhost:3001/auth/auth",
+          "https://justsell-app-f94be96079f5.herokuapp.com/auth/auth",
           {
             headers: {
               accessToken: localStorage.getItem("accessToken"),
@@ -52,7 +54,7 @@ const Property = () => {
           }));
 
           const propertyResponse = await axios.get(
-            `http://localhost:3001/properties/byId/${id}`,
+            `https://justsell-app-f94be96079f5.herokuapp.com/properties/byId/${id}`,
             {
               params: { include: "user" },
             }
@@ -62,13 +64,13 @@ const Property = () => {
 
           if (propertyResponse.data.userID) {
             const realtorResponse = await axios.get(
-              `http://localhost:3001/auth/${propertyResponse.data.userID}`
+              `https://justsell-app-f94be96079f5.herokuapp.com/auth/${propertyResponse.data.userID}`
             );
             setRealtorInfo(realtorResponse.data);
           }
 
           const imagesResponse = await axios.get(
-            `http://localhost:3001/images/${id}`
+            `https://justsell-app-f94be96079f5.herokuapp.com/images/${id}`
           );
 
           setImages(imagesResponse.data);
@@ -137,7 +139,7 @@ const Property = () => {
     const headers = {
       "Content-Type": "application/json",
     };
-    return fetch("http://localhost:3001/payment", {
+    return fetch("https://justsell-app-f94be96079f5.herokuapp.com/payment", {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body),
@@ -147,9 +149,13 @@ const Property = () => {
           handleSuccess();
           const data = { propertyID: id };
           axios
-            .post("http://localhost:3001/payment/payment", data, {
-              headers: { accessToken: localStorage.getItem("accessToken") },
-            })
+            .post(
+              "https://justsell-app-f94be96079f5.herokuapp.com/payment/payment",
+              data,
+              {
+                headers: { accessToken: localStorage.getItem("accessToken") },
+              }
+            )
             .then((response) => {
               console.log("payment complete");
             });
@@ -301,7 +307,7 @@ const Property = () => {
     const fetchRealtorInfo = async (userID) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/auth/${userID}`
+          `https://justsell-app-f94be96079f5.herokuapp.com/auth/${userID}`
         );
         setRealtorInfo(response.data);
       } catch (error) {
@@ -312,7 +318,7 @@ const Property = () => {
     const getPropertyDetails = async () => {
       try {
         const propertyResponse = await axios.get(
-          `http://localhost:3001/properties/byId/${id}`,
+          `https://justsell-app-f94be96079f5.herokuapp.com/properties/byId/${id}`,
           {
             params: { include: "user" },
           }
@@ -326,7 +332,7 @@ const Property = () => {
         }
 
         const imagesResponse = await axios.get(
-          `http://localhost:3001/images/${id}`
+          `https://justsell-app-f94be96079f5.herokuapp.com/images/${id}`
         );
 
         setImages(imagesResponse.data);
@@ -340,11 +346,14 @@ const Property = () => {
     // Check if there's an authenticated user
     const isAuthenticated = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/auth/auth", {
-          headers: {
-            accessToken: localStorage.getItem("accessToken"),
-          },
-        });
+        const response = await axios.get(
+          "https://justsell-app-f94be96079f5.herokuapp.com/auth/auth",
+          {
+            headers: {
+              accessToken: localStorage.getItem("accessToken"),
+            },
+          }
+        );
 
         if (!response.data.error) {
           setAuthState((prevState) => ({
@@ -369,7 +378,9 @@ const Property = () => {
 
   const deleteProperty = () => {
     axios
-      .delete(`http://localhost:3001/properties/${id}`)
+      .delete(
+        `https://justsell-app-f94be96079f5.herokuapp.com/properties/${id}`
+      )
       .then(() => {
         window.alert("Property deleted successfully!");
         navigate("/listings");
