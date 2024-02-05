@@ -284,7 +284,7 @@ need watching tutorials for deployment
 - Heroku Hosting
 3. Need assistance / figure things out 
 ------------------------------------------------
-2024/02/04 Bo Kyung
+2024/02/04 Xing
 1. Done since last scrum
 - Fixed login probelm
 - Add codes to add payment to database
