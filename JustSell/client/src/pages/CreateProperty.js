@@ -91,8 +91,12 @@ function CreateProperty() {
   });
 
   const onSubmit = (data) => {
+    const propertyData = { ...data, userID: authState.userID };
     axios
-      .post("https://justsell-app-f94be96079f5.herokuapp.com/properties", data)
+      .post(
+        "https://justsell-app-f94be96079f5.herokuapp.com/properties",
+        propertyData
+      )
       .then((response) => {
         navigate("/listings");
       })
