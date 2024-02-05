@@ -56,7 +56,7 @@ function Registration() {
   };
 
   return (
-    <div className="home">
+    <div className="login">
       <div className="center">
         <div className="box-container">
           <Formik
