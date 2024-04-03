@@ -1,8 +1,8 @@
-## Please visite the website:
-
-website: https://justsell.netlify.app/
-
 # JustSell - Real Estate Web Application
+
+## Application Url
+
+https://justsell.netlify.app/
 
 ## Introduction
 
