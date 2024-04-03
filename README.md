@@ -28,9 +28,9 @@ This web application is built using the following technologies and frameworks:
 - Sequelize JS
 - Bootstrap
 
-## ADDITIONAL LIBRARIES
+## Additional Libraries
 
-Just Sell Real Estate Website uses the following additional libraries:
+JustSell Web Application uses the following additional libraries:
 • Express
 • Cors
 • Nodemon
