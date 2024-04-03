@@ -31,13 +31,14 @@ This web application is built using the following technologies and frameworks:
 ## Additional Libraries
 
 JustSell Web Application uses the following additional libraries:
-• Express
-• Cors
-• Nodemon
-• Axios
-• Bootstrap
-• Formik
-• Yup
+
+- Express
+- Cors
+- Nodemon
+- Axios
+- Bootstrap
+- Formik
+- Yup
 
 ## Screenshot - Login
 
