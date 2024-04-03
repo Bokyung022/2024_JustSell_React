@@ -41,25 +41,25 @@ JustSell Web Application uses the following additional libraries:
 
 ## Screenshot - Login
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Login.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Login.JPG" width="500"/>
 
 ## Screenshot - Listings Page
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Listings.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Listings.JPG" width="500"/>
 
 ## Screenshot - Search/Filter
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Search.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Search.JPG" width="500"/>
 
 ## Screenshot - Create/Edit Property
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Create%20Property.JPG" width="400"/>
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Edit%20Property.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Create%20Property.JPG" width="500"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Edit%20Property.JPG" width="500"/>
 
 ## Screenshot - Payment
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Payment.JPG" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Payment.JPG" alt="Screenshot 1" width="500"/>
 
 ## Screenshot - Admin Page
 
-<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Admin.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Admin.JPG" width="500"/>
