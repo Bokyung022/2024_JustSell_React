@@ -39,28 +39,27 @@ JustSell Web Application uses the following additional libraries:
 • Formik
 • Yup
 
-## ScreenShoots - Login
+## Screenshot - Login
 
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/Login.png" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Login.JPG" width="400"/>
 
-## ScreenShoots - Home Page
+## Screenshot - Listings Page
 
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/HomePage_Desktop01.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/HomePage_Desktop02.png" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Listings.JPG" width="400"/>
 
-## ScreenShoots - Home Page Mobile
+## Screenshot - Search/Filter
 
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/HomePage_Mobile01.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/HomePage_Mobile02.png" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Search.JPG" width="400"/>
 
-## ScreenShoots - Course Detail
+## Screenshot - Create/Edit Property
 
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/CourseDetail_01.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/CourseDetail_02.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/CourseDetail_03.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/CourseDetail_04.png" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Create%20Property.JPG" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Edit%20Property.JPG" width="400"/>
 
-## ScreenShoots - Payment
+## Screenshot - Payment
 
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/PaymentPAge_01.png" alt="Screenshot 1" width="400"/>
-<img src="https://github.com/KarinaDeVargas/2023-FSD10-CodeWise_HTML_CSS/blob/main/assets/PaymentPage_02.png" alt="Screenshot 1" width="400"/>
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Payment.JPG" alt="Screenshot 1" width="400"/>
+
+## Screenshot - Admin Page
+
+<img src="https://github.com/Bokyung022/2024_JustSell_React/blob/main/JustSell/assets/Admin.JPG" width="400"/>
