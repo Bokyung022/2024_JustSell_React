@@ -1,4 +1,5 @@
 # JustSell - Real Estate Web Application
+Authors: Bo Kyung Kim, Xing Huang, Karina De Vargas Pereira / John Abbott College FSD-10
 
 ## Application Url
 
